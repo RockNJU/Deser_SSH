@@ -80,10 +80,10 @@
      
      
      <tr>
-     <td style="background: #FFCCCC;font-weight:bold">订单编号：12231</td>
-     <td style="background: #FFCCCC;font-weight:bold">下定时间：2016-06-20</td>
-     <td style="background: #FFCCCC;font-weight:bold">提货时间：2016-06-26</td>
-     <td style="background: #FFCCCC;font-weight:bold"></td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">订单编号：12231</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">下定时间：2016-06-20</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">提货时间：2016-06-26</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;"></td>
      </tr>
      
      
@@ -118,10 +118,10 @@
      </tr>
      
      <tr>
-     <td style="background: #FFCCCC;font-weight:bold ">订单编号：12231</td>
-     <td style="background: #FFCCCC;font-weight:bold">下定时间：2016-06-20</td>
-     <td style="background: #FFCCCC;font-weight:bold">提货时间：2016-06-26</td>
-     <td style="background: #FFCCCC;font-weight:bold"></td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080; ">订单编号：12231</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">下定时间：2016-06-20</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">提货时间：2016-06-26</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;"></td>
      </tr>
      
      
