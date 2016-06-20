@@ -23,7 +23,6 @@
    		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		</script>
 		
 		<script src="../js/jquery.easydropdown.js"></script>
 		<!----webfonts--->
@@ -160,25 +159,91 @@
       <div class="am-g">
       <div class="am-u-sm-12">
         <table class="am-table am-table-striped am-table-hover table-main">
-	<tr>
-      <th style="background: #C2F1E2">订单编号</th>
-
-      <th style="background: #C2F1E2">订单总价</th>
-      <th style="background: #C2F1E2">订单信息</th>
-
-      </tr>
-
- 
+	
       <tr>
-       <td>1</td>
-
-       <td>1</td>
-       <td>1</td>
-
+      <th style="font-weight:normal">甜点</th>
+      <th style="font-weight:normal">甜点名称</th>
+      <th style="font-weight:normal">单价</th>
+      <th style="font-weight:normal">数量</th>
+      </tr>
       
-        </tr>
+      
+     
+     
+     <tr>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">订单编号：12231</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">下定时间：2016-06-20</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">提货时间：2016-06-26</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;"></td>
+     </tr>
+     
+     
+     <tr>
+     <td style="background: #FFFFCC">a picture</td>
+     <td style="background: #FFFFCC">XXX蛋糕</td>
+     <td style="background: #FFFFCC">12</td>
+     <td style="background: #FFFFCC">4</td>
+     </tr>
+     
+     
+     <tr>
+     <td style="background: #FFFFCC">a picture</td>
+     <td style="background: #FFFFCC">XXX蛋糕</td>
+     <td style="background: #FFFFCC">13</td>
+     <td style="background: #FFFFCC">1</td>
+     </tr>
+     
+     <tr>
+     <td style="background: #FFFFCC"></td>
+     <td style="background: #FFFFCC"></td>
+     <td style="background: #FFFFCC"></td>
+     <td style="background: #FFFFCC;font-weight:bold">总价：123</td>
 
-	      </table>
+     </tr>
+
+     
+     <tr>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     </tr>
+     
+     <tr>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080; ">订单编号：12231</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">下定时间：2016-06-20</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">提货时间：2016-06-26</td>
+     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;"></td>
+     </tr>
+     
+     
+     <tr>
+     <td style="background: #FFFFCC">a picture</td>
+     <td style="background: #FFFFCC">XXX蛋糕</td>
+     <td style="background: #FFFFCC">12</td>
+     <td style="background: #FFFFCC">4</td>
+     </tr>
+     
+     
+     <tr>
+     <td style="background: #FFFFCC">a picture</td>
+     <td style="background: #FFFFCC">XXX蛋糕</td>
+     <td style="background: #FFFFCC">13</td>
+     <td style="background: #FFFFCC">1</td>
+     </tr>
+     
+     <tr>
+     <td style="background: #FFFFCC"></td>
+     <td style="background: #FFFFCC"></td>
+     <td style="background: #FFFFCC"></td>
+     <td style="background: #FFFFCC;font-weight:bold">总价：123</td>
+
+     </tr>
+     
+
+
+     </table>
+	      
       </div>
       </div>
       </div>
