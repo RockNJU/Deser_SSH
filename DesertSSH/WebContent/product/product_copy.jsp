@@ -46,10 +46,132 @@
 		</script>
 	
 	<style>
-		
+		/*********************排序*******************************/
+			
+			.filter {
+				font-size:14px;
+				padding: 5px 10px;
+				background: #FFEFDB;
+				width:88.5%;
+			}
+			
+			.filter_sort a:hover, .filter_sort .on {
+				background: #FFEFDB;
+			}
+			
+			.filter_sort a {
+				display: block;
+				float: left;
+				height: 26px;
+				line-height: 18px;
+				margin-left: -1px;
+				padding: 5px 10px;
+				border: 1px solid #c7c7c7;
+				background: #fff;
+				color: #444;
+			}
+			
+			
+			.filter_sort a i {
+				width: 10px;
+				height: 16px;
+				margin-left: 3px;
+				background: url(。。/images/filter_icon.png) no-repeat 0 0;
+			}
+			i, s {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			.filter_sort .price i {
+				background-position: -20px 0;
+			}
+			.filter_sort a i {
+				width: 10px;
+				height: 16px;
+				margin-left: 3px;
+				background: url(../images/filter_icon.png) no-repeat 0 0;
+			}
+			
+			.clearfix::after, .wrap::after {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}			
+	
+		/***--------------------类别--------------------------**/
+
+			.select {
+				word-break: break-all;
+				word-wrap: break-word;
+				font-size: 12px;
+				font-family: Arial,Verdana,"\5b8b\4f53";
+				line-height: 25px;
+			}
+			.select {
+				font-size:14px;
+				width: 88.5%;
+				line-height: 25px;
+				margin: 15px 0;
+			}
+			
+			.select .all {
+				position: relative;
+				background: #FFEFDB;
+				border: 1px solid #c7c7c7;
+				border-right-color: #e5e5e5;
+			}
+			
+			.select .tit {
+				float: left;
+				width: 78px;
+				padding: 5px 0 5px 20px;
+				color: #909090;
+			}
+			
+			.select .all ul {
+				background: #FFEFDB;
+			}
+			.select ul {
+				float: left;
+				position: relative;
+				width: 100%;
+				padding: 5px 0;
+				zoom: 1;
+			}
+			ul, ol, dl, dt, dd {
+				list-style-type: none;
+			}
+			
+			
+			.select li {
+				float: left;
+				display: inline;
+			}
+			
+			
+			.select a {
+				display: inline-block;
+				white-space: nowrap;
+				padding: 0 15px;
+				text-decoration: none;
+				color: #444;
+			}
+			a {
+				color: #444;
+				text-decoration: none;
+				outline: none;
+			}
+			
+			.select .all li::after {content: "|";}
+	
+				
+		/**-----------------------------------------------**/
 		
 		.dh{
-			border-bottom:1px;
+			border-bottom:0px;
 			display:block;
 		}
 		
@@ -232,41 +354,46 @@
 	
 	
 	<div class="gallery" style="background-color: #fff">
-		<div class="container">
+		<div class="container" style='margin-top:-25px;'>
 			
 			<div style="min-height:20px;margin-top:-20px;">
-			
-				<div class="dh" style='background-color:red;'>
-					<div class="attrKey">选择店铺</div>
-					<div class="attrValues" >
-						<ul class="value">
-							<li class="store" value="新街口甜点屋">新街口甜点屋</li>
-							<li class="store">鼓楼甜点屋分店</li>
-							<li class="store">仙林甜点屋分店</li>
-							<li class="store">马群甜点屋分店</li>
-							<li class="store">浦口甜点屋分店</li>
-						</ul>
-					</div>
-				</div>
 				
 				<div class="dh">
-					<div class="attrKey">甜点分类</div>
-					<div class="attrValues" >
-						<ul class="value">
-							<li class="category">巧克力味</li>
-							<li class="category">奶油味</li>
-							<li class="category">水果味</li>
-							<li class="category">香蕉味</li>
-							<li class="category">苹果味</li>
-							<li class="category">生日蛋糕</li>
-							<li class="category">日常点心</li>
-						</ul>
+					
+					<div class='select'>   
+						<div class="all clearfix">
+							<div class="tit" style='float:left;width:10%;'>►所有分类</div>
+							<div class='item' style='float:left;width:80%;background-color:red;'>
+								<ul>
+									<li class=" "><a href="#">奇异果</a></li>
+									<li class=" "><a href="#">车厘子</a></li>
+									<li class=" "><a href="#">牛油果</a></li>
+									<li class=" "><a href="#">提子</a></li>
+									<li class=" "><a href="#">苹果</a></li>
+									<li class=" "><a href="#">梨</a></li>
+									<li class=" "><a href="#">柑桔橙柚</a></li>
+									<li class=" "><a href="#">香蕉</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class='dh' style='margin-top:-10px;'>
+					<div id="formCx" class="filter clearfix">
+						<div class="filter_sort">
+								<a class="on" href="javascript:;" _sort="0">默认排序</a>
+								<a class="" href="javascript:;" _sort="1">销量<i class="up"></i></a>
+								<a class="price" href="javascript:;" _sort="3">价格<i class="sort_down"></i></a>
+								<a class="" href="javascript:;" _sort="5">评论<i class="dowm"></i></a>
+						</div>
 					</div>
 				</div>
 				
 			</div>
-		
 		</div>
+		
 		<div class="container">
 				<input id='context' value='<%=request.getContextPath()%>' hidden=true/>
 			<div class="gallery-grids" id="product_list">
