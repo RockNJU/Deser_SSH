@@ -1,0 +1,139 @@
+.img_div{
+	
+	float: left;
+	width: 400px;
+	position: relative;
+	min-height:300px;
+/*	background-color:blue;*/
+}
+
+#main_img{
+	float: left;
+	width: 400px;
+	position: relative;
+	height:380px;
+	}
+
+.tip {width:62px;height:62px;border:1px solid #DDD;}
+
+.singlerow{
+	border:1px outset #fff;//
+	width:100%;
+	min-height:40px;
+}
+
+#single_price{
+	background:url('../images/index.png');
+}
+
+
+#product_num{
+	width:60px;
+	float:left;
+	height:38px;
+	margin-left:10px;
+}
+
+.innerItem{
+	float:left;
+}
+
+
+.row{
+	border-bottom:1px;
+}
+
+ul li{
+	list-style-type: none;
+	margin:0px;
+    padding:0px; 
+}
+
+ .row > ul >li{
+	float:left;
+	width:120px;
+	margin-left:50px;
+}
+
+.cart_detail > ul >li{
+	float:left;
+	width:120px;
+	height:72px;
+	margin-left:55px;
+
+}
+
+.cart_detail{
+	width:98%;
+	border: 1px solid #e8e8e8;
+	background-color:red;
+	margin:2px;
+}
+
+.ln{
+	
+	width:80%;
+	margin-left:10px;
+	height:30px;
+	margin-top:20px;
+	text-align:center;	
+}
+
+.cart_span{
+	margin-left:5px;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.cart_shop{
+	margin-left:5px;
+}
+
+.cart_img{
+	width:72px;
+	height:62px;
+}
+
+.cartItem{
+	flaot:left;
+	width:100%;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.btn_form a{
+	/*font-family: 'Open Sans', sans-serif;
+	cursor:pointer;
+	border:none;
+	outline:none;
+	display: inline-block;
+	font-size: 1em;
+	padding: 10px 34px;
+	background:#5A0F16;
+	color:#fff;
+	text-transform:uppercase;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;*/
+	
+	margin-right: 0;
+	float: left;
+	margin-left:40px;
+	overflow: hidden;
+	position: relative;
+	width: 150px;
+	height: 38px;
+	line-height: 38px;
+	background-color: #ffeded;
+	border: 1px solid #c40000;
+	color: #c40000;
+	font-family: 'Microsoft Yahei';
+	font-size: 16px;
+	text-align: center;
+}
+
+/***********************userInfo start***********************/
+
+.userInfo{
+	border:1px solid red;
+}
