@@ -46,44 +46,14 @@
 		</script>
 	
 	<style>
-		.attrKey{
-			float:left;
-			width:15%;
-			margin-top:10px;
-			
-		}
-		.attrValues{
-			float:left;
-			width:85%;
-		}
 		
-		ul li{
-			list-style:none;
-		}
-		
-		.atrtValues li{
-			float:left;
-			width:13%;
-		}
-		
-		.value ul{
-			list-style-type:none;
-			padding:0;
-			margin:0;
-		}
-		
-		.value li{
-			margin:7px;
-			 padding:5px;
-			 float:left;
-			 width:%15;
-			 height:20px;
-		}
 		
 		.dh{
 			border-bottom:1px;
 			display:block;
 		}
+		
+		
 		
 		
 		  .col-md-3 {
