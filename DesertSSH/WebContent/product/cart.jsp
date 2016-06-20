@@ -100,10 +100,10 @@ function GetCount() {
 		<tr>
 			<td class="tb1_td1"><input id="Checkbox1" type="checkbox"  class="allselect"/></td>
 			<td class="tb1_td1">全选</td>
-			<td class="tb1_td3">商品名称</td>
-			<td class="tb1_td4">商品信息</td>
-			<td class="tb1_td5">单价</td>
-			<td class="tb1_td6">数量</td>
+			<td class="tb1_td2">商品名称</td>
+			<td class="tb1_td3">商品信息</td>
+			<td class="tb1_td4">单价</td>
+			<td class="tb1_td5">数量</td>
 			<td class="tb1_td6">总价</td>
 			<td class="tb1_td7">操作</td>
 		</tr>
@@ -136,16 +136,16 @@ function GetCount() {
 	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
 		<tr>
 			<td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-1" /></td>
-			<td class="tb2_td2"><a href="#"><img src="images/img1.jpg"/></a></td>
-			<td class="tb2_td3"><a href="#">产品标题</a></td>
-			<td class="tb1_td4">一件</td>
-			<td class="tb1_td5">
+			<td class="tb2_td2"><a href="#">法式焦糖玛奇朵巧克力</a></td>
+			<td class="tb2_td3"><a href="#"><img src="../images/11.jpg"/></a></td>
+			<td class="tb2_td4">9.0</td>
+			<td class="tb2_td5">
 				<input id="min1" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
 				<input id="text_box1" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
 				<input id="add1" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
 			</td>
-			<td class="tb1_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-			<td class="tb1_td7"><a href="#">删除</a></td>
+			<td class="tb2_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
+			<td class="tb2_td7"><a href="#">删除</a></td>
 		</tr>
 	</table>
 	
@@ -174,16 +174,16 @@ function GetCount() {
 	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
 		<tr>
 			<td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-2" /></td>
-			<td class="tb2_td2"><a href="#"><img src="images/img2.jpg"/></a></td>
-			<td class="tb2_td3"><a href="#">产品标题</a></td>
-			<td class="tb1_td4">一件</td>
-			<td class="tb1_td5">
+			<td class="tb2_td2"><a href="#">黑森林抹茶布丁蛋糕</a></td>
+			<td class="tb2_td3"><a href="#"><img src="../images/12.jpg"/></a></td>
+			<td class="tb2_td4">8.0</td>
+			<td class="tb2_td5">
 				<input id="min2" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
 				<input id="text_box2" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
 				<input id="add2" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
 			</td>
-			<td class="tb1_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-			<td class="tb1_td7"><a href="#">删除</a></td>
+			<td class="tb2_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
+			<td class="tb2_td7"><a href="#">删除</a></td>
 		</tr>
 	</table>
 	
@@ -211,11 +211,10 @@ function GetCount() {
 	<table cellpadding="0" cellspacing="0" class="gwc_tb3">
 		<tr>
 			<td class="tb1_td1"><input id="checkAll" class="allselect" type="checkbox" /></td>
-			<td class="tb1_td1">全选</td>
-			<td class="tb3_td1">
-				<input id="invert" type="checkbox" />反选
-				<input id="cancel" type="checkbox" />取消
-			</td>
+			<td class="tb3_td1">全选   
+				<input id="invert" type="checkbox" />反选   
+				<input id="cancel" type="checkbox" />取消全选</td>
+			
 			<td class="tb3_td2">已选商品 <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
 			<td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></span></td>
 			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
