@@ -78,6 +78,7 @@
 			 	<center> <img src="../images/re1.jpg"  alt="基础信息" />
 							 </br>
 					 </br>
+					 <p><strong>${error}&nbsp;</strong></p>
 				 <div class="register-top-grid">
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 
@@ -89,7 +90,7 @@
 						<input type="text" id='phone' name='phone'> 
 					 </div>
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						 <span><font color="#5a0f16">邮箱</font><label>*</label><p><strong>${info}&nbsp;</strong></p></span>
+						 <span><font color="#5a0f16">邮箱</font><label>*</label></span>
 						 <input type="text" id='email' name='mail'> 
 					 </div>
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
