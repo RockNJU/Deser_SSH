@@ -48,7 +48,7 @@
 			   <div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
 			  	 <h3>注册新客户</h3>
 				 <p>注册我们商店的一个新账号, 您可以在本网站轻松订购您喜欢的甜点,存储多个您可能用到的收获地址, 查看订单详情以及享有会员优惠.</p>
-				 <a class="acount-btn" href="../user/registerStepOne.jsp">注册新账号</a>
+				 <a style="height:30px;text-align:center;font-weight:bold;	padding: 0.3em 1.2em;" class="acount-btn" href="../user/registerStepOne.jsp">注册新账号</a>
 			   </div>
 			   <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
 			  	<h3>老客户</h3>
@@ -57,15 +57,14 @@
 				<div>
 					<p><strong>${info}&nbsp;</strong></p>
 				  <div>
-					<span>用户账号<label>*</label></span>
-					<input type="text" id='email' name='mail'> 
+					<span>用户账号<label>*&nbsp&nbsp</label><input type="text" id='email' name='mail'></span>
 				  </div>
 				  <div>
-					<span>密码<label>*</label></span>
-					<input type="password" id='pwd' name='password'> 
+					<span>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码<label>*&nbsp&nbsp</label><input type="password" id='pwd' name='password'> </span>
+					
 				  </div>
 				  <a class="forgot" href="#" style='margin-top:10px;'>忘记密码?</a>
-				  <input type="submit" id='login' value="登录" style='margin-top:10px;'/>
+				  <input type="submit" id='login' value="登  录" style='margin-top:10px;height:30px;text-align:center;font-weight:bold'/>
 			    </div>
 			    </form>
 			   </div>	

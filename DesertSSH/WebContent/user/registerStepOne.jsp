@@ -80,31 +80,34 @@
 					 </br>
 					 <p><strong>${error}&nbsp;</strong></p>
 				 <div class="register-top-grid">
+				  <div class="wow fadeInRight" data-wow-delay="0.4s">
+						 <span><font color="#5a0f16">邮&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp箱</font><label>&nbsp&nbsp*&nbsp&nbsp</label><input type="text" id='email' name='mail'></span>
+						  
+					 </div>
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 
-						<span><font color="#5a0f16">用户名</font><label>*</label></span>
-						<input type="text" id='name' name='name'> 
+						<span><font color="#5a0f16">用&nbsp&nbsp户&nbsp&nbsp名</font><label>&nbsp&nbsp*&nbsp&nbsp</label><input type="text" id='name' name='name'> </span>
+						
 					 </div>
-					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">手机号</font><label>.</label></span>
-						<input type="text" id='phone' name='phone'> 
-					 </div>
-					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						 <span><font color="#5a0f16">邮箱</font><label>*</label></span>
-						 <input type="text" id='email' name='mail'> 
-					 </div>
-					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">固定电话</font><label>.</label></span>
-						<input type="text" id='telephone'> 
-					 </div>
-					  <div class="wow fadeInLeft" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">密码</font><label>*</label></span>
-						<input type="text" id='pwd' name='password'>
+					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
+						<span><font color="#5a0f16">密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码</font><label>&nbsp&nbsp*&nbsp&nbsp</label><input type="password" id='pwd' name='password'></span>
+						
 							 </div>
+					 <div class="wow fadeInRight" data-wow-delay="0.4s">
+						<span><font color="#5a0f16">手&nbsp&nbsp机&nbsp&nbsp号</font><label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" id='phone' name='phone'> </span>
+						
+					 </div>
+					 
 						<div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">密码确认</font><label>*</label></span>
-						<input type="text" id='pwd_confirm'>
+						<span><font color="#5a0f16">密码确认</font><label>&nbsp&nbsp*&nbsp&nbsp</label><input type="password" id='pwd_confirm'></span>
+						
 							 </div>
+					
+					 <div class="wow fadeInRight" data-wow-delay="0.4s">
+						<span><font color="#5a0f16">固定电话</font><label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" id='telephone'> </span>
+						
+					 </div>
+					  
 <!-- 					   <a class="news-letter" href="#"> -->
 <!-- 						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>注册时接收短信通知</label> -->
 <!-- 					   </a> -->
@@ -117,7 +120,7 @@
 				     <div>
 				     </br>
 					   <input type="submit" style="background:url(../images/button1.jpg); border-style:none; 
- width:154px; height:54px; background-repeat:no-repeat;" value="" id='register'>
+ width:154px; height:54px; background-repeat:no-repeat;margin-left:-40px;margin-top:30px" value="" id='register'>
 					   <div class="clearfix"> </div>
 					   </center>
 				   </div>

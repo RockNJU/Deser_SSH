@@ -71,8 +71,13 @@
 							 　<div style="position:relative; z-index:2; left:747px; top:-318px">
 　　				　　				<font size="4.5" color="black" >激活</font>
 　						　	 </div>
+
 							 　<div style="position:relative; z-index:2; left:364px; top:-333px">
 　　				　　				<center><font size="4.5" color="black" >VIP</font></center>
+　						　	 </div>
+                             <div style="position:relative; z-index:2; left:364px; top:-370px">
+　　				　　				<p style="font-weight:bold;font-size:20px;color:#52372e;text-align:center">充值越多~</p>
+                                <p style="font-weight:bold;font-size:20px;color:#52372e;text-align:center;margin-top:-10px">&nbsp&nbsp优惠越多哦~</p>
 　						　	 </div>
 						</div>
 						</br>
