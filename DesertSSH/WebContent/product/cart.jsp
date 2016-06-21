@@ -1,168 +1,233 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    
 
-<html>
-	<head>
-		<title>甜点屋</title>
-		<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="../js/jquery.min.js"></script>
-		 <!-- Custom Theme files -->
-		<link href="../css/style.css" rel='stylesheet' type='text/css' />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>甜点屋</title>
+
+<link href="../product/css/cartTable.css" rel="stylesheet" type="text/css" />
+<link href="../css/style.css" rel='stylesheet' type='text/css' />
 		<link href="../css/mystyle.css" rel='stylesheet' type='text/css' />
-   		 <!-- Custom Theme files -->
-   		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		
-		<script src="../js/jquery.easydropdown.js"></script>
-		<!----webfonts--->
-		<link href='http://fonts.useso.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>
-		<!---//webfonts--->
-		<script src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/move-top.js"></script>
-		<script type="text/javascript" src="../js/easing.js"></script>
-		<link rel="stylesheet" href="../css/etalage.css">
-		<link href="../css/form.css" rel="stylesheet" type="text/css" media="all" />
-		<script src="../js/jquery.easydropdown.js"></script>
+<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 
-		<script src="../js/jquery.etalage.min.js"></script>
-		
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content="" />
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<!-- //Custom Theme files -->
-		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-		<!-- js -->
-		
-		<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-		<!-- //js -->	
-		<!-- cart -->
-		<script src="js/simpleCart.min.js"> </script>
+  
+<script type="text/javascript" src="../product/js/jquery.1.4.2-min.js"></script>
+<script type="text/javascript" src="../product/js/Calculation.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
 
-		<script src="../js/jquery.etalage.min.js"></script>
-<script>
-			jQuery(document).ready(function($){
+	//jquery特效制作复选框全选反选取消(无插件)
+	// 全选        
+	$(".allselect").click(function () {
+		$(".gwc_tb2 input[name=newslist]").each(function () {
+			$(this).attr("checked", true);
+			// $(this).next().css({ "background-color": "#3366cc", "color": "#ffffff" });
+		});
+		GetCount();
+	});
 
-				$('#etalage').etalage({
-					thumb_image_width: 300,
-					thumb_image_height: 400,
-					source_image_width: 800,
-					source_image_height: 1000,
-					show_hint: true,
-					click_callback: function(image_anchor, instance_id){
-						alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-					}
-				});
-				
-				$('#addCart').click(function(){
-					
-				});
+	//反选
+	$("#invert").click(function () {
+		$(".gwc_tb2 input[name=newslist]").each(function () {
+			if ($(this).attr("checked")) {
+				$(this).attr("checked", false);
+				//$(this).next().css({ "background-color": "#ffffff", "color": "#000000" });
+			} else {
+				$(this).attr("checked", true);
+				//$(this).next().css({ "background-color": "#3366cc", "color": "#000000" });
+			} 
+		});
+		GetCount();
+	});
 
-			});
-			
-			
-		</script>
+	//取消
+	$("#cancel").click(function () {
+		$(".gwc_tb2 input[name=newslist]").each(function () {
+			$(this).attr("checked", false);
+			// $(this).next().css({ "background-color": "#ffffff", "color": "#000000" });
+		});
+		GetCount();
+	});
 
-	</head>
-	<body>
-	<!-- container -->
-	<jsp:include page= "../common/head.jsp" flush="true"/>
+	// 所有复选(:checkbox)框点击事件
+	$(".gwc_tb2 input[name=newslist]").click(function () {
+		if ($(this).attr("checked")) {
+			//$(this).next().css({ "background-color": "#3366cc", "color": "#ffffff" });
+		} else {
+			// $(this).next().css({ "background-color": "#ffffff", "color": "#000000" });
+		}
+	});
+
+	// 输出
+	$(".gwc_tb2 input[name=newslist]").click(function () {
+		// $("#total2").html() = GetCount($(this));
+		GetCount();
+		//alert(conts);
+	});
+});
+//******************
+function GetCount() {
+	var conts = 0;
+	var aa = 0;
+	$(".gwc_tb2 input[name=newslist]").each(function () {
+		if ($(this).attr("checked")) {
+			for (var i = 0; i < $(this).length; i++) {
+				conts += parseInt($(this).val());
+				aa += 1;
+			}
+		}
+	});
+	$("#shuliang").text(aa);
+	$("#zong1").html((conts).toFixed(2));
+	$("#jz1").css("display", "none");
+	$("#jz2").css("display", "block");
+}
+</script>
+
+
+</head>
+<body>
+	<jsp:include page="../common/head.jsp" flush="true" />
 	<!---start-content----->
+	<div class="content">
+	<div class="container">
+
+
+<div class="gwc" style=" margin:auto;">
+	<table cellpadding="0" cellspacing="0" class="gwc_tb1">
+		<tr>
+			<td class="tb1_td1"><input id="Checkbox1" type="checkbox"  class="allselect"/></td>
+			<td class="tb1_td1">全选</td>
+			<td class="tb1_td2">商品名称</td>
+			<td class="tb1_td3">商品信息</td>
+			<td class="tb1_td4">单价</td>
+			<td class="tb1_td5">数量</td>
+			<td class="tb1_td6">总价</td>
+			<td class="tb1_td7">操作</td>
+		</tr>
+	</table>
+		   
+	<!---商品加减算总数---->
+	<script type="text/javascript">
+	$(function () {
+		var t = $("#text_box1");
+		$("#add1").click(function () {
+			t.val(parseInt(t.val()) + 1)
+			setTotal(); GetCount();
+		})
+		$("#min1").click(function () {
+			if(parseInt(t.val())>=1){
+			t.val(parseInt(t.val()) - 1)
+			}
+			setTotal(); GetCount();
+			
+		})
+		function setTotal() {
+
+			$("#total1").html((parseInt(t.val()) * 9).toFixed(2));
+			$("#newslist-1").val(parseInt(t.val()) * 9);
+		}
+		setTotal();
+	})
+	</script>
 	
-<div class="gallery" style="background-color: #fff">
-<div class="container">
-			
-	<div style="min-height:20px;margin-top:10px;">
-		<div class='row' style='boder-bottom:solid 1px;'>
-			<div style='float:left;width:font-weight: 700;font-size: 16px;color: #f40'>
-				<span>全部商品</span>
-			</div>
-			<div style='float:right'>
-				<span>已选商品<strong style='color:#f40'>￥100.00</strong></span>
-				<span><input type='button' class='btn' value='结算'></span>
-			</div>
-			<hr/>
-		</div>
-		
-		<div class='row' style='margin-bottom:8px;'>
-			<ul>
-				<li style='margin-left:5px'><input type='checkbox' />全选</li>
-				<li>商品信息</li>
-				<li style='margin-left:160px'>单价</li>
-				<li>数量</li>
-				<li>金额</li>
-				<li>操作</li>
-			</ul>
-			
-		</div>
-		<div class='row'>
-			<div class='cartItem'>
-				<div class='cart_shop'>
-					<span class='cart_span'><input type='checkbox' /><strong>店铺 ：</strong>新街口总店</span>
-				</div>
-				
-				<div class='cart_detail'>
-					<ul>
-						<li style='margin-left:5px'><input type='checkbox' /></li>
-						<li style='width:180px;'><div class='ln1'><img class='cart_img' src='../images/11.jpg'/></div></li>
-						<li ><div class='ln'>￥26.00</div></li>
-						<li><div class='ln'>3</div></li>
-						<li><div class='ln'>￥78.00</div></li>
-						<li><div class='ln'>删除</div></li>
-					</ul>
-					
-					<ul>
-						<li style='margin-left:5px'><input type='checkbox' /></li>
-						<li style='width:180px;'><div class='ln1'><img class='cart_img' src='../images/13.jpg'/></div></li>
-						<li ><div class='ln'>￥26.00</div></li>
-						<li><div class='ln'>3</div></li>
-						<li><div class='ln'>￥78.00</div></li>
-						<li><div class='ln'>删除</div></li>
-					</ul>
-				</div>
-				
-			</div>
-			
-			
-		</div>
-		
-		<div class='row'>
-			<div class='cartItem'>
-				<div class='cart_shop'>
-					<span class='cart_span'><input type='checkbox' /><strong>店铺 ：</strong>仙林分店</span>
-				</div>
-				
-				<div class='cart_detail'>
-					<ul>
-						<li style='margin-left:5px'><input type='checkbox' /></li>
-						<li style='width:180px;'><div class='ln1'><img class='cart_img' src='../images/12.jpg'/></div></li>
-						<li ><div class='ln'>￥26.00</div></li>
-						<li><div class='ln'>3</div></li>
-						<li><div class='ln'>￥78.00</div></li>
-						<li><div class='ln'>删除</div></li>
-					</ul>
-					
-					<ul>
-						<li style='margin-left:5px'><input type='checkbox' /></li>
-						<li style='width:180px;'><div class='ln1'><img class='cart_img' src='../images/11.jpg'/></div></li>
-						<li ><div class='ln'>￥26.00</div></li>
-						<li><div class='ln'>3</div></li>
-						<li><div class='ln'>￥78.00</div></li>
-						<li><div class='ln'>删除</div></li>
-					</ul>
-				</div>
-				
-			</div>
-			
-		</div>
-			
-		
-	</div>	
+	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
+		<tr>
+			<td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-1" /></td>
+			<td class="tb2_td2"><a href="#">法式焦糖玛奇朵巧克力</a></td>
+			<td class="tb2_td3"><a href="#"><img src="../images/11.jpg"/></a></td>
+			<td class="tb2_td4">9.0</td>
+			<td class="tb2_td5">
+				<input id="min1" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
+				<input id="text_box1" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
+				<input id="add1" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+			</td>
+			<td class="tb2_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
+			<td class="tb2_td7"><a href="#">删除</a></td>
+		</tr>
+	</table>
 	
+	<!---商品加减算总数---->
+	<script type="text/javascript">
+	$(function () {
+		var t = $("#text_box2");
+		$("#add2").click(function () {
+			t.val(parseInt(t.val()) + 1)
+			setTotal(); GetCount();
+		})
+		$("#min2").click(function () {
+			if(parseInt(t.val())>=1){
+			t.val(parseInt(t.val()) - 1)
+			}
+			setTotal(); GetCount();
+		})
+		function setTotal() {
+
+			$("#total2").html((parseInt(t.val()) * 8).toFixed(2));
+			$("#newslist-2").val(parseInt(t.val()) * 8);
+		}
+		setTotal();
+	})
+	</script>
+	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
+		<tr>
+			<td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-2" /></td>
+			<td class="tb2_td2"><a href="#">黑森林抹茶布丁蛋糕</a></td>
+			<td class="tb2_td3"><a href="#"><img src="../images/12.jpg"/></a></td>
+			<td class="tb2_td4">8.0</td>
+			<td class="tb2_td5">
+				<input id="min2" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
+				<input id="text_box2" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
+				<input id="add2" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+			</td>
+			<td class="tb2_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
+			<td class="tb2_td7"><a href="#">删除</a></td>
+		</tr>
+	</table>
+	
+	<!---总数---->
+	<script type="text/javascript">
+	$(function () {
+		$(".quanxun").click(function () {
+			setTotal();
+			//alert($(lens[0]).text());
+		});
+		function setTotal() {
+			var len = $(".tot");
+			var num = 0;
+			for (var i = 0; i < len.length; i++) {
+				num = parseInt(num) + parseInt($(len[i]).text());
+
+			}
+			//alert(len.length);
+			$("#zong1").text(parseInt(num).toFixed(2));
+			$("#shuliang").text(len.length);
+		}
+		//setTotal();
+	})
+	</script>
+	<table cellpadding="0" cellspacing="0" class="gwc_tb3">
+		<tr>
+			<td class="tb1_td1"><input id="checkAll" class="allselect" type="checkbox" /></td>
+			<td class="tb3_td1">全选   
+				<input id="invert" type="checkbox" />反选   
+				<input id="cancel" type="checkbox" />取消全选</td>
+			
+			<td class="tb3_td2">已选商品 <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
+			<td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></span></td>
+			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
+		</tr>
+	</table>
+
+</div>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
 </div>
 </div>
+</div>
+	<!-- footer -->
+	<%@ include file= "../common/footer.jsp"%>
+	<!-- /footer -->
 </body>
 </html>
