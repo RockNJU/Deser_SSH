@@ -50,31 +50,31 @@
 				 <div class="register-top-grid">
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 
-						<span><font color="#5a0f16">姓名</font></span>
-						<input type="text" id='username'> 
+						<span><font color="#5a0f16">姓&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp名&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='username'></span>
+						 
 					 </div>
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">年龄</font></span>
-						<input type="text" id='age' name='age'> 
+						<span><font color="#5a0f16">年&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp龄&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='age' name='age'> </span>
+						
 					 </div>
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-				<form>
-				<span><font color="#5a0f16">性别</font></span>
-		<input type="radio" name="sex" value="男" /> 男性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="radio" name="sex" value="女" /> 女性
-			</form>
+				
+				<span><font color="#5a0f16">性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp别&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font><form><input type="radio" name="sex" value="男"/> <font color="#5a0f16">男性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font>
+			<input type="radio" name="sex" value="女" /><font color="#5a0f16"> 女性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font></form></span>
+		
+			
 					 </div>
 					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">职业</font></span>
-						<input type="text" id='work' name='work'> 
+						<span><font color="#5a0f16">职&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp业&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='work' name='work'> </span>
+						
 					 </div>
 					  <div class="wow fadeInLeft" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">地址</font></span>
-						<input type="text" id='addressmain' name='address'>
+						<span><font color="#5a0f16">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp址&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='addressmain' name='address'></span>
+						
 							 </div>
 							 	  <div class="wow fadeInLeft" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">备用地址</font></span>
-						<input type="text" id='addressother'>
+						<span><font color="#5a0f16">备用地址&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='addressother'></span>
+						
 							 </div>
 
 <!-- 					   <a class="news-letter" href="#"> -->
@@ -89,7 +89,7 @@
 				     <div>
 				     </br>
 					   <input type="submit" style="background:url(../images/button1.jpg); border-style:none; 
- width:154px; height:54px; background-repeat:no-repeat;" value="" id='register'>
+ width:154px; height:54px; background-repeat:no-repeat;margin-left:-40px;margin-top:30px"" value="" id='register'>
 					   <div class="clearfix"> </div>
 					   </center>
 				   </div>
