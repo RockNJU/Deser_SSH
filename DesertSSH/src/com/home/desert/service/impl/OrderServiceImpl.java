@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.home.desert.dao.BaseDao;
 import com.home.desert.pogo.CartProduct;
@@ -13,26 +14,36 @@ import com.home.desert.pogo.Product;
 import com.home.desert.pubutil.Time;
 import com.home.desert.service.OrderService;
 
+@Service
 public class OrderServiceImpl implements OrderService{
 	@Autowired
 	BaseDao baseDao;
 	
 	@Override
-	public void addProductToCart(int spid,int userId, int num, double price) {
+	public void addProductToCart(int spid,int userId, int num) {
+		System.out.println("商品编号："+spid+"  num:"+num);
+		
+		Product pd=(Product) baseDao.findObjectByHql("from Product p where p.id='"+spid+"'");
 		String hql=" from CartProduct cp where cp.spid='"+spid+"' and cp.userid='"+userId+"'";
 		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
 		
+		System.out.println("pd  是否是null？---->" +(pd==null));
+		
 		if(cp==null){
-			Product product=(Product) baseDao.load(Product.class, spid+"");
-			if(product!=null){
-				CartProduct cartProduct=new CartProduct(userId,price,num,product);
+			System.out.println("cp 是空的呀---------->");
+			//Product product=(Product) baseDao.load(Product.class, spid+"");
+			if(pd!=null){
+				CartProduct cartProduct=new CartProduct(userId,pd.getPrice(),num,pd);
 				baseDao.save(cartProduct);
 			}
 		}else{
-			cp.setCount(cp.getCount()+num);
-			cp.setRealPrice(price);
-			cp.setSummoney(cp.getCount()*cp.getRealPrice());
-			baseDao.update(cp);
+			System.out.println("cp 不是空的---------->");
+			if(pd!=null){
+				cp.setCount(cp.getCount()+num);
+				cp.setRealPrice(pd.getPrice());
+				cp.setSummoney(cp.getCount()*cp.getRealPrice());
+				baseDao.update(cp);
+			}
 		}
 		
 	}
@@ -65,6 +76,13 @@ public class OrderServiceImpl implements OrderService{
 		baseDao.save(order);
 		baseDao.save(list);
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CartProduct> getCartProductByUserId(int userid) {
+		String hql=" from CartProduct cp where cp.userid='"+userid+"' order by cp.id desc";
+		return baseDao.findByHql(hql);
 	}
 
 }

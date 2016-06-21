@@ -4,13 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.home.desert.pogo.CartProduct;
+
 @Service
 public interface OrderService {
 	/**
 	 * @author zucewei
 	 * @see向购物车中添加商品
 	 * */
-	public void addProductToCart(int spid,int userId,int num,double price);
+	public void addProductToCart(int spid,int userId,int num);
 	
 	/**
 	 * @author zucewei
@@ -19,5 +21,7 @@ public interface OrderService {
 	 * */
 	
 	public void submibOrder(int userId,String take_style,String take_time,List<Integer> cartIDList);
+	
+	public List<CartProduct> getCartProductByUserId(int userid);
 	
 }

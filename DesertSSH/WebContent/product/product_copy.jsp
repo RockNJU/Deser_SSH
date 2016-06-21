@@ -274,18 +274,18 @@
 				var url=$('#context').val()+"/"+item.img;
 				jQuery("#product_list").append(
 						"<div class='col-md-3 gallery-grid '>"+
-						"<a href='"+$('#contextPath').val()+"/productDetail?planItemId="+item.id+"'><img src="+url+" class='img-responsive' alt='暂无图片'/>"+
+							"<a href='"+$('#contextPath').val()+"/productDetail?planItemId="+item.id+"'><img src="+url+" class='img-responsive' alt='暂无图片'/></a>"+
 							"<div class='gallery-info'>"+
-								"<p><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>查看详情</p>"+
+								"<p id='"+item.id+"' value='"+item.price+"' class='addCart' onclick=addProductToCart(this)><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>添加购物车</p>"+
 								"<a class='shop' href="+"---"+">立即购买</a>"+
 								"<div class='clearfix'> </div>"+
 							"</div>"+
-						"</a>"+
+						
 						"<div class='galy-info'>"+
 							"<p>"+item.name+"</p>"+
 							"<div class='galry'>"+
 								"<div class='prices'>"+
-									"<h5 class='item_price'>RMB "+item.price+"/个</h5>"+
+									"<h5 class='item_price' id='price_"+item.id+"' name='"+item.price+"'>￥"+item.price+"/个</h5>"+
 								"</div>"+
 								"<div class='rating'>"+
 									"<span>"+item.category+"</span>"+
@@ -324,6 +324,20 @@
 		  for(var i=0;i<data.length;i++){
 			  $('#category').append("<li class='Item' value='222'>"+data[i].value+"</li>");
 		  }
+	  }
+	  
+	  
+	  function addProductToCart(src){
+		  alert('----点击添加购物车  id:'+src.id);
+		  var id=src.id;
+		  var n=1;
+		  var j={'spid':id,'num':n};
+	      doAjax("<%=request.getContextPath() + "/order_addProductToCart.do"%>",j,addCartBack);
+	  }
+	  
+	  
+	  function addCartBack(data,status){
+		  alert("添加商品至购物车成功！ "+data.name);
 	  }
 	  
 	var now = new Date();
