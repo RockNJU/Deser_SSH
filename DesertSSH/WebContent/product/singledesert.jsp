@@ -75,18 +75,18 @@
 	<jsp:include page="../common/head.jsp" flush="true" />
 	<!-- banner -->
 		<div class="details">
-		<div class="container">
-				<div class="row single">
+		<div class="container"   style="margin-left:250px">
+				<div class="row single"> 
 				<div class="col-md-9">
 				  <div class="single_left">
 				 
 					<div class="grid images_3_of_2">
 						<ul id="etalage">
 							<li>
-								<a href="optionallink.html">
+								
 									<img class="etalage_thumb_image" src="../images/m1.jpg" class="img-responsive" style="width:60px;height:80px"/>
 									<img class="etalage_source_image" src="../images/m1.jpg" class="img-responsive" title="" />
-								</a>
+								
 							</li>
 							<li>
 								<img class="etalage_thumb_image" src="../images/m2.jpg" class="img-responsive" />
@@ -101,18 +101,21 @@
 						 <div class="clearfix"></div>		
 				  </div>
 				  <div class="desc1 span_3_of_2">
-					<h2>XX蛋糕</h2>
-					<h3>单价：30</h3>
-					<h3>折后价：27</h3>
+					<h2 style="font-weight:bold;font-size:35px;margin-left:50px">黑糖玛奇朵蛋糕</h2>
+					<h3><span style="background:#CCCCCC;font-size:16px;margin-left:50px">价格</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="text-decoration:line-through;">￥30</span> </h3>
+					<h2><span style="background:#CCCCCC;font-size:16px;margin-left:50px">折后价</span>&nbsp&nbsp<span style="color:red;font-weight:bold">￥27</span> </h2>
+					
+					
+					
 					<div class="det_nav">
-						<input id="min2" name=""  style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" />
-				        <input id="text_box2" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
-				        <input id="add2" name="" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" />
+						<input id="min2" name=""  style=" width:40px; height:38px;border:1px solid #ccc;;margin-left:50px" type="button" value="-" />
+				        <input id="text_box2" name="" type="text" value="1" style=" width:50px;height:50px;font-size:20px;font-weight:bold; text-align:center; border:1px solid #ccc;" />
+				        <input id="add2" name="" style=" width:40px; height:38px;border:1px solid #ccc;" type="button" value="+" />
 						
 					</div>
 					
 					<div class="btn_form">
-						<a href="#">加入购物车</a>
+						<button class="button1" style="margin-left:250px"><span style="width:50px;height:60px;font-size:20px;font-weight:bold; text-align:center;">加入购物车</span></button>
 					</div>
 					
 			   	 </div>
@@ -193,138 +196,14 @@
 	       </div>
 		   
 		   
-<div class="col-md-3 single_left">
-			   <div class="block block-layered-nav first">
-                  <p class="block-subtitle">购物选项</p>
-            <dl id="narrow-by-list">
-                 <dt class="odd">价格</dt>
-                    <dd class="odd">
-					<ol>
-					    <li>
-					                <a href="#"><span class="price">$100.00</span> - <span class="price">$199.99</span></a>
-					                        (3)
-					            </li>
-					    <li>
-					                <a href="#"><span class="price">$200.00</span> - <span class="price">$299.99</span></a>
-					                        (2)
-					            </li>
-					    <li>
-					                <a href="#"><span class="price">$300.00</span> 及以上</a>
-					                        (1)
-					            </li>
-					</ol>
-					</dd>
-					                                                                    <dt class="even">Items</dt>
-					                    <dd class="even">
-					<ol>
-					    <li>
-					                <a href="#">Pineapple</a>
-					                        (1)
-					            </li>
-					    <li>
-					                <a href="#">Black Forest</a>
-					                        (1)
-					            </li>
-					    <li>
-					                <a href="#">Chocolate</a>
-					                        (2)
-					            </li>
-					    <li>
-					                <a href="#">Blueberry</a>
-					                        (1)
-					            </li>
-					    
-					</ol>
-					</dd>
-                                                                    <dt class="last odd">Flavours</dt>
-                    <dd class="last odd">
-					<ol>
-					    <li>
-					                <a href="#">Vennela</a>
-					                        (2)
-					            </li>
-					    <li>
-					                <a href="#">Strawberry</a>
-					                        (2)
-					            </li>
-					    <li>
-					                <a href="#">Butterscotch</a>
-					                        (2)
-					            </li>
-					</ol>
-					</dd>
-                                            </dl>
-          
-                </div>
 				
-		     
-			  <div class="tags">
-				    	<h4 class="tag_head">Popular cakes</h4>
-				         <ul class="tags_links">
-							<li><a href="#">FlowerAura</a></li>
-							<li><a href="#">My Flower Tree</a></li>
-							<li><a href="#">Butterscotch</a></li>
-							<li><a href="#">Strawberry</a></li>
-							<li><a href="#">Vennela</a></li>
-							<li><a href="#">Blueberry</a></li>
-							<li><a href="#">Chocolate</a></li>
-							<li><a href="#">Pineapple</a></li>
-							
-						</ul>
-						<a href="#" class="link1">View all tags</a>
-				 </div>
-		   </div>		   
+				
+				
+				
 				<div class="clearfix"></div>	
 	</div>
 	</div>
 	</div>
-	<!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-top">
-				<div class="col-md-3 location">
-					<h4>location</h4>
-					<p>#04 Dist.City,State,PK</p>
-					<h4>hours</h4>
-					<p>Weekdays 7 a.m.-7 p.m.</p>
-					<p>Weekends 8 a.m.-7 p.m.</p>
-					<p>Call for Holidays Hours.</p>
-				</div>
-				<div class="col-md-3 customer">
-					<h4>customer service</h4>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod. </p>
-					<h4>phone</h4>
-					<h6>1(234)567-8910</h6>
-					<h4>contact us</h4>
-					<h6>contact us page.</h6>
-				</div>
-				<div class="col-md-3 social">
-					<h4>get social</h4>
-					<div class="face-b">
-						<img src="images/foot.png" title="name"/>
-						<a href="#"><i class="fb"> </i></a>
-					</div>
-					<div class="twet">		
-						<img src="images/foot.png" title="name"/>
-							<a href="#"><i class="twt"> </i></a>
-					</div>	
-				</div>
-				<div class="col-md-3 sign">
-					<h4>sign up for news later</h4>	
-						<form>
-							<input type="text" class="text" value="YOUR EMAIL" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'YOUR EMAIL ';}">
-						</form>
-				</div>
-					<div class="clearfix"> </div>
-			</div>
-			<div class="footer-bottom">
-				<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-			</div>
-		</div>
-				</div>
-	
-
-	
 
 	<!-- footer -->
 	<%@ include file= "../common/footer.jsp"%>
