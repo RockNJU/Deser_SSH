@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.home.desert.pogo.Product;
+import com.home.desert.pubutil.StrItem;
 import com.home.desert.service.ProductService;
 
 @SuppressWarnings("serial")
@@ -21,7 +22,13 @@ public class ProductAction extends BaseAction{
 		super();
 	}
 	
+	
+	/**
+	 * @author zucewei
+	 * @return 所有商品的可销售商品信息。
+	 * */
 	public String findProductByParams(){
+	//	System.out.println("--->测试获取分类。"+productBiz.getAllCategory().size());
 		try {
 			StringBuffer wheres = new StringBuffer(" where 1=1");
 			
@@ -48,6 +55,20 @@ public class ProductAction extends BaseAction{
 		return null;
 	}
 	
+	/**
+	 * @author zucewei
+	 * @return 所有商品的分类种类 的类别名
+	 * */
+	public String categoryList(){
+		try {
+			List<StrItem> list=productBiz.getAllCategory();
+			this.outListJsonString(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
 	
 	public void setProductBiz(ProductService productBiz) {
 		this.productBiz = productBiz;

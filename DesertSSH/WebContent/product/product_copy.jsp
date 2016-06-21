@@ -149,9 +149,20 @@
 			.select li {
 				float: left;
 				display: inline;
+				
+				display: inline-block;
+				white-space: nowrap;
+				padding: 0 15px;
+				padding-right:15px;
+				text-decoration: none;
+				color: #444;
+				
+				text-decoration: none;
+				outline: none;
+				
 			}
 			
-			
+			/*
 			.select a {
 				display: inline-block;
 				white-space: nowrap;
@@ -161,10 +172,9 @@
 			}
 			a {
 				color: #444;
-				text-decoration: none;
-				outline: none;
+				
 			}
-			
+			*/
 			.select .all li::after {content: "|";}
 	
 				
@@ -304,16 +314,34 @@
 				}
 	    )}
 	
+	  function loadCategory(){
+		  var j={'category':'all'};
+	        doAjax("<%=request.getContextPath() + "/product_categoryList.do"%>",j,listCategory);
+	  }
+	  
+	  function listCategory(data,status){
+		  $('#category').html('');
+		  for(var i=0;i<data.length;i++){
+			  $('#category').append("<li class='Item' value='222'>"+data[i].value+"</li>");
+		  }
+	  }
+	  
 	var now = new Date();
 	var book_date=now.getFullYear()+"-"+((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1)+"-"+(now.getDate()<10?"0":"")+now.getDate();
 	var book_store="新街口总店",category="",price="0-1000";
-	
+	var ca="";
 	$(document).ready(function($){
-		$(".store").click(function(){
-			store=$(this).text();
-			$(".store").css("color","black");
-			$(this).css("color","#1a8bc8");
-			search();
+		loadCategory();
+		
+		
+		$(".Item").click(function(){
+			//
+			ca=$(this).val();
+			alert("--->"+"点击分类"+$(this).val()+"  -+");
+			$('#ctgy').attr("value", ca);
+			alert("--->"+"点击分类"+$('#ctgy').val());
+			$(".Item").css("color","#444");
+			$(this).css("color","green");
 		  });
 		
 		$(".date").click(function(){
@@ -340,6 +368,7 @@
 			$(this).css("color","#1a8bc8");
 			search()
 		  });	
+		
 		search();
 	
 	});
@@ -364,8 +393,8 @@
 						<div class="all clearfix">
 							<div class="tit" style='float:left;width:10%;'>►所有分类</div>
 							<div class='item' style='float:left;width:80%;background-color:red;'>
-								<ul>
-									<li class=" "><a href="#">奇异果</a></li>
+								<ul id='category'>
+									<li class=" "><a href='#'>奇异果</a></li>
 									<li class=" "><a href="#">车厘子</a></li>
 									<li class=" "><a href="#">牛油果</a></li>
 									<li class=" "><a href="#">提子</a></li>
@@ -448,6 +477,8 @@
 			</div>
 		</div>
 	</div>
+	
+<input id='ctgy' value='' hidden=true />
 	<!-- /footer -->
 </body>
 </html>
