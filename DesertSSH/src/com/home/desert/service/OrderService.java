@@ -14,6 +14,12 @@ public interface OrderService {
 	 * */
 	public void addProductToCart(int spid,int userId,int num);
 	
+	public void addUpProductToCart(int id,int userId,int num);
+	
+	public void minusProductInCart(int id,int userId,int num);
+	
+	public void deleteProductInCart(int id,int userId);
+	
 	/**
 	 * @author zucewei
 	 * @param userid=用户编号，take_style=用户的取货方式，take_time=用户的预订时间,cartIDList=需要提交的购物车商品id

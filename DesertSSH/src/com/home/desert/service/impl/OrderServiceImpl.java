@@ -21,23 +21,16 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Override
 	public void addProductToCart(int spid,int userId, int num) {
-		System.out.println("商品编号："+spid+"  num:"+num);
-		
 		Product pd=(Product) baseDao.findObjectByHql("from Product p where p.id='"+spid+"'");
 		String hql=" from CartProduct cp where cp.spid='"+spid+"' and cp.userid='"+userId+"'";
 		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
 		
-		System.out.println("pd  是否是null？---->" +(pd==null));
-		
 		if(cp==null){
-			System.out.println("cp 是空的呀---------->");
-			//Product product=(Product) baseDao.load(Product.class, spid+"");
 			if(pd!=null){
 				CartProduct cartProduct=new CartProduct(userId,pd.getPrice(),num,pd);
 				baseDao.save(cartProduct);
 			}
 		}else{
-			System.out.println("cp 不是空的---------->");
 			if(pd!=null){
 				cp.setCount(cp.getCount()+num);
 				cp.setRealPrice(pd.getPrice());
@@ -83,6 +76,48 @@ public class OrderServiceImpl implements OrderService{
 	public List<CartProduct> getCartProductByUserId(int userid) {
 		String hql=" from CartProduct cp where cp.userid='"+userid+"' order by cp.id desc";
 		return baseDao.findByHql(hql);
+	}
+
+	@Override
+	public void minusProductInCart(int id, int userId, int num) {
+		
+		String hql=" from CartProduct cp where cp.id='"+id+"' and cp.userid='"+userId+"'";
+		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
+		
+		if(cp==null){
+			return;
+		}else{
+				cp.setCount(cp.getCount()-num);
+				if(cp.getCount()<0){
+					cp.setCount(0);
+				}
+				cp.setSummoney(cp.getCount()*cp.getRealPrice());
+				baseDao.update(cp);
+			
+		}
+	}
+
+	@Override
+	public void addUpProductToCart(int id, int userId, int num) {
+		String hql=" from CartProduct cp where cp.id='"+id+"' and cp.userid='"+userId+"'";
+		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
+		
+		if(cp==null){
+			return;
+		}else{
+				cp.setCount(cp.getCount()+num);
+				if(cp.getCount()<0){
+					cp.setCount(0);
+				}
+				cp.setSummoney(cp.getCount()*cp.getRealPrice());
+				baseDao.update(cp);
+			
+		}
+	}
+
+	@Override
+	public void deleteProductInCart(int id, int userId) {
+		baseDao.delete(CartProduct.class,id);
 	}
 
 }
