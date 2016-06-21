@@ -10,7 +10,7 @@ primary key(id) ) DEFAULT CHARSET=utf8;
 drop table if EXISTS product;
 create table product(id int not null auto_increment,name varchar(255),category varchar(255) default '甜点',
 img varchar(255),img2 varchar(255),img3 varchar(255),price double default '0',
-discount double default '1',count int default '0',
+discount double default '1',count int default '0',remark varchar(255) default '这是一种美味的甜点',
 primary key(id) ) DEFAULT CHARSET=utf8;
 
 insert into product(name,img,price) values('榴莲牛奶蛋糕','images/m1.png','200.00'),
@@ -19,10 +19,24 @@ insert into product(name,img,price) values('榴莲牛奶蛋糕','images/m1.png',
 ,('烘焙五彩蛋糕','images/m4.png','200.00');
 
 
+drop table if EXISTS cart_product;
+create table cart_product(id int not null auto_increment,userid int,spid int,name varchar(255),category varchar(255) default '甜点',
+img varchar(255),img2 varchar(255),img3 varchar(255),realPrice double default '0',
+discount double default '1',count int default '0',summoney double default '0',
+primary key(id) ) DEFAULT CHARSET=utf8;
 
 
 
 
+drop table if exists `order`;
+create table `order`(id int not null auto_increment,orderid varchar(255),userid int not null,shop varchar(255),creaet_time varchar(255),
+	take_time varchar(255),take_style varchar(255),receipt varchar(255) default '否',sum_money double default '0',primary key(id));
+
+drop table if EXISTS order_product;
+create table order_product(id int not null auto_increment,orderid int,spid int,name varchar(255),category varchar(255) default '甜点',
+img varchar(255),img2 varchar(255),img3 varchar(255),realPrice double default '0',
+discount double default '1',count int default '0',summoney double default '0',
+primary key(id) ) DEFAULT CHARSET=utf8;
 
 
 
