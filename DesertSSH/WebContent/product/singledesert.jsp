@@ -31,10 +31,10 @@
 			jQuery(document).ready(function($){
 
 				$('#etalage').etalage({
-					thumb_image_width: 300,
-					thumb_image_height: 400,
-					source_image_width: 800,
-					source_image_height: 1000,
+					thumb_image_width: 240,
+					thumb_image_height: 300,
+					source_image_width: 640,
+					source_image_height: 800,
 					show_hint: true,
 					click_callback: function(image_anchor, instance_id){
 						alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
@@ -102,8 +102,8 @@
 				  </div>
 				  <div class="desc1 span_3_of_2">
 					<h2 style="font-weight:bold;font-size:35px;margin-left:50px">黑糖玛奇朵蛋糕</h2>
-					<h3><span style="background:#CCCCCC;font-size:16px;margin-left:50px">价格</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="text-decoration:line-through;">￥30</span> </h3>
-					<h2><span style="background:#CCCCCC;font-size:16px;margin-left:50px">折后价</span>&nbsp&nbsp<span style="color:red;font-weight:bold">￥27</span> </h2>
+					<h3><span style="background:#CCCCCC;font-size:16px;margin-left:50px">价格</span><span style="text-decoration:line-through;margin-left:50px">￥30</span> </h3>
+					<h2><span style="background:#CCCCCC;font-size:16px;margin-left:50px">折后价</span><span style="color:red;font-weight:bold;margin-left:30px">￥27</span> </h2>
 					
 					
 					

@@ -37,27 +37,7 @@
 
 		<script src="../js/amazeui.js"></script>
 		<script src="../js/amazeui.datetimepicker.js"></script>
-		
-		
-		<!-- 我是负责充值记录的 
-		<script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
-			<script type="text/javascript">
-			$(document).ready(function() {
-				var menuParent = $('.menu > .ListTitlePanel > div');//获取menu下的父层的DIV
-				var menuList = $('.menuList');
-				$('.menu > .menuParent > .ListTitlePanel > .ListTitle').each(function(i) {//获取列表的大标题并遍历
-					$(this).click(function(){
-						if($(menuList[i]).css('display') == 'none'){
-							$(menuList[i]).slideDown(300);
-						}
-						else{
-							$(menuList[i]).slideUp(300);
-						}
-					});
-				});
-			});
-		</script>
-		我是负责充值记录的 -->
+
 		
 		
 		
@@ -79,6 +59,10 @@
     
          
          <script language="javascript">
+         
+         
+         
+         
          	function doAjax(url1, inf1, func1){
         	    jQuery.ajax({type:"GET", url:url1,data:inf1,
         	    	dataType:"json", jsonp:"callback", success:func1
@@ -117,15 +101,67 @@
         				'card_number':$('#number').val()
         		};
         	    doAjax("<%=request.getContextPath() + "/user_recharge.do"%>",j,successRecharge);
+<<<<<<< HEAD
         	}
 
 				function successRecharge(data,status){
 					$('#recharInfo').append('<strong>充值成功！</strong>');
+=======
+        		}
+
+				function successRecharge(data,status){
+					alert(data.name);
 				}
+				
+				// $(document).ready(function(){                
+				       
+				// });
+				
+				function modifypwd(){
+					 $("#oldpassword").blur(function(){})
+					 var j={'password':$('#oldpwd').val(),
+			        		};
+					doAjax("<%=request.getContextPath() + "/user_surePassWord.do"%>",j,showResult);
+					
+					
+					 $("#pwd").val("");
+						$("#oldpwd").val("");
+						$("#pwdConfig").val("");
+				
+>>>>>>> ddefbbdf10960cd57df71fb455738ace2c45e001
+				}
+				
+				function showResult(data,status){
+					if(data.name=='true'){
+						
+						
+							//alert("sdaada");
+							var p={'password':$('#pwd').val(),
+			        				'pwd':$('#pwdConfig').val(),
+			        		
+			        		
+			        		};
+			        	    doAjax("<%=request.getContextPath() + "/user_modifyPassword.do"%>",p,showResult2);
+			        	    $("#pwd").val("");
+							$("#oldpwd").val("");
+							$("#pwdConfig").val("");
+						
+					}else{
+						alert("密码错误");
+						$("#pwd").val("");
+						$("#oldpwd").val("");
+						$("#pwdConfig").val("");
+					}
+					
+				}
+				function showResult2(data,status){
+					alert(data.name);
+				}
+				
            
             </script>
 		 
-		  
+		 <!--   
 	 <script>
 	 
 	 function loadPayrecord(){
@@ -149,15 +185,14 @@
         $("#oldpwd").blur(function(){
                 var param=$("#oldpwd").val();
                 $.ajax({
-                    url:"${HttpPath}/user/checkoldpassword",
-                   
-                    data:{oldpwd:param},                 
+                    url:"<%=request.getContextPath()+"/user_surePassword.do"%>",                
+                    data:{password:param},                 
                     success:function(e){
-                        if(e.code==1){                            
-                             $("#tip1").html("<font color=\"green\" size=\"2\">  Correct</font>");
+                        if(e.code){                            
+                             $("#tip1").html("<font color=\"green\" size=\"2\">  原密码密码正确！</font>");
                         } 
                         else{                                 
-                            $("#tip1").html("<font color=\"red\" size=\"2\">  Wrong</font>");
+                            $("#tip1").html("<font color=\"red\" size=\"2\">  原密码错误！</font>");
                         }
                     }                 
                 });
@@ -186,10 +221,10 @@
                   }
                   if(flag){                   
                   $.ajax({
-                      url:"${HttpPath}/user/editPassowrdyet",
-                      data:{oldpassword:old,password:pass},
+                      url:"${HttpPath}/user_modifyPassword.do",
+                      data:{password:old,pwd:pass},
                       success:function(e){                         
-                          if(e.code==1){
+                          if(e.code){
                               $("#tip4").show().html("<font color=\"green\" size=\"3\">  修改成功!</font>");
                               $("#oldpwd").val("");
                               $("#pwd").val("");
@@ -209,7 +244,7 @@
         });
         </script>
 		  
-		  
+		  -->
 		  
 	</head>
 	<body>	
@@ -378,7 +413,7 @@
 					
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					
-						<input type="button" id='save' name='save' value='确认' onclick="modify()">
+						<input type="button" id='save' name='save' value='确认' onclick="modifypwd()">
 	                    <div id="tip4"></div>
      				</div>
       			</div>
