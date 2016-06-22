@@ -24,6 +24,7 @@ public class UserAction extends BaseAction{
 	private String phone;
 	private String address;
 	private String password;
+	private String pwd;
 	private String state;
 	private double balance;
 	private double sum;
@@ -43,6 +44,50 @@ public class UserAction extends BaseAction{
 	private static final long serialVersionUID = 1L;
 
 
+	public String recharge(){
+		User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+		user.setBalance(user.getBalance()+money);
+		user.setSum(user.getSum()+money);
+		this.getSession().setAttribute(Constants.USERINFO, user);
+		userBiz.updateUser(user);
+		try {
+			this.outObjectString(new Item("充值成功！",120));;
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
+	
+	public String modifyPassword(){
+		User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+		
+		if(password==null||pwd==null){
+			this.outObjectString(new Item("密码不能为空",120));;
+		}
+		
+		if(!password.equals(user.getPassword())){
+			this.outObjectString(new Item("请确认是本人操作，正确输入原密码！",120));;
+		}
+		
+		if(!password.equals(pwd)){
+			this.outObjectString(new Item("请确保密码一致",120));
+		}
+		
+		user.setPassword(password);
+		this.getSession().setAttribute(Constants.USERINFO, user);
+		userBiz.updateUser(user);
+		this.outObjectString(new Item("密码修改成功！",120));
+		try {
+			outString("{'name':'hello'}");
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
+	
+	
 	public String updateInfo(){
 		
 		User user=(User) this.getSession().getAttribute(Constants.USERINFO);
@@ -247,6 +292,10 @@ public class UserAction extends BaseAction{
 
 	public void setMoney(double money) {
 		this.money = money;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	
 	
