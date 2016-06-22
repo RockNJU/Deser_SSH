@@ -341,6 +341,10 @@ public class UserAction extends BaseAction{
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
+	public void setCard_number(String card_number) {
+		this.card_number = card_number;
+	}
 	
 	
 }
