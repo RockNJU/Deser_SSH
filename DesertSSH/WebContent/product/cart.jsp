@@ -5,14 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>甜点屋</title>
+<title>甜点屋-购物车</title>
 
 <link href="../product/css/cartTable.css" rel="stylesheet" type="text/css" />
 <link href="../css/style.css" rel='stylesheet' type='text/css' />
 		<link href="../css/mystyle.css" rel='stylesheet' type='text/css' />
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
-
-  
 <script type="text/javascript" src="../product/js/jquery.1.4.2-min.js"></script>
 <script type="text/javascript" src="../product/js/Calculation.js"></script>
 <script type="text/javascript">
