@@ -63,15 +63,16 @@
 			<input type="radio" name="sex" value="女" /><font color="#5a0f16"> 女性&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font></form></span>
 		
 			
-					 </div>
-					 <div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span><font color="#5a0f16">职&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp业&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='work' name='work'> </span>
-						
-					 </div>
+					</div>
 					  <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						<span><font color="#5a0f16">地&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp址&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='addressmain' name='address'></span>
 						
 							 </div>
+							  
+					 <div class="wow fadeInRight" data-wow-delay="0.4s">
+						<span><font color="#5a0f16">职&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp业&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='work' name='work'> </span>
+						
+					 </div>
 							 	  <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						<span><font color="#5a0f16">备用地址&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='addressother'></span>
 						

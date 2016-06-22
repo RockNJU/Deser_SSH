@@ -1090,6 +1090,132 @@ i.white-cart1{
 	font-size:0.8125em;
 	padding: 0.5em;
 }
+/**user-tab **/
+.user-tab{
+	padding:0em 0em 5em 0;
+	margin-left:180px;
+}
+/**
+.user-tab-left, .user-tab-right   {
+	width:40%;
+	float:left;
+	
+}**/
+
+
+
+
+
+.user-tab input[type="password"]{
+	border: 1px solid #c0c0c0;
+	outline-color:#FF6392;
+	width: 30%;
+	color:#2d2d2d;
+	font-size:15px;
+	padding: 0.5em;
+}
+.user-tab input[type="text"] {
+	border: 1px solid #c0c0c0;
+	outline-color:#FF6392;
+	color:#2d2d2d;
+	width: 30%;
+	font-size:15px;
+	padding: 0.5em;
+}
+.user-tab  span {
+	color:#999;
+	font-size: 0.85em;
+	padding-bottom: 0.2em;
+	display: block;
+	text-transform: uppercase;
+}
+
+.user-tab  input[type="button"] {
+	border: 1px solid #c0c0c0;
+	outline-color:#ff00ff;
+
+	width: 10%;
+	font-size:15px;
+	padding: 0.5em;
+	
+	text-align:center;
+	
+	background: #ff7ba3;
+	color: #FFF;
+	font-size: 1em;
+	padding: 0.3em 1.2em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+
+}
+
+/****/
+
+.user-left input[type="text"] {
+	border: 1px solid #c0c0c0;
+	outline-color:#FF6392;
+	color:#2d2d2d;
+	width: 50%;
+	font-size:15px;
+	padding: 0.5em;
+}
+.user-left input[type="password"] {
+	border: 1px solid #c0c0c0;
+	outline-color:#FF6392;
+	width: 50%;
+	color:#2d2d2d;
+	font-size:15px;
+	padding: 0.5em;
+}
+
+.user-right input[type="text"] {
+	border: 1px solid #c0c0c0;
+	outline-color:#FF6392;
+	color:#2d2d2d;
+	width: 50%;
+	font-size:15px;
+	padding: 0.5em;
+}
+.user-right input[type="password"] {
+	border: 1px solid #c0c0c0;
+	outline-color:#FF6392;
+	width: 50%;
+	color:#2d2d2d;
+	font-size:15px;
+	padding: 0.5em;
+}
+.user-right  input[type="button"] {
+	border: 1px solid #c0c0c0;
+	outline-color:#ff00ff;
+
+	width: 20%;
+	font-size:15px;
+	padding: 0.5em;
+	
+	text-align:center;
+	
+	background: #ff7ba3;
+	color: #FFF;
+	font-size: 1em;
+	padding: 0.3em 1.2em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+
+}
+
+
+
+/****/
 
 
 .checkbox {
