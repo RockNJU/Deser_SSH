@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.home.desert.dto.MyOrder;
 import com.home.desert.pogo.CartProduct;
 
 @Service
@@ -18,7 +19,7 @@ public interface OrderService {
 	
 	public void minusProductInCart(int id,int userId,int num);
 	
-	public void deleteProductInCart(int id,int userId);
+	public void deleteProductInCart(int id);
 	
 	/**
 	 * @author zucewei
@@ -29,5 +30,13 @@ public interface OrderService {
 	public void submibOrder(int userId,String take_style,String take_time,List<Integer> cartIDList);
 	
 	public List<CartProduct> getCartProductByUserId(int userid);
+	
+	public List<MyOrder> getOrderInTime(int userid);
+	public List<MyOrder> getOrderOutTime(int userid);
+	
+	public List query(String hql);
+	
+	
+	public void removeOrder(int id);
 	
 }

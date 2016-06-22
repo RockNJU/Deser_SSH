@@ -103,16 +103,41 @@ function loadCartProduct(){
     doAjax("<%=request.getContextPath() + "/order_cartProductList.do"%>",j,showCartProduct);
 }
 
+function deleteProductInCart(src){
+	var str=src.id;
+	var id=str.split('_');
+	var j={'id':id[1],'num':1};
+	doAjax("<%=request.getContextPath() + "/order_deleteProductInChart.do"%>",j,modifyNumBack);
+}
 
+
+function submitOrder(){
+	 var aa = document.getElementsByClassName("item_cart");
+    var ss = "";
+    for (var i = 0; i < aa.length; i++) {
+        if (aa[i].checked) {
+        	ss=ss+"-"+aa[i].value;
+            alert("---要提交的商品---> "+aa[i].value);
+        }
+    }
+    
+    var j={'id':id[1],'num':1};
+	doAjax("<%=request.getContextPath() + "/order_deleteProductInChart.do"%>",j,modifyNumBack);
+    
+}
 
 
 function showCartProduct(data,status){
 	//$("#table_head").after("<p>姚明退役了...</p>"); 
-	alert('---加载数据--');
+	//alert('---加载数据--');
+	if(data.length==0){
+		$("#table_head").after("<a href='../product/product_copy.jsp'>您还没有添加任何甜点，先去挑选您喜爱的甜点吧！</a>");
+	}
+	
 	for(var i=0;i<data.length;i++){
 		$("#table_head").after("<table cellpadding='0' cellspacing='0' class='gwc_tb2' id='tab_"+data[i].id+"'>"+
 									"<tr>"+
-										"<td class='tb2_td1'><input type='checkbox' value='1' name='newslist' id='newslist-"+data[i].id+"' /></td>"+
+										"<td class='tb2_td1'><input type='checkbox'class='item_cart' value='"+data[i].id+"' name='newslist' id='newslist-"+data[i].id+"' /></td>"+
 										"<td class='tb2_td2'><a href='#'>"+data[i].name+"</a> </td>"+
 										"<td class='tb2_td3'><a href='#'><img src='../"+data[i].img+"'/></a></td>"+
 										"<td class='tb2_td4'>"+data[i].realPrice+"</td>"+
@@ -122,7 +147,7 @@ function showCartProduct(data,status){
 											"<input id='add1' class='add' name='"+data[i].id+"'  type='button' value='+' onclick='addNum(this)'/>"+
 										"</td>"+
 										"<td class='tb2_td6'><label id='total"+data[i].id+"' class='tot' style='color:#ff5500;font-size:14px; font-weight:bold;'></label></td>"+
-										"<td class='tb2_td7'><a href='#'>删除</a></td>"+
+										"<td class='tb2_td7'><a href='#' id='del_"+data[i].id+"' onclick='deleteProductInCart(this)'>删除</a></td>"+
 									"</tr>"+
 									
 								"</table>");
@@ -179,11 +204,12 @@ function showCartProduct(data,status){
 		
 		function modifyNumBack(data,status){
 			window.location.reload();
+			GetCount();
 			//alert('重新加载页面');
 		}
 	</script>
 
-<div class="gwc" style=" margin:auto;">
+<div class="gwc" style=" margin:auto;min-height:480px;">
 	<table cellpadding="0" cellspacing="0" class="gwc_tb1"  id='table_head'>
 		<tr>
 			<td class="tb1_td1"><input id="Checkbox1" type="checkbox"  class="allselect"/></td>
@@ -197,62 +223,6 @@ function showCartProduct(data,status){
 		</tr>
 	</table>
 		   
-
-	
-	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
-		<tr>
-			<td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-1" /></td>
-			<td class="tb2_td2"><a href="#">法式焦糖玛奇朵巧克力</a></td>
-			<td class="tb2_td3"><a href="#"><img src="../images/11.jpg"/></a></td>
-			<td class="tb2_td4">9.0</td>
-			<td class="tb2_td5">
-				<input id="min1" name="" class='minus'  type="button" value="-" />
-				<input id="text_box1" class='num' name="" type="text" value="1" />
-				<input id="add1" class='add' name=""  type="button" value="+" />
-			</td>
-			<td class="tb2_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-			<td class="tb2_td7"><a href="#">删除</a></td>
-		</tr>
-		
-	</table>
-	
-	<!---商品加减算总数---->
-	<script type="text/javascript">
-	$(function () {
-		var t = $("#text_box2");
-		$("#add2").click(function () {
-			t.val(parseInt(t.val()) + 1)
-			setTotal(); GetCount();
-		})
-		$("#min2").click(function () {
-			if(parseInt(t.val())>=1){
-			t.val(parseInt(t.val()) - 1)
-			}
-			setTotal(); GetCount();
-		})
-		function setTotal() {
-
-			$("#total2").html((parseInt(t.val()) * 8).toFixed(2));
-			$("#newslist-2").val(parseInt(t.val()) * 8);
-		}
-		setTotal();
-	})
-	</script>
-	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
-		<tr>
-			<td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-2" /></td>
-			<td class="tb2_td2"><a href="#">黑森林抹茶布丁蛋糕</a></td>
-			<td class="tb2_td3"><a href="#"><img src="../images/12.jpg"/></a></td>
-			<td class="tb2_td4">8.0</td>
-			<td class="tb2_td5">
-				<input id="min2" name=""  class='minus' type="button" value="-" />
-				<input id="text_box2" name="" type="text" value="1" class='num' />
-				<input id="add2" name="" class='add' type="button" value="+" />
-			</td>
-			<td class="tb2_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-			<td class="tb2_td7"><a href="#">删除</a></td>
-		</tr>
-	</table>
 	
 	<!---总数---->
 	<script type="text/javascript">
@@ -274,6 +244,9 @@ function showCartProduct(data,status){
 		}
 		//setTotal();
 	})
+	
+	
+	
 	</script>
 	<table cellpadding="0" cellspacing="0" class="gwc_tb3">
 		<tr>
@@ -284,7 +257,7 @@ function showCartProduct(data,status){
 			
 			<td class="tb3_td2">已选商品 <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
 			<td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></span></td>
-			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
+			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2" onclick='submitOrder()'>结算</a></td>
 		</tr>
 	</table>
 

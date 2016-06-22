@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.home.desert.dao.BaseDao;
+import com.home.desert.dto.MyOrder;
 import com.home.desert.pogo.CartProduct;
-import com.home.desert.pogo.Order;
+import com.home.desert.pogo.Sorder;
 import com.home.desert.pogo.OrderProduct;
 import com.home.desert.pogo.Product;
 import com.home.desert.pubutil.Time;
@@ -43,7 +44,7 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public void submibOrder(int userId, String take_style, String take_time,List<Integer> cartIDList) {
-		Order order=new Order();
+		Sorder order=new Sorder();
 		int id=baseDao.getLargestNumId("Order");
 		Time time=new Time();
 		String orderId="YMD"+time.getYMD()+(id+1);
@@ -100,6 +101,7 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public void addUpProductToCart(int id, int userId, int num) {
 		String hql=" from CartProduct cp where cp.id='"+id+"' and cp.userid='"+userId+"'";
+		System.out.println(" 增加购物车语句。："+hql);
 		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
 		
 		if(cp==null){
@@ -116,8 +118,63 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void deleteProductInCart(int id, int userId) {
-		baseDao.delete(CartProduct.class,id);
+	public void deleteProductInCart(int id) {
+		String hql="from CartProduct c where c.id='"+id+"'";
+		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
+		if(cp!=null){
+			baseDao.delete(cp);
+		}
+	}
+
+	@SuppressWarnings("unused")
+	@Override
+	public List<MyOrder> getOrderInTime(int userid) {
+		Time time=new Time();
+		String hql="from Sorder o where o.take_time>='"+time.getYMD()+"'";
+		List<Sorder> orderList=baseDao.findByHql(hql);
+		List<MyOrder> list=new ArrayList<>();
+		String hql1;
+		MyOrder myorder;
+		for(Sorder o:orderList){
+			 myorder=new MyOrder(o);
+			list.add(myorder);
+		}
+		
+		return list;
+	}
+	
+	@Override
+	public List query(String hql){
+		return baseDao.findByHql(hql);
+	}
+
+	@Override
+	public List<MyOrder> getOrderOutTime(int userid) {
+		Time time=new Time();
+		String hql="from Sorder o where o.take_time<'"+time.getYMD()+"'";
+		List<Sorder> orderList=baseDao.findByHql(hql);
+		List<MyOrder> list=new ArrayList<>();
+		String hql1;
+		MyOrder myorder;
+		for(Sorder o:orderList){
+			 myorder=new MyOrder(o);
+			list.add(myorder);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public void removeOrder(int id) {
+		String hql=" from Sorder so where so.id='"+id+"'"; 
+		Sorder order=(Sorder) baseDao.findObjectByHql(hql);
+		
+		List<OrderProduct> opList=baseDao.findByHql("from OrderProduct op where op.orderid='"+order.getOrderid()+"'");
+		for(OrderProduct o:opList){
+			baseDao.delete(o);
+		}
+		
+		baseDao.delete(order);
 	}
 
 }

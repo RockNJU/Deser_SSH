@@ -75,11 +75,12 @@ ServletRequestAware, ServletResponseAware{
 	@SuppressWarnings("rawtypes")
 	public void outListJsonString(List list){
 		try {
-			if (list.size() > 0) {
+			
 				JSONArray jsonArray = JSONArray.fromObject(list);
 				String jsonString = jsonArray.toString();
+				System.out.println("订单结果："+jsonString);
 				outString(jsonString);
-			}
+			
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,7 +93,7 @@ ServletRequestAware, ServletResponseAware{
 			josnobj = JSONObject.fromObject(obj);
 		}
 		String jsonString = josnobj.toString();
-		System.out.println("输出的对象数据："+jsonString);
+		//System.out.println("输出的对象数据："+jsonString);
 		outString(jsonString);
 	}
 
