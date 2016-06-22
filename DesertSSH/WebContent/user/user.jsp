@@ -79,6 +79,10 @@
     
          
          <script language="javascript">
+         
+         
+         
+         
          	function doAjax(url1, inf1, func1){
         	    jQuery.ajax({type:"GET", url:url1,data:inf1,
         	    	dataType:"json", jsonp:"callback", success:func1
@@ -124,24 +128,68 @@
 				function successRecharge(data,status){
 				
 				}
+				
+				// $(document).ready(function(){                
+				       
+				// });
+				
+				function modifypwd(){
+					 $("#oldpassword").blur(function(){})
+					 var j={'password':$('#oldpwd').val(),
+			        		};
+					doAjax("<%=request.getContextPath() + "/user_surePassWord.do"%>",j,showResult);
+					
+					
+					 $("#pwd").val("");
+						$("#oldpwd").val("");
+						$("#pwdConfig").val("");
+				
+				}
+				
+				function showResult(data,status){
+					if(data.name=='true'){
+						
+						
+							//alert("sdaada");
+							var p={'password':$('#pwd').val(),
+			        				'pwd':$('#pwdConfig').val(),
+			        		
+			        		
+			        		};
+			        	    doAjax("<%=request.getContextPath() + "/user_modifyPassword.do"%>",p,showResult2);
+			        	    $("#pwd").val("");
+							$("#oldpwd").val("");
+							$("#pwdConfig").val("");
+						
+					}else{
+						alert("密码错误");
+						$("#pwd").val("");
+						$("#oldpwd").val("");
+						$("#pwdConfig").val("");
+					}
+					
+				}
+				function showResult2(data,status){
+					alert(data.name);
+				}
+				
            
             </script>
 		 
-		  
+		 <!--   
 	 <script>
     $(document).ready(function(){                
         $("#oldpwd").blur(function(){
                 var param=$("#oldpwd").val();
                 $.ajax({
-                    url:"${HttpPath}/user/checkoldpassword",
-                   
-                    data:{oldpwd:param},                 
+                    url:"<%=request.getContextPath()+"/user_surePassword.do"%>",                
+                    data:{password:param},                 
                     success:function(e){
-                        if(e.code==1){                            
-                             $("#tip1").html("<font color=\"green\" size=\"2\">  Correct</font>");
+                        if(e.code){                            
+                             $("#tip1").html("<font color=\"green\" size=\"2\">  原密码密码正确！</font>");
                         } 
                         else{                                 
-                            $("#tip1").html("<font color=\"red\" size=\"2\">  Wrong</font>");
+                            $("#tip1").html("<font color=\"red\" size=\"2\">  原密码错误！</font>");
                         }
                     }                 
                 });
@@ -170,10 +218,10 @@
                   }
                   if(flag){                   
                   $.ajax({
-                      url:"${HttpPath}/user/editPassowrdyet",
-                      data:{oldpassword:old,password:pass},
+                      url:"${HttpPath}/user_modifyPassword.do",
+                      data:{password:old,pwd:pass},
                       success:function(e){                         
-                          if(e.code==1){
+                          if(e.code){
                               $("#tip4").show().html("<font color=\"green\" size=\"3\">  修改成功!</font>");
                               $("#oldpwd").val("");
                               $("#pwd").val("");
@@ -193,7 +241,7 @@
         });
         </script>
 		  
-		  
+		  -->
 		  
 	</head>
 	<body>	
@@ -362,7 +410,7 @@
 					
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					
-						<input type="button" id='save' name='save' value='确认' onclick="modify()">
+						<input type="button" id='save' name='save' value='确认' onclick="modifypwd()">
 	                    <div id="tip4"></div>
      				</div>
       			</div>
