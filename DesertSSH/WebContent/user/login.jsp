@@ -60,7 +60,7 @@
 					<span>用户账号<label>*&nbsp&nbsp</label><input type="text" id='email' name='mail'></span>
 				  </div>
 				  <div>
-					<span>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码<label>*&nbsp&nbsp</label><input type="password" id='pwd' name='password'> </span>
+					<span>密&nbsp&nbsp码<label>*&nbsp&nbsp</label><input type="password" id='pwd' name='password'> </span>
 					
 				  </div>
 				  <a class="forgot" href="#" style='margin-top:10px;'>忘记密码?</a>
