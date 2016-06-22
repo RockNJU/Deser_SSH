@@ -111,6 +111,22 @@ function deleteProductInCart(src){
 }
 
 
+function submitOrder(){
+	 var aa = document.getElementsByClassName("item_cart");
+    var ss = "";
+    for (var i = 0; i < aa.length; i++) {
+        if (aa[i].checked) {
+        	ss=ss+"-"+aa[i].value;
+            alert("---要提交的商品---> "+aa[i].value);
+        }
+    }
+    
+    var j={'id':id[1],'num':1};
+	doAjax("<%=request.getContextPath() + "/order_deleteProductInChart.do"%>",j,modifyNumBack);
+    
+}
+
+
 function showCartProduct(data,status){
 	//$("#table_head").after("<p>姚明退役了...</p>"); 
 	//alert('---加载数据--');
@@ -121,7 +137,7 @@ function showCartProduct(data,status){
 	for(var i=0;i<data.length;i++){
 		$("#table_head").after("<table cellpadding='0' cellspacing='0' class='gwc_tb2' id='tab_"+data[i].id+"'>"+
 									"<tr>"+
-										"<td class='tb2_td1'><input type='checkbox' value='1' name='newslist' id='newslist-"+data[i].id+"' /></td>"+
+										"<td class='tb2_td1'><input type='checkbox'class='item_cart' value='"+data[i].id+"' name='newslist' id='newslist-"+data[i].id+"' /></td>"+
 										"<td class='tb2_td2'><a href='#'>"+data[i].name+"</a> </td>"+
 										"<td class='tb2_td3'><a href='#'><img src='../"+data[i].img+"'/></a></td>"+
 										"<td class='tb2_td4'>"+data[i].realPrice+"</td>"+
@@ -228,6 +244,9 @@ function showCartProduct(data,status){
 		}
 		//setTotal();
 	})
+	
+	
+	
 	</script>
 	<table cellpadding="0" cellspacing="0" class="gwc_tb3">
 		<tr>
@@ -238,7 +257,7 @@ function showCartProduct(data,status){
 			
 			<td class="tb3_td2">已选商品 <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
 			<td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></span></td>
-			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
+			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2" onclick='submitOrder()'>结算</a></td>
 		</tr>
 	</table>
 

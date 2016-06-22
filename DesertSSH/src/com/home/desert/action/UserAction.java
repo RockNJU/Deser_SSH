@@ -43,6 +43,25 @@ public class UserAction extends BaseAction{
 	private static final long serialVersionUID = 1L;
 
 
+	public String updateInfo(){
+		
+		User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+		user.setName(name);
+		user.setPhone(phone);
+		user.setAddress(address);
+		this.getSession().setAttribute(Constants.USERINFO, user);
+		userBiz.updateUser(user);
+		this.outObjectString(new Item("修改个人信息成功！",120));;
+		
+		try {
+			outString("{'name':'hello'}");
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
+	
 
 	public String sayHello(){
 	
