@@ -40,7 +40,7 @@ public class ProductAction extends BaseAction{
 				wheres.append(search);
 				wheres.append("%')");
 			}
-			if (category!=null&&!"".equals(category)){
+			if (category!=null&&!"".equals(category)&&!category.equals("all")){
 				wheres.append(" and t.category='");
 				wheres.append(category);
 				wheres.append("'");

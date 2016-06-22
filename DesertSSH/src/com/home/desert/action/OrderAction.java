@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.home.desert.dto.CartList;
 import com.home.desert.dto.MyOrder;
 import com.home.desert.pogo.CartProduct;
 import com.home.desert.pogo.OrderProduct;
+import com.home.desert.pogo.Sorder;
 import com.home.desert.pogo.User;
 import com.home.desert.pubutil.Constants;
 import com.home.desert.pubutil.Item;
+import com.home.desert.pubutil.Time;
 import com.home.desert.service.OrderService;
 
 /**
@@ -35,6 +38,71 @@ public class OrderAction extends BaseAction{
 	private double realPrice;
 	
 	private String djid;
+	private String idlist;
+	
+	
+	private String take_style;
+	private String block;
+	private String detailAddress;
+	private String name;
+	private String phone;
+	private String shop;
+	
+	
+	public String submitOrder(){
+		
+		
+		try {
+			CartList cartList=(CartList) this.getSession().getAttribute("cpList");
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+//			Sorder order=new Sorder();
+//			
+//			Time time=new Time();
+//			order.setCreate_time(time.getYMD());
+//			order.setTake_style(take_style);
+			//order.set
+			
+			orderBiz.submibOrder(1, take_style, "2016-06-05", cartList.getList());
+		
+			this.outObjectString(new Item("添加商品至购物车成功！",120));;
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		
+		return null;
+	}
+	
+	
+	
+	public String orderConfirm(){
+		System.out.println("订单确认啦啦啦啦。 idlist:"+idlist);
+		try {
+			String list[]=idlist.split("-");
+			
+			//User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			orderBiz.addProductToCart(spid,1, num);
+			List<CartProduct> cpList=new ArrayList<>();
+			String hql;
+			
+			for(String id:list){
+				System.out.println("id:"+id);
+				 hql=" from CartProduct cp where cp.id='"+id+"'";
+				 cpList.add(orderBiz.queryCartProduct(hql));
+			}
+			
+			CartList cl=new CartList(cpList);
+			getSession().setAttribute("cpList", cl);
+			System.out.println("单据的大小："+cpList.size()+"  ././"+cpList.get(0).getName());
+			return "order";
+			//this.outObjectString(new Item("添加商品至购物车成功！",120));;
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		
+		return null;
+	}
 	
 	
 	public String addProductToCart(){
@@ -207,6 +275,10 @@ public class OrderAction extends BaseAction{
 
 	public void setDjid(String djid) {
 		this.djid = djid;
+	}
+
+	public void setIdlist(String idlist) {
+		this.idlist = idlist;
 	}
 	
 	

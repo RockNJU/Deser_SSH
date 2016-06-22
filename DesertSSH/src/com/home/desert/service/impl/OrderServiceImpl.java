@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void submibOrder(int userId, String take_style, String take_time,List<Integer> cartIDList) {
+	public void submibOrder(int userId, String take_style, String take_time,List<CartProduct> cartList) {
 		Sorder order=new Sorder();
 		int id=baseDao.getLargestNumId("Order");
 		Time time=new Time();
@@ -58,17 +58,16 @@ public class OrderServiceImpl implements OrderService{
 		double sum_money=0;
 		List<OrderProduct> list=new ArrayList<>();
 		
-		for(int cartId:cartIDList){
-			CartProduct cp=(CartProduct) baseDao.findObjectByHql(" from CartProduct c where c.id='"+cartId+"'");
-			if(cp!=null){
+		for(CartProduct cp:cartList){
+			
 				sum_money=sum_money+cp.getSummoney();
 				list.add(new OrderProduct(orderId,cp));
-			}
+				baseDao.delete(cp);
 		}
 		
 		order.setSum_money(sum_money);
 		baseDao.save(order);
-		baseDao.save(list);
+		
 		
 	}
 
@@ -175,6 +174,12 @@ public class OrderServiceImpl implements OrderService{
 		}
 		
 		baseDao.delete(order);
+	}
+
+	@Override
+	public CartProduct queryCartProduct(String hql) {
+		// TODO Auto-generated method stub
+		return (CartProduct) baseDao.findObjectByHql(hql);
 	}
 
 }

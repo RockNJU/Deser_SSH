@@ -114,21 +114,37 @@
         	 	//充值应该是需要金额和卡号就可以了吧。。毕竟没有密码验证
         		//alert('加载数据---');
         		var j={'money':$('#money').val(),
-        				'number':$('#number').val(),
-        		
-        		
+        				'card_number':$('#number').val()
         		};
-        	    doAjax("<%=request.getContextPath() + "/order_cartProductList.do"%>",j,successRecharge);
+        	    doAjax("<%=request.getContextPath() + "/user_recharge.do"%>",j,successRecharge);
         	}
 
 				function successRecharge(data,status){
-				
+					$('#recharInfo').append('<strong>充值成功！</strong>');
 				}
            
             </script>
 		 
 		  
 	 <script>
+	 
+	 function loadPayrecord(){
+		 var j={'money':1,
+ 				'number':1};
+ 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,addPayrecord);
+	 }
+	 
+	 	function addPayrecord(data,status){
+				 for(var i=0;i<data.length;i++){
+							$('#payRecord').append("<tr>"+
+      							"<td>"+(i+1)+"</td>"+
+      							"<td>"+data[i].time+"</td>"+
+      							"<td>"+data[i].money+"</td>"+
+      							"<td>"+data[i].card_number+"</td>"+
+      						"</tr>");
+					 }
+	 }
+	 
     $(document).ready(function(){                
         $("#oldpwd").blur(function(){
                 var param=$("#oldpwd").val();
@@ -321,7 +337,7 @@
   						
 						<div class="col-md-6 user-right wow fadeInRight">
 						       
-                    	      
+                    	<span id='recharInfo'></span>
                     	<span><font color="#5a0f16">充值金额&nbsp&nbsp:&nbsp&nbsp&nbsp</font><input type="text" id="money" value="100.00"> </span>
 					
 							
@@ -372,7 +388,7 @@
      	 		<div class="am-g">
       				<div class="user-tab" style="margin-left:10px">
                         <br>
-                    	<table class="am-table am-table-striped am-table-hover table-main">
+                    	<table class="am-table am-table-striped am-table-hover table-main" id='payRecord'>
  							<!--   表格信息 -->
  
      

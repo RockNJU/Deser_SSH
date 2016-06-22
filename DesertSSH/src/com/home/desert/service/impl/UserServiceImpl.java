@@ -1,9 +1,12 @@
 package com.home.desert.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.home.desert.dao.BaseDao;
+import com.home.desert.pogo.Payrecord;
 import com.home.desert.pogo.User;
 import com.home.desert.pubutil.Time;
 import com.home.desert.pubutil.UserRank;
@@ -47,6 +50,18 @@ public class UserServiceImpl implements UserService{
 	
 	public void setBaseDao(BaseDao baseDao) {
 		this.baseDao = baseDao;
+	}
+
+	@Override
+	public void addPayrecord(Payrecord pd) {
+		baseDao.save(pd);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Payrecord> getPayrecord(int userid) {
+		String hql=" from Payrecord p where p.userId='"+userid+"'";
+		return baseDao.findByHql(hql);
 	}
 
 }
