@@ -33,7 +33,7 @@ public class OrderAction extends BaseAction{
 	
 	
 	public String addProductToCart(){
-		System.out.println("添加商品至购物车------>");
+		//System.out.println("添加商品至购物车------>");
 		try {
 			//User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			orderBiz.addProductToCart(spid,1, num);
@@ -47,10 +47,10 @@ public class OrderAction extends BaseAction{
 	}
 	
 	public String addUpProductToCart(){
-		System.out.println("添加商品至购物车------>");
+		System.out.println("添加商品至购物车------>  cartId:  "+id);
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			orderBiz.addProductToCart(id,1, 1);
+			orderBiz.addUpProductToCart(id,1, 1);
 			this.outObjectString(new Item("添加商品至购物车成功！",120));;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,8 +75,21 @@ public class OrderAction extends BaseAction{
 	}
 
 	
+	public String deleteProductInChart(){
+		try {
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			orderBiz.deleteProductInCart(id);
+			this.outObjectString(new Item("较少购物车商品成功！",120));;
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		
+		return null;
+	}
+	
 	public String cartProductList(){
-		System.out.println("<-------获取用户购物车的商品------>");
+		//System.out.println("<-------获取用户购物车的商品------>");
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			List<CartProduct> list=orderBiz.getCartProductByUserId(1);

@@ -144,12 +144,10 @@ public class BaseDaoImpl implements BaseDao {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void delete(Class c, int id) {
-		Session session = getNewSession();
-		Object obj = session.get(c, id);
-		session.delete(obj);
-		flush();
-		clear();
-		session.close();
+		Object obj = getSession().get(c, id);
+		if (obj != null) {
+			getSession().delete(obj);
+		}
 	}
 
 	@Override

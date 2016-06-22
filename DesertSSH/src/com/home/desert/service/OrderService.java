@@ -18,7 +18,7 @@ public interface OrderService {
 	
 	public void minusProductInCart(int id,int userId,int num);
 	
-	public void deleteProductInCart(int id,int userId);
+	public void deleteProductInCart(int id);
 	
 	/**
 	 * @author zucewei

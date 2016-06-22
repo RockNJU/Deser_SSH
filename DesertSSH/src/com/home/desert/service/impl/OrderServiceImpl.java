@@ -100,6 +100,7 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public void addUpProductToCart(int id, int userId, int num) {
 		String hql=" from CartProduct cp where cp.id='"+id+"' and cp.userid='"+userId+"'";
+		System.out.println(" 增加购物车语句。："+hql);
 		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
 		
 		if(cp==null){
@@ -116,8 +117,12 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void deleteProductInCart(int id, int userId) {
-		baseDao.delete(CartProduct.class,id);
+	public void deleteProductInCart(int id) {
+		String hql="from CartProduct c where c.id='"+id+"'";
+		CartProduct cp=(CartProduct) baseDao.findObjectByHql(hql);
+		if(cp!=null){
+			baseDao.delete(cp);
+		}
 	}
 
 }

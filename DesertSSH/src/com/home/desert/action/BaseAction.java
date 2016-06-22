@@ -92,7 +92,7 @@ ServletRequestAware, ServletResponseAware{
 			josnobj = JSONObject.fromObject(obj);
 		}
 		String jsonString = josnobj.toString();
-		System.out.println("输出的对象数据："+jsonString);
+		//System.out.println("输出的对象数据："+jsonString);
 		outString(jsonString);
 	}
 
