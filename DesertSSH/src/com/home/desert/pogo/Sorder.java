@@ -10,8 +10,8 @@ import javax.persistence.NamedQuery;
 
 @SuppressWarnings("serial")
 @Entity
-@NamedQuery(name="Order.findAll", query="SELECT o FROM Order o")
-public class Order implements Serializable{
+@NamedQuery(name="Sorder.findAll", query="SELECT o FROM Sorder o")
+public class Sorder implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -30,7 +30,7 @@ public class Order implements Serializable{
 	private String receipt;
 	private double sum_money;
 	
-	public Order(){
+	public Sorder(){
 		
 	}
 	

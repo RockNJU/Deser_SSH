@@ -38,6 +38,10 @@ public class OrderProduct implements Serializable{
 	private double count;	//购买的数量
 	private double summoney;  //此次购买的商品的总价。
 	
+	
+	public OrderProduct(){
+		
+	}
 	public OrderProduct(String orderid,CartProduct p){
 		this.orderid=orderid;
 		this.realPrice=p.getRealPrice();
@@ -53,6 +57,8 @@ public class OrderProduct implements Serializable{
 		this.discount=p.getDiscount();
 		
 	}
+	
+	
 
 	public int getId() {
 		return id;
