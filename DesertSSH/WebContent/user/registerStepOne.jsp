@@ -27,34 +27,49 @@
 			
 			$("input").focus(function(){
 				  this.select();
-			 });
-			  
-			$("#register").click(function(){
+			 });});
+		
+		function validate(){
+			
+			 var checkMail  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			 var checkPhone = /^1[3|4|5|7|8]\d{9}$/;
+		     var checkTelephone = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/;
+			
+			$('#hint').html("");
+			
+			if(($('#email').val()=="")||($('#name').val()=="")||($('#pwd').val()=="")||($('#pwd_confirm').val()=="")){
+				$('#hint').append("加 * 号为必填选项，不得为空");
+			}else if(!(checkMail.test($('#email').val()))){
+				$('#hint').append("请输入合法的邮件地址");
+			}else if($('#pwd').val()!=$('#pwd_confirm').val()){
+				$('#hint').append("密码不一致");
+				}else if((!(checkPhone.test($('#phone').val())))&&(!$('#phone').val()=="")){
+					$('#hint').append("请输入正确的手机号码");
+				}else if(!(checkTelephone.test($('#telephone').val()))&&!$('#telephone').val()==""){
+					$('#hint').append("请输入正确的电话号码");
+				}else{
+					  $.post("http://localhost:8080/DesertSSH/user/registerStepTwo.jsp",
+							  {
+							    email:$('#email').val(),
+							    password:$('#pwd').val(),
+							    name:$('#name').val(),
+							  	phone:$('#phone').val(),
+							  	telephone:$('#telephone').val()
+							  },
+							  function(data,status){
+								  if(data=="OK"){
+									  window.location.href="http://localhost:8080/DesertSSH/user/registerStepTwo.jsp"; 
+								  }else{
+									  $('#info').text("");
+									  $('#info').text(data);
+									  setTimeout($("#info").css({"color":"red","font-weight":"600"}),50000);
+								  }
+							  });
+				}
 				
-					if($('#pwd').val()!=$('#pwd_confirm').val()){
-						alert("密码不一致");
-						return;
-					}
-					
-				  $.post("http://localhost:8080/Desert/register",
-				  {
-				    email:$('#email').val(),
-				    pwd:$('#pwd').val(),
-				    name:$('#name').val(),
-				  	phone:$('#phone').val(),
-				  	telephone:$('#telephone').val()
-				  },
-				  function(data,status){
-					  if(data=="OK"){
-						  window.location.href="http://localhost:8080/Desert/user/register2.jsp"; 
-					  }else{
-						  $('#info').text("");
-						  $('#info').text(data);
-						  setTimeout($("#info").css({"color":"red","font-weight":"600"}),50000);
-					  }
-				  });
-				});
-		});
+
+			}
+		
 		
 		
 		</script>
@@ -72,13 +87,13 @@
 	<div class="content">
 	<div class="main">
 	   <div class="container">
-	     <form action="user_registerStep1.do" method="post">
+	     
 		  <div class="register">
 		  	  <div> 
 			 	<center> <img src="../images/re1.jpg"  alt="基础信息" />
 							 </br>
 					 </br>
-					 <p><strong>${error}&nbsp;</strong></p>
+					 <p><strong id="hint">${error}&nbsp;</strong></p>
 				 <div class="register-top-grid">
 				  <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span><font color="#5a0f16">邮&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp箱</font><label>&nbsp&nbsp*&nbsp&nbsp</label><input type="text" id='email' name='mail'></span>
@@ -119,13 +134,13 @@
 					 <center>	
 				     <div>
 				     </br>
-					   <input type="submit" style="background:url(../images/button1.jpg); border-style:none; 
+					   <input type="submit" onclick = 'validate();'style="background:url(../images/button1.jpg); border-style:none; 
  width:154px; height:54px; background-repeat:no-repeat;margin-left:-40px;margin-top:30px" value="" id='register'>
 					   <div class="clearfix"> </div>
 					   </center>
 				   </div>
 				</div>
-				</form>
+				
 		   </div>
 	     </div>
 	    </div>

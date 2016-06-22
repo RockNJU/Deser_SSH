@@ -222,6 +222,12 @@ function validatePost(){
         <option value="gl">鼓楼区</option>
         <option value="qx">栖霞区</option>
         <option value="jn">江宁区</option>
+        <option value="qx">浦口区</option>
+        <option value="jn">白下区</option>
+        <option value="qx">雨花台区</option>
+        <option value="jn">六合区</option>
+        <option value="qx">下关区</option>
+        
         
         </select> 
            &nbsp&nbsp&nbsp&nbsp
