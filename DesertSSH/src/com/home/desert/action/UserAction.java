@@ -59,27 +59,44 @@ public class UserAction extends BaseAction{
 		return null;
 	}
 	
-	public String modifyPassword(){
-		User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+	public String surePassWord(){
 		
-		if(password==null||pwd==null){
-			this.outObjectString(new Item("密码不能为空",120));;
-		}
-		
-		if(!password.equals(user.getPassword())){
-			this.outObjectString(new Item("请确认是本人操作，正确输入原密码！",120));;
-		}
-		
-		if(!password.equals(pwd)){
-			this.outObjectString(new Item("请确保密码一致",120));
-		}
-		
-		user.setPassword(password);
-		this.getSession().setAttribute(Constants.USERINFO, user);
-		userBiz.updateUser(user);
-		this.outObjectString(new Item("密码修改成功！",120));
 		try {
-			outString("{'name':'hello'}");
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			if(password==null){
+				this.outObjectString(new Item("false",120));
+			}
+			
+			if(password.equals(user.getPassword())){
+				this.outObjectString(new Item("true",120));
+			}else{
+				this.outObjectString(new Item("fasle",120));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
+	
+	
+	public String modifyPassword(){
+		
+		try {
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			
+			if(password==null||pwd==null){
+				this.outObjectString(new Item("密码不能为空",120));;
+			}
+		
+			if(!password.equals(pwd)){
+				this.outObjectString(new Item("请确保密码一致",120));
+			}
+			
+			user.setPassword(password);
+			this.getSession().setAttribute(Constants.USERINFO, user);
+			userBiz.updateUser(user);
+			this.outObjectString(new Item("密码修改成功！",120));
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.outError();
