@@ -80,8 +80,6 @@ ServletRequestAware, ServletResponseAware{
 				String jsonString = jsonArray.toString();
 				System.out.println("订单结果："+jsonString);
 				outString(jsonString);
-			
-		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

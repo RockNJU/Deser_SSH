@@ -49,6 +49,7 @@ public class UserAction extends BaseAction{
 	private static final long serialVersionUID = 1L;
 	
 	public String payRecord(){
+		System.out.println("  --*--*-*-");
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			if(user!=null){

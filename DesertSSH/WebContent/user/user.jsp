@@ -101,12 +101,10 @@
         				'card_number':$('#number').val()
         		};
         	    doAjax("<%=request.getContextPath() + "/user_recharge.do"%>",j,successRecharge);
-<<<<<<< HEAD
         	}
 
 				function successRecharge(data,status){
 					$('#recharInfo').append('<strong>充值成功！</strong>');
-=======
         		}
 
 				function successRecharge(data,status){
@@ -127,8 +125,6 @@
 					 $("#pwd").val("");
 						$("#oldpwd").val("");
 						$("#pwdConfig").val("");
-				
->>>>>>> ddefbbdf10960cd57df71fb455738ace2c45e001
 				}
 				
 				function showResult(data,status){
@@ -161,7 +157,7 @@
            
             </script>
 		 
-		 <!--   
+		
 	 <script>
 	 
 	 function loadPayrecord(){
@@ -171,17 +167,21 @@
 	 }
 	 
 	 	function addPayrecord(data,status){
-				 for(var i=0;i<data.length;i++){
+	 		alert('--回调成功--');
+			/*	 for(var i=0;i<data.length;i++){
+					 var x=i+1
 							$('#payRecord').append("<tr>"+
-      							"<td>"+(i+1)+"</td>"+
+      							"<td>"+x+"</td>"+
       							"<td>"+data[i].time+"</td>"+
       							"<td>"+data[i].money+"</td>"+
       							"<td>"+data[i].card_number+"</td>"+
       						"</tr>");
-					 }
+					 }*/
 	 }
 	 
-    $(document).ready(function(){                
+    $(document).ready(function(){           
+    	//loadPayrecord()
+    	
         $("#oldpwd").blur(function(){
                 var param=$("#oldpwd").val();
                 $.ajax({
@@ -244,7 +244,7 @@
         });
         </script>
 		  
-		  -->
+		 
 		  
 	</head>
 	<body>	
