@@ -55,12 +55,12 @@
 				<p id='info'>如果您已经有一个我们的账号了, 那么请登录.</p>
 				<form action='<%=request.getContextPath()%>/user_login.do' method='post'>
 				<div>
-					<p><strong>${info}&nbsp;</strong></p>
+					<p style="color:red"><strong>${info}&nbsp;</strong></p>
 				  <div>
-					<span>用户账号<label>*&nbsp&nbsp</label><input type="text" id='email' name='mail'></span>
+					<span>账号<label>*&nbsp&nbsp</label><input type="text" id='email' name='mail'></span>
 				  </div>
 				  <div>
-					<span>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码<label>*&nbsp&nbsp</label><input type="password" id='pwd' name='password'> </span>
+					<span>密码<label>*&nbsp&nbsp</label><input type="password" id='pwd' name='password'> </span>
 					
 				  </div>
 				  <a class="forgot" href="#" style='margin-top:10px;'>忘记密码?</a>

@@ -37,27 +37,7 @@
 
 		<script src="../js/amazeui.js"></script>
 		<script src="../js/amazeui.datetimepicker.js"></script>
-		
-		
-		<!-- 我是负责充值记录的 
-		<script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
-			<script type="text/javascript">
-			$(document).ready(function() {
-				var menuParent = $('.menu > .ListTitlePanel > div');//获取menu下的父层的DIV
-				var menuList = $('.menuList');
-				$('.menu > .menuParent > .ListTitlePanel > .ListTitle').each(function(i) {//获取列表的大标题并遍历
-					$(this).click(function(){
-						if($(menuList[i]).css('display') == 'none'){
-							$(menuList[i]).slideDown(300);
-						}
-						else{
-							$(menuList[i]).slideUp(300);
-						}
-					});
-				});
-			});
-		</script>
-		我是负责充值记录的 -->
+
 		
 		
 		
@@ -122,11 +102,11 @@
         		
         		
         		};
-        	    doAjax("<%=request.getContextPath() + "/order_cartProductList.do"%>",j,successRecharge);
-        	}
+        	    doAjax("<%=request.getContextPath() + "/user_recharge.do"%>",j,successRecharge);
+        		}
 
 				function successRecharge(data,status){
-				
+					alert(data.name);
 				}
 				
 				// $(document).ready(function(){                

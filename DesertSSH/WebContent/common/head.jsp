@@ -7,24 +7,28 @@
 			<div class="container">
 				<div class="top-header-left">
 					<ul>
-						<li><a href="index.html"><img id='logo' src="<%=request.getContextPath()%>/images/logo.png" title="甜点屋" style='width:80px;height:40px;margin-top:5px;'/></a></li>
+						<li><a href="../user/index.jsp"><img id='logo' src="<%=request.getContextPath()%>/images/logo.png" title="甜点屋" style='width:80px;height:40px;margin-top:5px;'/></a></li>
 						<div class="clearfix"> </div>
 					</ul>
 				</div>
-				<div class="top-header-center">
+				<div class="top-header-center" ">
 					<!--
 					<p><span class="cart"> </span>购物车<label>￥5256</label></p>
 					  -->
+					 
 				<%
 					 if(session.getAttribute(Constants.USERINFO)!=null){
-						 out.append("<p><span class='cart'> </span>购物车<label>￥5256</label></p>");
+						 //out.append("<p><span class='cart'> </span><a herf='+request.getContextPath()+'/product/cart_copy.jsp''>购物车</a><label>￥5256</label></p>");
+						
+						 out.append("<p><a href="+request.getContextPath()+"/product/cart_copy.jsp><span class='cart'></span></a></p>");
+
 					 }
 					  
 				 %>
 					  
 					  
 				</div>
-				<div class="top-header-right" style='float:right;margin-top:10px;'>
+				<div class="top-header-right" style='float:right;margin-top:10px;font-size:15px;font-family:SimSun;'>
 					<ul>
 						<li>
 							<form>
@@ -36,10 +40,12 @@
 						<% 
 							
 							if(session.getAttribute(Constants.USERINFO)!=null){
-								out.append("<li class='active'><a href="+request.getContextPath()+"/user/userInfo.jsp>我的账户</a></li>");
-								out.append("<li><a href="+request.getContextPath()+"/user/login.jsp'>退出</a></li>");
+								out.append("<li><a href="+request.getContextPath()+"/user/order.jsp>我的订单</a></li>");
+								
+								out.append("<li><a href="+request.getContextPath()+"/user/user.jsp>我的账户</a></li>");
+								out.append("<li><a href="+request.getContextPath()+"/user/login.jsp>退出</a></li>");
 							}else{
-								out.append("<li class='active'><a href="+request.getContextPath()+"/user/login.jsp>登录</a></li>");
+								out.append("<li><a href="+request.getContextPath()+"/user/login.jsp>登录</a></li>");
 								out.append("<li><a href="+request.getContextPath()+"/user/registerStepOne.jsp>注册</a></li>");
 							}
 						
@@ -61,11 +67,15 @@
 			<div class="head-nav">
 				<span class="menu"> </span>
 				<ul>
-					<li class="active"><a href="index.html">主页</a></li>
-					<li><a href="<%=request.getContextPath()%>/product/product.jsp">商品</a></li>
-					<li><a href="<%=request.getContextPath()%>/product/cart.jsp">店铺</a></li>
-					<li><a href="<%=request.getContextPath()%>/product/cart.jsp">我的订单</a></li>
+					<li style="font-size:18px;font-family:SimSun;margin-left:30px"><a href="<%=request.getContextPath()%>/user/index.jsp">主页</a></li>
+					<li style="font-size:18px;font-family:SimSun;"><a href="<%=request.getContextPath()%>/product/product_copy.jsp">商品</a></li>
+					<li style="font-size:18px;font-family:SimSun;"><a href="<%=request.getContextPath()%>/user/aboutus.html">关于我们</a></li>
 					<div class="clearfix"> </div>
+					
+				
+					
+					
+					
 				</ul>
 			</div>	
 				<!-- script-for-nav -->

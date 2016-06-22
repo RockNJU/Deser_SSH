@@ -40,8 +40,8 @@
 			<div class="head-nav">
 				<span class="menu"> </span>
 				<ul>
-					<li class="active"><a href="index.html">主页</a></li>
-					<li><a href="products.html">商品</a></li>
+					<li class="active"><a href="index.jsp">主页</a></li>
+					<li><a href="products.jsp">商品</a></li>
 					<li><a href="about.html"></a></li>
 					<li><a href="contact.html">我的订单</a></li>
 					<li><a href="contact.html">热卖</a></li>
