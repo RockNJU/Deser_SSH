@@ -71,6 +71,9 @@ $(document).ready(function () {
 	});
 	
 	loadCartProduct();
+	
+	$("#jz1").css("display", "none");
+	$("#jz2").css("display", "none");
 });
 //******************
 function GetCount() {
