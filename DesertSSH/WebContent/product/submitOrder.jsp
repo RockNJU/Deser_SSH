@@ -163,7 +163,7 @@ function validatePost(){
 
 
 function submitOrder(){
-	alert('56565656哭死');
+	//alert('56565656哭死');
 	var type=$("input[name='sel']:checked").val();
 	var block;
 	var username;

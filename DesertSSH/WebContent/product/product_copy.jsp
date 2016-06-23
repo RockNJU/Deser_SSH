@@ -328,7 +328,7 @@
 	  
 	  
 	  function addProductToCart(src){
-		  alert('----点击添加购物车  id:'+src.id);
+		//  alert('----点击添加购物车  id:'+src.id);
 		  var id=src.id;
 		  var n=1;
 		  var j={'spid':id,'num':n};
@@ -351,9 +351,9 @@
 		$(".Item").click(function(){
 			//
 			ca=$(this).val();
-			alert("--->"+"点击分类"+$(this).val()+"  -+");
+			//alert("--->"+"点击分类"+$(this).val()+"  -+");
 			$('#ctgy').attr("value", ca);
-			alert("--->"+"点击分类"+$('#ctgy').val());
+			//alert("--->"+"点击分类"+$('#ctgy').val());
 			$(".Item").css("color","#444");
 			$(this).css("color","green");
 		  });

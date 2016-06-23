@@ -23,11 +23,11 @@
 				<div class="col-md-3 social">
 					<h4>社交分享</h4>
 					<div class="face-b">
-						<img src="../images/foot.png" title="name"/>
+						<img src="<%=request.getContextPath()%>/images/foot.png" title="name"/>
 						<a href="#"><i class="fb"> </i></a>
 					</div>
 					<div class="twet">		
-						<img src="../images/foot.png" title="name"/>
+						<img src="<%=request.getContextPath()%>/images/foot.png" title="name"/>
 							<a href="#"><i class="twt"> </i></a>
 					</div>	
 				</div>

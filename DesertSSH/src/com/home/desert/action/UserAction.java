@@ -54,8 +54,9 @@ public class UserAction extends BaseAction{
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			if(user!=null){
 				this.outListJsonString(userBiz.getPayrecord(user.getId()));
+				
 			}
-			this.outString("{}");;
+			this.outListJsonString(userBiz.getPayrecord(1));;
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.outError();

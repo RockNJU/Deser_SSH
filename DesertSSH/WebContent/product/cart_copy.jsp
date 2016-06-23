@@ -117,7 +117,7 @@ function submitOrder(){
     for (var i = 0; i < aa.length; i++) {
         if (aa[i].checked) {
         	ss=aa[i].value+"-"+ss;
-            alert("---要提交的商品---> "+aa[i].value);
+          //  alert("---要提交的商品---> "+aa[i].value);
         }
     }
     

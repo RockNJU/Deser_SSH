@@ -10,19 +10,18 @@
 		<script>
 			
 		
-		function back(data,status){
-			alert("测试回调成功！");
-			//$('#pp').html(data.name);
-		}
 		
-		function refresh(){
-	    	var j={'year':'123'};
-	        doAjax("<%=request.getContextPath() + "/user_sayHello.do"%>",j,back);
-	    }
-	    
-	    $(document).ready(function(){
-	    	refresh();
-	    })
+		 function loadPayrecord(){
+			 var j={'money':1,
+	 				'number':1};
+	 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,t);
+		 }
+		 
+		 function t(data){
+			// alert("--------丛植回调成功-----");
+		 }
+		
+	   window.onload=loadPayrecord();
 	    
 		</script>
 		
