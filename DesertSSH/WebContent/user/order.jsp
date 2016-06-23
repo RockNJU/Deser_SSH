@@ -205,7 +205,7 @@
      <article class="blog-main">
      
      
-     <div class="am-tabs am-margin" data-am-tabs>
+     <div class="am-tabs am-margin" data-am-tabs style='min-height:400px'>
     <ul class="am-tabs-nav am-nav am-nav-tabs">
       <li class="am-active"><a href="#tab1">我的订单</a></li>
       <li><a href="#tab2">历史订单</a></li>
