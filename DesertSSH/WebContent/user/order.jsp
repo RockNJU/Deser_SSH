@@ -47,6 +47,8 @@
 			.sptd{
 				background: #FFFFCC;
 			}
+			
+			
 		</style>
 		
 		<script>
@@ -79,10 +81,17 @@
 				
 					content=content+" <tr>"+
 							 "<td class='tdd'>订单编号："+data[i].orderid+"</td>"+
-						     "<td class='tdd'>下定时间："+data[i].create_time+"</td>"+
-							 "<td class='tdd'>提货时间："+data[i].take_time+"</td>"+
-							 "<td class='tdd'></td>"+
-							 "</tr>";
+						     "<td class='tdd'>下定时间："+data[i].create_time+"</td>";
+						     
+						     content=content+ "<td class='tdd'>取货方式："+data[i].take_style+"</td>";
+						     
+						     if(data[i].take_style=='上门自取'){
+						    	content=content+ "<td class='tdd'>取货店铺："+data[i].shop+"</td>";
+						     }else{
+						    	content=content+ "<td class='tdd'>送货地址："+data[i].detailAddress+"</td>";
+						     }
+						    content=content+ "<td class='tdd'>联系方式："+data[i].phone+"</td>";
+							content=content+ "</tr>";
 				
 				var list=data[i].list;
 				for(var j=0;j<list.length;j++){
@@ -93,6 +102,7 @@
 						     "<td class='sptd'>"+list[j].name+"</td>"+
 						     "<td class='sptd'>"+list[j].realPrice+"</td>"+
 						     "<td class='sptd'>"+list[j].count+"</td>"+
+						     "<td class='sptd'>"+list[j].summoney+"</td>"+
 						     "</tr>";
 							
 				}
@@ -100,12 +110,15 @@
 					content=content+"<tr>"+
 					    " <td class='sptd'></td>"+
 					    " <td class='sptd'></td>"+
+					    "<td class='sptd'></td>"+
 					     "<td style='background: #FFFFCC;font-weight:bold'>总价："+data[i].sum_money+"</td>"+
 					     "<td style='background: #FFFFCC;font-weight:bold'><button id='"+data[i].id+"' onclick='removeOrder(this)'>取消交易</button></td>"+
+					    
 					     "</tr>";	
 					     
 					     content=content+"<tr>"+
 								     "<td> &nbsp;&nbsp;</td>"+
+								     "<td></td>"+
 								     "<td></td>"+
 								     "<td></td>"+
 								     "<td></td>"+
@@ -213,78 +226,15 @@
       <th style="font-weight:normal">甜点名称</th>
       <th style="font-weight:normal">单价</th>
       <th style="font-weight:normal">数量</th>
+      <th style="font-weight:normal">总价</th>
       </tr>
       
       
  <!-- 一个部分-- -->   
      
-     <tr>
-	     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">订单编号：12231</td>
-	     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">下定时间：2016-06-20</td>
-	     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">提货时间：2016-06-26</td>
-	     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;"></td>
-     </tr>
-     
-     
-     <tr>
-	     <td style="background: #FFFFCC">a picture</td>
-	     <td style="background: #FFFFCC">XXX蛋糕</td>
-	     <td style="background: #FFFFCC">12</td>
-	     <td style="background: #FFFFCC">4</td>
-     </tr>
-     
-     
-     <tr>
-     <td style="background: #FFFFCC">a picture</td>
-     <td style="background: #FFFFCC">XXX蛋糕</td>
-     <td style="background: #FFFFCC">13</td>
-     <td style="background: #FFFFCC">1</td>
-     </tr>
-     
-     <tr>
-     <td style="background: #FFFFCC"></td>
-     <td style="background: #FFFFCC"></td>
-     <td style="background: #FFFFCC;font-weight:bold">总价：123</td>
-     <td style="background: #FFFFCC;font-weight:bold"><button>取消交易</button></td>
-     </tr>
-
-     
-     <tr>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     </tr>
+    
 <!--  -->     
-     <tr>
-     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080; ">订单编号：12231</td>
-     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">下定时间：2016-06-20</td>
-     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;">提货时间：2016-06-26</td>
-     <td style="background: #FFCCCC;font-weight:bold;border-top:5px solid #ff8080;"></td>
-     </tr>
      
-     
-     <tr>
-     <td style="background: #FFFFCC">a picture</td>
-     <td style="background: #FFFFCC">XXX蛋糕</td>
-     <td style="background: #FFFFCC">12</td>
-     <td style="background: #FFFFCC">4</td>
-     </tr>
-     
-     
-     <tr>
-     <td style="background: #FFFFCC">a picture</td>
-     <td style="background: #FFFFCC">XXX蛋糕</td>
-     <td style="background: #FFFFCC">13</td>
-     <td style="background: #FFFFCC">1</td>
-     </tr>
-     
-     <tr>
-     <td style="background: #FFFFCC"></td>
-     <td style="background: #FFFFCC"></td>
-     <td style="background: #FFFFCC;font-weight:bold">总价：123</td>
-     <td style="background: #FFFFCC;font-weight:bold"><button>取消交易</button></td>
-     </tr>
 
 <!--  -->     
 

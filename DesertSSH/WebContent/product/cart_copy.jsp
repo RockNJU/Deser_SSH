@@ -116,14 +116,19 @@ function submitOrder(){
     var ss = "";
     for (var i = 0; i < aa.length; i++) {
         if (aa[i].checked) {
-        	ss=ss+"-"+aa[i].value;
+        	ss=aa[i].value+"-"+ss;
             alert("---要提交的商品---> "+aa[i].value);
         }
     }
     
-    var j={'id':id[1],'num':1};
-	doAjax("<%=request.getContextPath() + "/order_deleteProductInChart.do"%>",j,modifyNumBack);
+    var j="idlist="+ss;
     
+    window.location.href='<%=request.getContextPath()%>/order_orderConfirm.do?'+j; 
+    
+}
+
+function submitOrderBack(){
+	
 }
 
 
@@ -257,7 +262,7 @@ function showCartProduct(data,status){
 			
 			<td class="tb3_td2">已选商品 <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> 件</td>
 			<td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;"><label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></span></td>
-			<td class="tb3_td4"><span id="jz1">结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2" onclick='submitOrder()'>结算</a></td>
+			<td class="tb3_td4"><span id="jz1" onclick='submitOrder()'>结算</span><a href="#" style=" display:none;"  class="jz2" id="jz2" onclick='submitOrder()'>结算</a></td>
 		</tr>
 	</table>
 

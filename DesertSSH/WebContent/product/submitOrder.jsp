@@ -170,20 +170,22 @@ function submitOrder(){
 	var shop;
 	var phone;
 	var address;
+	var take_style;
 	if(type=='get'){
-		var block=$('#block option:selected').text();
-		var shop=$('#store option:selected').text();
-		var username=$('#customeName').val();
-		var phone=$('#tele').val();
+		 take_style='上门自取';
+		 block=$('#block option:selected').text();
+		 shop=$('#store option:selected').text();
+		 username=$('#customeName').val();
+	    phone=$('#tele').val();
 	}else{
-	
-		var block=$('#block option:selected').text();
-		var address=$('#detailAddress').val();
-		var username=$('#customeName2').val();
-		var phone=$('#tele2').val();
+		take_style='送货上门';
+		block=$('#block option:selected').text();
+		address=$('#detailAddress').val();
+		username=$('#customeName2').val();
+		phone=$('#tele2').val();
 	}
 	
-	var j={'block':block,'shop':shop,'username':username,'phone':phone,'address':address};
+	var j={'take_style':take_style,'block':block,'shop':shop,'name':username,'phone':phone,'detailAddress':address};
 	 doAjax("<%=request.getContextPath() + "/order_submitOrder.do"%>",j,success);
 }
 

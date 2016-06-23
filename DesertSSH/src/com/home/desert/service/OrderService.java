@@ -27,7 +27,7 @@ public interface OrderService {
 	 * 
 	 * */
 	
-	public void submibOrder(int userId,String take_style,String take_time,List<Integer> cartIDList);
+	public void submibOrder(int userId,String take_style,String take_time,String block,String phone,String address,String shop,String custome,List<CartProduct> cartList);
 	
 	public List<CartProduct> getCartProductByUserId(int userid);
 	
@@ -35,6 +35,8 @@ public interface OrderService {
 	public List<MyOrder> getOrderOutTime(int userid);
 	
 	public List query(String hql);
+	
+	public CartProduct queryCartProduct(String hql);
 	
 	
 	public void removeOrder(int id);

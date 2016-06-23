@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<StrItem> getAllCategory() {
-		String hql="select new com.home.desert.pubutil.StrItem(p.category,p.category) from Product p";
+		String hql="select distinct new com.home.desert.pubutil.StrItem(p.category,p.category) from Product p";
 		return baseDao.findByHql(hql);
 	}
 

@@ -10,6 +10,7 @@ import com.home.desert.dao.BaseDao;
 import com.home.desert.dto.MyOrder;
 import com.home.desert.pogo.CartProduct;
 import com.home.desert.pogo.Sorder;
+import com.home.desert.pogo.User;
 import com.home.desert.pogo.OrderProduct;
 import com.home.desert.pogo.Product;
 import com.home.desert.pubutil.Time;
@@ -43,12 +44,19 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void submibOrder(int userId, String take_style, String take_time,List<Integer> cartIDList) {
+	public void submibOrder(int userId, String take_style, String take_time,String block,
+			String phone,String address,String shop,String custome,List<CartProduct> cartList) {
 		Sorder order=new Sorder();
 		int id=baseDao.getLargestNumId("Order");
 		Time time=new Time();
 		String orderId="YMD"+time.getYMD()+(id+1);
 		order.setOrderid(orderId);
+		order.setPhone(phone);
+		order.setCustomerName(custome);
+		order.setBlock(block);
+		order.setDetailAddress(address);
+		order.setShop(shop);
+		
 		order.setUserid(userId);
 		order.setCreate_time(time.getYMD());
 		order.setReceipt("否");
@@ -58,17 +66,21 @@ public class OrderServiceImpl implements OrderService{
 		double sum_money=0;
 		List<OrderProduct> list=new ArrayList<>();
 		
-		for(int cartId:cartIDList){
-			CartProduct cp=(CartProduct) baseDao.findObjectByHql(" from CartProduct c where c.id='"+cartId+"'");
-			if(cp!=null){
+		for(CartProduct cp:cartList){
+			
 				sum_money=sum_money+cp.getSummoney();
-				list.add(new OrderProduct(orderId,cp));
-			}
+				baseDao.save(new OrderProduct(orderId,cp));
+				baseDao.delete(cp);
 		}
 		
 		order.setSum_money(sum_money);
 		baseDao.save(order);
-		baseDao.save(list);
+		
+		User user=(User) baseDao.findObjectByHql(" from User u where u.id='"+userId+"'");
+		if(user!=null){
+			user.setBalance(user.getBalance()-sum_money);
+			baseDao.update(user);
+		}
 		
 	}
 
@@ -175,6 +187,12 @@ public class OrderServiceImpl implements OrderService{
 		}
 		
 		baseDao.delete(order);
+	}
+
+	@Override
+	public CartProduct queryCartProduct(String hql) {
+		// TODO Auto-generated method stub
+		return (CartProduct) baseDao.findObjectByHql(hql);
 	}
 
 }

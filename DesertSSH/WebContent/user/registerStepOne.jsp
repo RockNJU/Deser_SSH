@@ -48,23 +48,16 @@
 				}else if(!(checkTelephone.test($('#telephone').val()))&&!$('#telephone').val()==""){
 					$('#hint').append("请输入正确的电话号码");
 				}else{
-					  $.post("http://localhost:8080/DesertSSH/user/registerStepTwo.jsp",
-							  {
-							    email:$('#email').val(),
-							    password:$('#pwd').val(),
-							    name:$('#name').val(),
-							  	phone:$('#phone').val(),
-							  	telephone:$('#telephone').val()
-							  },
-							  function(data,status){
-								  if(data=="OK"){
-									  window.location.href="http://localhost:8080/DesertSSH/user/registerStepTwo.jsp"; 
-								  }else{
-									  $('#info').text("");
-									  $('#info').text(data);
-									  setTimeout($("#info").css({"color":"red","font-weight":"600"}),50000);
-								  }
-							  });
+						var t="";
+							   t= 'email='+$('#email').val();
+							    t=t+"&"+'password='+$('#pwd').val();
+							    t=t+"&"+'name='+$('#name').val();
+							    t=t+"&"+'phone='+$('#phone').val();
+							    t=t+"&"+'telephone='+$('#telephone').val();
+							  	
+							 
+						 window.location.href="http://localhost:8080/DesertSSH/user/registerStepTwo.jsp"; 
+								  
 				}
 				
 

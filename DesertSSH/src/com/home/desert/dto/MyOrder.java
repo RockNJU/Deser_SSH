@@ -26,7 +26,20 @@ public class MyOrder implements Serializable{
 	private String receipt;
 	private double sum_money;
 	
+	
+
+	private String customerName;
+	private String phone;
+	private String detailAddress;
+	private String block;
+	
+	
 	public MyOrder(Sorder order){
+		
+		this.phone=order.getPhone();
+		this.detailAddress=order.getDetailAddress();
+		this.block=order.getBlock();
+		this.customerName=order.getCustomerName();
 		this.id=order.getId();
 		this.userid=order.getUserid();
 		this.orderid=order.getOrderid();
@@ -116,6 +129,38 @@ public class MyOrder implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
+
+	public String getBlock() {
+		return block;
+	}
+
+	public void setBlock(String block) {
+		this.block = block;
 	}
 	
 }

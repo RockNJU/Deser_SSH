@@ -6,9 +6,11 @@ import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.home.desert.pogo.Payrecord;
 import com.home.desert.pogo.User;
 import com.home.desert.pubutil.Constants;
 import com.home.desert.pubutil.Item;
+import com.home.desert.pubutil.Time;
 import com.home.desert.pubutil.UserRank;
 import com.home.desert.pubutil.UserState;
 import com.home.desert.service.UserService;
@@ -38,16 +40,41 @@ public class UserAction extends BaseAction{
 	
 	private double money;
 	
+	private String card_number;
+	
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	public String payRecord(){
+		System.out.println("  --*--*-*-");
+		try {
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			if(user!=null){
+				this.outListJsonString(userBiz.getPayrecord(user.getId()));
+			}
+			this.outString("{}");;
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
 
 	public String recharge(){
 		User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 		user.setBalance(user.getBalance()+money);
 		user.setSum(user.getSum()+money);
+		
+		Time time=new Time();
+		Payrecord pd=new Payrecord();
+		pd.setCard_number(card_number);
+		pd.setMoney(money);
+		pd.setTime(time.getYMD());
+		pd.setUserId(user.getId());
+		userBiz.addPayrecord(pd);
 		this.getSession().setAttribute(Constants.USERINFO, user);
 		userBiz.updateUser(user);
 		try {
@@ -86,7 +113,7 @@ public class UserAction extends BaseAction{
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			
 			if(password==null||pwd==null){
-				this.outObjectString(new Item("密码不能为空",120));;
+				this.outObjectString(new Item("密码不能为空",120));
 			}
 		
 			if(!password.equals(pwd)){
@@ -313,6 +340,10 @@ public class UserAction extends BaseAction{
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public void setCard_number(String card_number) {
+		this.card_number = card_number;
 	}
 	
 	

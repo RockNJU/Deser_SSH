@@ -98,11 +98,13 @@
         	 	//充值应该是需要金额和卡号就可以了吧。。毕竟没有密码验证
         		//alert('加载数据---');
         		var j={'money':$('#money').val(),
-        				'number':$('#number').val(),
-        		
-        		
+        				'card_number':$('#number').val()
         		};
         	    doAjax("<%=request.getContextPath() + "/user_recharge.do"%>",j,successRecharge);
+        	}
+
+				function successRecharge(data,status){
+					$('#recharInfo').append('<strong>充值成功！</strong>');
         		}
 
 				function successRecharge(data,status){
@@ -123,7 +125,6 @@
 					 $("#pwd").val("");
 						$("#oldpwd").val("");
 						$("#pwdConfig").val("");
-				
 				}
 				
 				function showResult(data,status){
@@ -156,9 +157,35 @@
            
             </script>
 		 
-		 <!--   
+		
 	 <script>
-    $(document).ready(function(){                
+	 
+	 function loadPayrecord(){
+		 var j={'money':1,
+ 				'number':1};
+ 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,t);
+	 }
+	 
+	 function t(data,status){}
+	 
+	 	function addPayrecord1(data,status){
+	 		alert('--回调成功--');
+			/*	 for(var i=0;i<data.length;i++){
+					 var x=i+1
+							$('#payRecord').append("<tr>"+
+      							"<td>"+x+"</td>"+
+      							"<td>"+data[i].time+"</td>"+
+      							"<td>"+data[i].money+"</td>"+
+      							"<td>"+data[i].card_number+"</td>"+
+      						"</tr>");
+					 }*/
+	 }
+	 	
+	 	
+	 
+    $(document).ready(function(){           
+    	loadPayrecord();
+    	
         $("#oldpwd").blur(function(){
                 var param=$("#oldpwd").val();
                 $.ajax({
@@ -221,7 +248,7 @@
         });
         </script>
 		  
-		  -->
+		 
 		  
 	</head>
 	<body>	
@@ -349,7 +376,7 @@
   						
 						<div class="col-md-6 user-right wow fadeInRight">
 						       
-                    	      
+                    	<span id='recharInfo'></span>
                     	<span><font color="#5a0f16">充值金额&nbsp&nbsp:&nbsp&nbsp&nbsp</font><input type="text" id="money" value="100.00"> </span>
 					
 							
@@ -400,7 +427,7 @@
      	 		<div class="am-g">
       				<div class="user-tab" style="margin-left:10px">
                         <br>
-                    	<table class="am-table am-table-striped am-table-hover table-main">
+                    	<table class="am-table am-table-striped am-table-hover table-main" id='payRecord'>
  							<!--   表格信息 -->
  
      
