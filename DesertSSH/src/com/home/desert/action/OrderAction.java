@@ -106,7 +106,7 @@ public class OrderAction extends BaseAction{
 	
 	
 	public String addProductToCart(){
-		//System.out.println("添加商品至购物车------>");
+		System.out.println("添加商品至购物车------>"+spid);
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			orderBiz.addProductToCart(spid,user.getId(), num);
@@ -165,7 +165,7 @@ public class OrderAction extends BaseAction{
 	//	System.out.println("<-------获取用户购物车的商品------>   +  "+ myOrderList(1).size());
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			List<CartProduct> list=orderBiz.getCartProductByUserId(1);
+			List<CartProduct> list=orderBiz.getCartProductByUserId(user.getId());
 			this.outListJsonString(list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -321,6 +321,84 @@ public class OrderAction extends BaseAction{
 
 	public void setShop(String shop) {
 		this.shop = shop;
+	}
+
+
+
+	public OrderService getOrderBiz() {
+		return orderBiz;
+	}
+
+
+
+	public int getSpid() {
+		return spid;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public double getSum_money() {
+		return sum_money;
+	}
+
+
+
+	public int getNum() {
+		return num;
+	}
+
+
+
+	public double getRealPrice() {
+		return realPrice;
+	}
+
+
+
+	public String getIdlist() {
+		return idlist;
+	}
+
+
+
+	public String getTake_style() {
+		return take_style;
+	}
+
+
+
+	public String getBlock() {
+		return block;
+	}
+
+
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+
+	public String getShop() {
+		return shop;
 	}
 	
 	

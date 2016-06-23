@@ -49,7 +49,7 @@
 					$('#hint').append("请输入正确的电话号码");
 				}else{
 						var t="";
-							   t= 'email='+$('#email').val();
+							   t= 'mail='+$('#email').val();
 							    t=t+"&"+'password='+$('#pwd').val();
 							    t=t+"&"+'name='+$('#name').val();
 							    t=t+"&"+'phone='+$('#phone').val();
