@@ -168,19 +168,18 @@
 				
 			}
 			
-			/*
+		
 			.select a {
 				display: inline-block;
 				white-space: nowrap;
-				padding: 0 15px;
+				padding-right: 15px;
 				text-decoration: none;
 				color: #444;
 			}
 			a {
 				color: #444;
-				
 			}
-			*/
+			
 			.select .all li::after {content: "|";}
 	
 				
@@ -265,6 +264,7 @@
 		    margin-right:30px;
 		}
 		
+		
 	</style>
 	
 	<script>	
@@ -311,10 +311,46 @@
 	}
 	
 	
+	function allCategory(){
+		category='';
+		search();
+	}
+	
+	var pp='esc';
+	var num='esc';
+	var sortType='';
+	
 	function search(){
-    	var j={'category':category};
+    	var j={'category':category,'price':pp,'num':num,'sortType':sortType};
         doAjax("<%=request.getContextPath() + "/product_findProductByParams.do"%>",j,showProduct);
     }
+	
+	function sorting(){
+		//alert("默认查询");
+		category='';
+		sortType='';
+		search();
+	}
+	
+	function price_sort(){
+		sortType="price";
+		if(pp=='desc'){
+			pp='esc';
+		}else{
+			pp='desc';
+		}
+		search();
+	}
+	
+	function num_sort(){
+		sortType='num';
+		if(num=='desc'){
+			num='esc';
+		}else{
+			num='desc';
+		}
+		search();
+	}
 	
 	
 	  function doAjax(url1, inf1, func1){
@@ -334,7 +370,7 @@
 	  function listCategory(data,status){
 		  $('#category').html('');
 		  for(var i=0;i<data.length;i++){
-			  $('#category').append("<li class='Item' value='222'>"+data[i].value+"</li>");
+			  $('#category').append("<li ><a id='"+data[i].value+"'  class='Item' onclick='selectCategory(this)' >"+data[i].value+"</a></li>");
 		  }
 	  }
 	  
@@ -352,15 +388,22 @@
 		  swal({   
 				title: "添加成功",   
 				html: true,
-				timer: 1000,   
+				timer: 700,   
 				showConfirmButton: false
 			});
 	  }
 	  
 	var now = new Date();
 	var book_date=now.getFullYear()+"-"+((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1)+"-"+(now.getDate()<10?"0":"")+now.getDate();
-	var book_store="新街口总店",category="",price="0-1000";
+	var category="";
 	var ca="";
+	
+	function selectCategory(src){
+		 category=src.id;
+		//alert("--->"+"点击分类"+$(this).val()+"  -+");
+		//$('#ctgy').attr("value", ca);
+		
+	}
 	
 	$(document).ready(function($){
 		loadCategory();
@@ -368,12 +411,14 @@
 		
 		$(".Item").click(function(){
 			//
-			ca=$(this).val();
+			var ca=$(this).id;
 			//alert("--->"+"点击分类"+$(this).val()+"  -+");
 			$('#ctgy').attr("value", ca);
 			//alert("--->"+"点击分类"+$('#ctgy').val());
 			$(".Item").css("color","#444");
 			$(this).css("color","green");
+			//alert('23333333'+ca);
+			search();
 		  });
 		
 		$(".date").click(function(){
@@ -396,9 +441,10 @@
 		
 		$(".category").click(function(){
 			category=$(this).text();
-			$(".category").css("color","black");
-			$(this).css("color","#1a8bc8");
-			search()
+			//$(".category").css("color","black");
+			//$(this).css("color","#1a8bc8");
+			//search()
+			//alert
 		  });	
 		
 		search();
@@ -449,7 +495,7 @@
 					
 					<div class='select'>   
 						<div class="all clearfix">
-							<div class="tit" style='float:left;width:10%;'>►所有分类</div>
+							<div class="tit" style='float:left;width:10%;' onclick='allCategory()'>►所有分类</div>
 							<div class='item' style='float:left;width:80%;background-color:red;'>
 								<ul id='category'>
 									<li class=" "><a href='#'>奇异果</a></li>
@@ -470,10 +516,10 @@
 				<div class='dh' style='margin-top:-10px;'>
 					<div id="formCx" class="filter clearfix">
 						<div class="filter_sort">
-								<a class="on" href="javascript:;" _sort="0">默认排序</a>
-								<a class="" href="javascript:;" _sort="1">销量<i class="up"></i></a>
-								<a class="price" href="javascript:;" _sort="3">价格<i class="sort_down"></i></a>
-								<a class="" href="javascript:;" _sort="5">评论<i class="dowm"></i></a>
+								<a class="on" href="#"  onclick='sorting()'>默认排序</a>
+								<a class="" href="#" onclick='num_sort()'>销量<i class="up"></i></a>
+								<a class="price" href="#" onclick='price_sort()'>价格<i class="sort_down"></i></a>
+								
 						</div>
 					</div>
 				</div>

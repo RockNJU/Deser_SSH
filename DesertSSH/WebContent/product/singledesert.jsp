@@ -13,6 +13,14 @@
    		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</script>
+		
+		
+		
+		
+		<script src="<%=request.getContextPath()%>/js/sweetalert.min.js"></script>
+		<link href="<%=request.getContextPath()%>/css/sweetalert.css" rel="stylesheet" type="text/css" media="all" />
+		
+		
 		<script src="<%=request.getContextPath() %>/js/jquery.easydropdown.js"></script>
 		<!----webfonts--->
 		<link href='http://fonts.useso.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>

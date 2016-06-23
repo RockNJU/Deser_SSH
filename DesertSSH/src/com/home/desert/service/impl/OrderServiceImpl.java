@@ -47,9 +47,9 @@ public class OrderServiceImpl implements OrderService{
 	public void submibOrder(int userId, String take_style, String take_time,String block,
 			String phone,String address,String shop,String custome,List<CartProduct> cartList) {
 		Sorder order=new Sorder();
-		int id=baseDao.getLargestNumId("Order");
+		int id=baseDao.getLargestNumId("Sorder");
 		Time time=new Time();
-		String orderId="YMD"+time.getYMD()+(id+1);
+		String orderId="YMD"+time.getYMD()+(id+2)+"-"+userId;
 		order.setOrderid(orderId);
 		order.setPhone(phone);
 		order.setCustomerName(custome);

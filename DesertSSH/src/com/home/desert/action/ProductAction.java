@@ -16,6 +16,7 @@ public class ProductAction extends BaseAction{
 	
 	private String category;
 	private String price;
+	private String num;
 	private String sortType;//排序的方式
 	private String search;
 	
@@ -32,7 +33,6 @@ public class ProductAction extends BaseAction{
 	 * */
 	
 	public String singleProduct(){
-		System.out.println("----调用至当商品的页面---+"+id);
 		try {
 			Product p=productBiz.getProductByID(id);
 			this.getSession().setAttribute(Constants.DESERT, p);
@@ -63,6 +63,26 @@ public class ProductAction extends BaseAction{
 				wheres.append(category);
 				wheres.append("'");
 			}
+			
+			if(sortType==null||sortType.equals("")){
+				
+			}else if(sortType.equals("price")){
+				if(price.equals("desc")){
+					wheres.append("  order by t.price desc");
+				}else{
+					wheres.append("  order by t.price ");
+				}
+				
+			}else if(sortType.equals("num")){
+				if(num.equals("desc")){
+					wheres.append("  order by t.count desc");
+				}else{
+					wheres.append("  order by t.count ");
+				}
+				
+				
+			}
+			
 			@SuppressWarnings("unchecked")
 			List<Product> list=(List<Product>)productBiz.search(wheres.toString());
 			this.outListJsonString(list);
@@ -111,6 +131,11 @@ public class ProductAction extends BaseAction{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public void setNum(String num) {
+		this.num = num;
 	}
 	
 	

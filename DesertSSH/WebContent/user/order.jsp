@@ -153,6 +153,8 @@
 							 "</tr>";
 				
 				var list=data[i].list;
+				
+				
 				for(var j=0;j<list.length;j++){
 					
 					content=content+

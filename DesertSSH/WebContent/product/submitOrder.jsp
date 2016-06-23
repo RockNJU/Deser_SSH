@@ -171,7 +171,15 @@ function validatePost(){
 		$('#orderInfo2').html("");
 		$('#orderInfo2').append(address+"<br>");
 		$('#orderInfo2').append(customInfo+"<br>");
-		$('#orderInfo2').append("支付金额：  70"+"<br>");
+		var sum=0;
+		$(".tb2_td6").each(function () {
+			
+			sum=sum+ Number($(this).text());
+			
+		});
+		
+		
+		$('#orderInfo').append("支付金额：   "+sum+"<br>");
 		
 	}
 	
