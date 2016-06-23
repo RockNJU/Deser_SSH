@@ -5,25 +5,31 @@
 <html>
 	<head>
 		<title>甜点屋</title>
-		<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel='stylesheet' type='text/css' />
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="../js/jquery-1.5.1.js"></script>
+		<script src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
 		 <!-- Custom Theme files -->
-		<link href="../css/style.css" rel='stylesheet' type='text/css' />
+		<link href="<%=request.getContextPath()%>/css/style.css" rel='stylesheet' type='text/css' />
    		 <!-- Custom Theme files -->
    		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		
-		<script src="../js/jquery.easydropdown.js"></script>
+		<script src="<%=request.getContextPath()%>/js/jquery.easydropdown.js"></script>
 		<!----webfonts--->
 		<link href='http://fonts.useso.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>
 		<!---//webfonts--->
-		<script src="../js/jquery.min.js"></script>
+		<script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 		<link rel="stylesheet" href="../css/etalage.css">
-		<link href="../css/form.css" rel="stylesheet" type="text/css" media="all" />
-		<script src="../js/jquery.easydropdown.js"></script>
+		<link href="<%=request.getContextPath()%>/css/form.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="<%=request.getContextPath()%>/js/jquery.easydropdown.js"></script>
 
-		<script src="../js/jquery.etalage.min.js"></script>
+		<script src="<%=request.getContextPath()%>/js/jquery.etalage.min.js"></script>
+		
+	
+		<script src="<%=request.getContextPath()%>/js/sweetalert.min.js"></script>
+		<link href="<%=request.getContextPath()%>/css/sweetalert.css" rel="stylesheet" type="text/css" media="all" />
+		
+		<script src="<%=request.getContextPath()%>/js/fly.js"></script>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -34,10 +40,10 @@
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
 		<!-- js -->
 		
-		<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/productjs/bootstrap-3.1.1.min.js"></script>
 		<!-- //js -->	
 		<!-- cart -->
-		<script src="js/simpleCart.min.js"> </script>
+		<script src="<%=request.getContextPath()%>/productjs/simpleCart.min.js"> </script>
 		
 		
 		<script>
@@ -262,6 +268,10 @@
 	</style>
 	
 	<script>	
+	
+	
+	
+	
 	function showProduct(data,status){
 		var item;
 		//alert("123:"+$('#contextPath').val());
@@ -276,7 +286,9 @@
 						"<div class='col-md-3 gallery-grid '>"+
 							"<a href='"+$('#context').val()+"/product_singleProduct.do?id="+item.id+"'><img src="+url+" class='img-responsive' alt='暂无图片'/></a>"+
 							"<div class='gallery-info'>"+
-								"<p id='"+item.id+"' value='"+item.price+"' class='addCart' onclick=addProductToCart(this)><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>添加购物车</p>"+
+								"<p id='"+item.id+"' value='"+item.price+"' class='addCart addcar shop' onclick=addProductToCart(this)>"+
+									"添加购物车"+
+								"</p>"+
 								"<a class='shop' href='"+$('#path').val()+"/order_buyNow.do?spid="+item.id+"'>立即购买</a>"+
 								"<div class='clearfix'> </div>"+
 							"</div>"+
@@ -337,7 +349,12 @@
 	  
 	  
 	  function addCartBack(data,status){
-		  alert("添加商品至购物车成功！ "+data.name);
+		  swal({   
+				title: "添加成功",   
+				html: true,
+				timer: 1000,   
+				showConfirmButton: false
+			});
 	  }
 	  
 	var now = new Date();
@@ -385,6 +402,32 @@
 		  });	
 		
 		search();
+		
+		
+		
+		$(".addcar").click(function(event){ 
+			alert("hahahha");
+			var addcar = $(this); 
+			var img = addcar.parent().parent().find('a').find('img').attr('src'); 
+			var flyer = $('<img class="u-flyer" src="'+img+'">'); 
+			flyer.fly({ 
+				start: { 
+					left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
+					top: event.pageY //开始位置（必填） 
+				}, 
+				end: { 
+					left: 300, //结束位置（必填） 
+					top: 10, //结束位置（必填） 
+					width: 0, //结束时宽度 
+					height: 0 //结束时高度 
+				}, 
+				onEnd: function(){ //结束回调 
+					$("#msg").show().animate({width: '250px'}, 200).fadeOut(1000); //提示信息 
+					addcar.css("cursor","default").removeClass('orange').unbind('click'); 
+					this.destory(); //移除dom 
+				} 
+			}); 
+		}); 
 	
 	});
 	
@@ -437,6 +480,11 @@
 				
 			</div>
 		</div>
+		
+		
+		
+
+		
 		
 		<div class="container">
 				<input id='context' value='<%=request.getContextPath()%>' hidden=true/>

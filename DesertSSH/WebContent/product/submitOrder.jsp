@@ -12,6 +12,12 @@
 <link href="<%=request.getContextPath() %>/css/mystyle.css" rel='stylesheet' type='text/css' />
 <link href="<%=request.getContextPath() %>/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <script type="text/javascript" src="<%=request.getContextPath() %>/product/js/jquery.1.4.2-min.js"></script>
+
+
+		<script src="<%=request.getContextPath()%>/js/sweetalert.min.js"></script>
+		<link href="<%=request.getContextPath()%>/css/sweetalert.css" rel="stylesheet" type="text/css" media="all" />
+
+
 <script type="text/javascript" src="<%=request.getContextPath() %>/product/js/Calculation.js"></script>
 
 <script type="text/javascript">
@@ -200,7 +206,12 @@ function doAjax(url1, inf1, func1){
 
 
 function success(data,status){
-	alert('提交订单成功！');
+	 swal({   
+			title: "结算成功！",   
+			html: true,
+			timer: 1000,   
+			showConfirmButton: false
+		});
 }
 
 </script> 
