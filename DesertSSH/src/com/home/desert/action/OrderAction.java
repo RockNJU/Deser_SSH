@@ -62,7 +62,7 @@ public class OrderAction extends BaseAction{
 //			order.setTake_style(take_style);
 			//order.set
 			//String take_style,String take_time,String block,String phone,String address,String shop,String custome
-			orderBiz.submibOrder(1, take_style, "2016-06-27",block,phone,detailAddress,shop,name, cartList.getList());
+			orderBiz.submibOrder(user.getId(), take_style, "2016-06-27",block,phone,detailAddress,shop,name, cartList.getList());
 		
 			this.outObjectString(new Item("添加商品至购物车成功！",120));;
 		} catch (Exception e) {
@@ -80,8 +80,8 @@ public class OrderAction extends BaseAction{
 		try {
 			String list[]=idlist.split("-");
 			
-			//User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			orderBiz.addProductToCart(spid,1, num);
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			orderBiz.addProductToCart(spid,user.getId(), num);
 			List<CartProduct> cpList=new ArrayList<>();
 			String hql;
 			
@@ -108,8 +108,8 @@ public class OrderAction extends BaseAction{
 	public String addProductToCart(){
 		//System.out.println("添加商品至购物车------>");
 		try {
-			//User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			orderBiz.addProductToCart(spid,1, num);
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			orderBiz.addProductToCart(spid,user.getId(), num);
 			this.outObjectString(new Item("添加商品至购物车成功！",120));;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,7 +123,7 @@ public class OrderAction extends BaseAction{
 		System.out.println("添加商品至购物车------>  cartId:  "+id);
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			orderBiz.addUpProductToCart(id,1, 1);
+			orderBiz.addUpProductToCart(id,user.getId(), 1);
 			this.outObjectString(new Item("添加商品至购物车成功！",120));;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -180,7 +180,7 @@ public class OrderAction extends BaseAction{
 		System.out.println("获取历史订单");
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			List<MyOrder> list=myOrderList(1,"out");
+			List<MyOrder> list=myOrderList(user.getId(),"out");
 			this.outListJsonString(list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -195,7 +195,7 @@ public class OrderAction extends BaseAction{
 		System.out.println("获取当前订单。");
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			List<MyOrder> list=myOrderList(1,"in");
+			List<MyOrder> list=myOrderList(user.getId(),"in");
 			System.out.println("   当前订单的数量--->"+list.size());
 			this.outListJsonString(list);
 		} catch (Exception e) {
@@ -224,9 +224,9 @@ public class OrderAction extends BaseAction{
 	private List<MyOrder> myOrderList(int userid,String type){
 		List<MyOrder> list;
 		if(type.equals("in")){
-			list=orderBiz.getOrderInTime(1);
+			list=orderBiz.getOrderInTime(userid);
 		}else{
-			list=orderBiz.getOrderOutTime(1);
+			list=orderBiz.getOrderOutTime(userid);
 		}
 		if(list==null){
 			list=new ArrayList<>();
