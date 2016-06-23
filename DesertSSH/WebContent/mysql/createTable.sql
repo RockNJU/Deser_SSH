@@ -1,3 +1,26 @@
+drop table if EXISTS payRecord;
+create table payRecord (id int not null auto_increment,`time` varchar(255),
+card_number VARCHAR(255) default null,money double default 0,userId int not null,
+primary key(id) ) DEFAULT CHARSET=utf8;
+
+insert into payRecord(id,`time`,card_number,money,userId)
+ values('1','2015-12-23','622024301078688','1000','1');
+
+insert into payRecord(id,`time`,card_number,money,userId)
+ values('2','2015-12-23','622024301078688','1000','1');
+
+insert into payRecord(id,`time`,card_number,money,userId)
+ values('3','2015-12-23','622024301078688','1000','1');
+
+
+
+drop table if exists `sorder`;
+create table `sorder`(id int not null auto_increment,orderid varchar(255),
+userid int not null,shop varchar(255),creaet_time varchar(255),
+	take_time varchar(255),take_style varchar(255),block varchar(255),detailAddress varchar(255),customerName varchar(255),phone varchar(255),
+receipt varchar(255) default '否',sum_money double default '0',primary key(id));
+
+
 drop table if EXISTS `user`;
 create table `user`(id int not null auto_increment,number varchar(255),name VARCHAR(255) default null,sex varchar(255) default '男',
 phone varchar(255) default null,address varchar(255) default null,password varchar(255) not null,
@@ -26,11 +49,6 @@ discount double default '1',count int default '0',summoney double default '0',
 primary key(id) ) DEFAULT CHARSET=utf8;
 
 
-
-
-drop table if exists `order`;
-create table `order`(id int not null auto_increment,orderid varchar(255),userid int not null,shop varchar(255),creaet_time varchar(255),
-	take_time varchar(255),take_style varchar(255),receipt varchar(255) default '否',sum_money double default '0',primary key(id));
 
 drop table if EXISTS order_product;
 create table order_product(id int not null auto_increment,orderid int,spid int,name varchar(255),category varchar(255) default '甜点',
