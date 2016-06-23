@@ -20,7 +20,7 @@
 					 if(session.getAttribute(Constants.USERINFO)!=null){
 						 //out.append("<p><span class='cart'> </span><a herf='+request.getContextPath()+'/product/cart_copy.jsp''>购物车</a><label>￥5256</label></p>");
 						
-						 out.append("<div><p><a href="+request.getContextPath()+"/product/cart_copy.jsp><span class='cart'></span></a></p><div id='msg'>已成功加入购物车！</div> </div>");
+						 out.append("<div><p><a href="+request.getContextPath()+"/product/cart_copy.jsp><span class='cart'></span></a></p></div>");
 
 					 }
 					  
