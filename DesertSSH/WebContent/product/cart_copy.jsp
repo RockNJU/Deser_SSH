@@ -55,13 +55,16 @@ $(document).ready(function () {
 	$(".gwc_tb2 input[name=newslist]").click(function () {
 		if ($(this).attr("checked")) {
 			//$(this).next().css({ "background-color": "#3366cc", "color": "#ffffff" });
+			//GetCount();
 		} else {
 			// $(this).next().css({ "background-color": "#ffffff", "color": "#000000" });
+			//GetCount();
 		}
 	});
 
 	// 输出
 	$(".gwc_tb2 input[name=newslist]").click(function () {
+		alert('------');
 		// $("#total2").html() = GetCount($(this));
 		GetCount();
 		//alert(conts);
@@ -73,18 +76,33 @@ $(document).ready(function () {
 function GetCount() {
 	var conts = 0;
 	var aa = 0;
+	var sum=0;
+	//var idt="#total"+data[i].id;
+	//$(idt).html((parseInt($("#text_box"+data[i].id).val()) * data[i].realPrice).toFixed(2));
 	$(".gwc_tb2 input[name=newslist]").each(function () {
 		if ($(this).attr("checked")) {
 			for (var i = 0; i < $(this).length; i++) {
-				conts += parseInt($(this).val());
+				var id=$(this).val();
+				sum=sum+parseInt($("#text_box"+id).val()) * Number($('#price_'+id).text());
+			//	conts += parseInt($(this).val());
+			//alert('*-*-*-*-:   '+$("#price_"+id).text());
 				aa += 1;
 			}
 		}
 	});
 	$("#shuliang").text(aa);
-	$("#zong1").html((conts).toFixed(2));
-	$("#jz1").css("display", "none");
-	$("#jz2").css("display", "block");
+	$("#zong1").html((sum).toFixed(2));
+	
+	if(aa==0){
+		$("#jz1").css("display", "none");
+		$("#jz2").css("display", "none");
+	}else{
+		$("#jz1").css("display", "none");
+		$("#jz2").css("display", "block");
+	}
+		
+	
+	
 }
 
 function doAjax(url1, inf1, func1){
@@ -142,10 +160,10 @@ function showCartProduct(data,status){
 	for(var i=0;i<data.length;i++){
 		$("#table_head").after("<table cellpadding='0' cellspacing='0' class='gwc_tb2' id='tab_"+data[i].id+"'>"+
 									"<tr>"+
-										"<td class='tb2_td1'><input type='checkbox'class='item_cart' value='"+data[i].id+"' name='newslist' id='newslist-"+data[i].id+"' /></td>"+
+										"<td class='tb2_td1'><input type='checkbox'class='item_cart' value='"+data[i].id+"' name='newslist' id='newslist-"+data[i].id+"' onclick='GetCount()'/></td>"+
 										"<td class='tb2_td2'><a href='#'>"+data[i].name+"</a> </td>"+
 										"<td class='tb2_td3'><a href='#'><img src='"+$('#path').val()+"/"+data[i].img+"'/></a></td>"+
-										"<td class='tb2_td4'>"+data[i].realPrice+"</td>"+
+										"<td class='tb2_td4' id='price_"+data[i].id+"'>"+data[i].realPrice+"</td>"+
 										"<td class='tb2_td5'>"+
 											"<input id='min1' name='"+data[i].id+"' class='minus'  type='button' value='-' onclick='minusNum(this)'/>"+
 											"<input id='text_box"+data[i].id+"' class='num' name='' type='text' value='"+data[i].count+"' />"+

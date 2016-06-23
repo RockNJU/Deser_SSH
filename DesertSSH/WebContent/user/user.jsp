@@ -19,6 +19,11 @@
    		 <!-- Custom Theme files -->
    		
    		<meta name="viewport" content="width=device-width, initial-scale=1">
+   		
+   		
+   		
+		<script src="<%=request.getContextPath()%>/js/sweetalert.min.js"></script>
+		<link href="<%=request.getContextPath()%>/css/sweetalert.css" rel="stylesheet" type="text/css" media="all" />
 		
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		
@@ -141,7 +146,13 @@
 							$("#pwdConfig").val("");
 						
 					}else{
-						alert("密码错误");
+						  swal({   
+								title: "密码错误",   
+								html: true,
+								timer: 1000,   
+								showConfirmButton: false
+							});
+						  
 						$("#pwd").val("");
 						$("#oldpwd").val("");
 						$("#pwdConfig").val("");
@@ -149,7 +160,14 @@
 					
 				}
 				function showResult2(data,status){
-					alert(data.name);
+					var info=data.name;
+					
+					  swal({   
+							title: info,   
+							html: true,
+							timer: 1000,   
+							showConfirmButton: false
+						});
 				}
 				
            
@@ -409,7 +427,8 @@
 					
 							
 						<br>         
-                    	<span><font color="#5a0f16">新&nbsp&nbsp密&nbsp&nbsp码&nbsp&nbsp:&nbsp&nbsp&nbsp</font><input type="password"  id="pwd"> </span><div style="display: inline" id="tip2">
+                    	<span><font color="#5a0f16">新&nbsp&nbsp密&nbsp&nbsp码&nbsp&nbsp:&nbsp&nbsp&nbsp</font><input type="password"  id="pwd"> </span>
+                    <div style="display: inline" id="tip2">
 					
 						
 						<br>         
@@ -424,6 +443,8 @@
      				</div>
       			</div>
       		</div>
+      		</div>
+      	</div>
       		
       		<div class="am-tab-panel am-fade" id="tab4">
      	 		<div class="am-g">

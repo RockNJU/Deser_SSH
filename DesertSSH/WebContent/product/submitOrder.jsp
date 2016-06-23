@@ -309,14 +309,7 @@ function success(data,status){
 	</table>
 	
 	<table cellpadding="0" cellspacing="0" class="gwc_tb2">
-		<tr>
-			
-			<td class="tb2_td2" style="width:180px;"><a href="#">法式焦糖玛奇朵巧克力</a></td>
-			<td class="tb2_td3" style="width:180px;"><a href="#"><img style="width: 60px;height:60px;" src="../images/11.jpg"/></a></td>
-			<td class="tb2_td4" style="width:180px;">9.0</td>
-			<td class="tb2_td5" style="width:180px;font-weight:normal;font-size:14px;">3</td>
-			<td class="tb2_td6" style="width:180px;color:#ff5500;font-size:14px; font-weight:bold;">27.0</td>
-		</tr>
+
 	</table>
 	
 					<jsp:useBean id="cpList" class="com.home.desert.dto.CartList" 
