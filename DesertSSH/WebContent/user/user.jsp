@@ -97,6 +97,7 @@
         	 }
 
 				function successBack(data,status){
+					$('#backInfo').html('');
 					$('#backInfo').append("<span><strong>"+data.name+"</strong></span>");
 				}
 			
@@ -111,6 +112,7 @@
         	}
 
 				function successRecharge(data,status){
+					$('#recharInfo').html('');
 					$('#recharInfo').append('<strong>充值成功！</strong>');
 					var num=Number($('#left').val())+Number($('#money').val());
 					$('#left').val(num);
@@ -460,19 +462,6 @@
       							<th style="background:#ffcccc">银行账号</th>
       						</tr>
       						
-      						<tr>
-      							<td>1</td>
-      							<td>2016-6-22</td>
-      							<td>1000</td>
-      							<td>2381948109481</td>
-      						</tr>
-      						
-      						<tr>
-      							<td>1</td>
-      							<td>2016-6-22</td>
-      							<td>1000</td>
-      							<td>2381948109481</td>
-      						</tr>
       						
       					</table>
       

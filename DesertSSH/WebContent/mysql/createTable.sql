@@ -51,7 +51,7 @@ primary key(id) ) DEFAULT CHARSET=utf8;
 
 
 drop table if EXISTS order_product;
-create table order_product(id int not null auto_increment,orderid int,spid int,name varchar(255),category varchar(255) default '甜点',
+create table order_product(id int not null auto_increment,orderid varchar(255),spid int,name varchar(255),category varchar(255) default '甜点',
 img varchar(255),img2 varchar(255),img3 varchar(255),realPrice double default '0',
 discount double default '1',count int default '0',summoney double default '0',
 primary key(id) ) DEFAULT CHARSET=utf8;

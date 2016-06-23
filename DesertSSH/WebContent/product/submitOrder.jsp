@@ -130,7 +130,17 @@ function validateGet(){
 		$('#orderInfo').html("");
 		$('#orderInfo').append(address+"<br>");
 		$('#orderInfo').append(customInfo+"<br>");
-		$('#orderInfo').append("支付金额：  70"+"<br>");
+		
+		
+		var sum=0;
+		$(".tb2_td6").each(function () {
+			
+			sum=sum+ Number($(this).text());
+			
+		});
+		
+		
+		$('#orderInfo').append("支付金额：   "+sum+"<br>");
 	}
 	
 }
@@ -164,6 +174,9 @@ function validatePost(){
 		$('#orderInfo2').append("支付金额：  70"+"<br>");
 		
 	}
+	
+	
+	
 	
 }
 
@@ -317,6 +330,7 @@ function success(data,status){
 						<jsp:useBean id="cp" class="com.home.desert.pogo.CartProduct" 
 								scope="page"></jsp:useBean>	
 								
+								<input id='sum' value='<jsp:getProperty name="cpList" property="sum" />' hidden='true'/>
 						<%
 							for (int i = 0; i <cpList.getList().size(); i++) {
 							pageContext.setAttribute("cp",cpList.getList().get(i));
@@ -328,8 +342,8 @@ function success(data,status){
 								<td class="tb2_td2" style="width:180px;"><a href="#"><jsp:getProperty name="cp" property="name" /></a></td>
 								<td class="tb2_td3" style="width:180px;"><a href="#"><img style="width: 60px;height:60px;" src="<%=request.getContextPath()%>/<jsp:getProperty name="cp" property="img" />"/></a></td>
 								<td class="tb2_td4" style="width:180px;"><jsp:getProperty name="cp" property="realPrice" /></td>
-								<td class="tb2_td5" style="width:180px;font-weight:normal;font-size:14px;">3</td>
-								<td class="tb2_td6" style="width:180px;color:#ff5500;font-size:14px; font-weight:bold;"><jsp:getProperty name="cp" property="summoney" /></td>
+								<td class="tb2_td5" style="width:180px;font-weight:normal;font-size:14px;"><jsp:getProperty name="cp" property="count" /></td>
+								<td class="tb2_td6" style="width:180px;color:#ff5500;font-size:14px; font-weight:bold;" ><jsp:getProperty name="cp" property="summoney" /></td>
 							</tr>
 						</table>
 						<%}%>

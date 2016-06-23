@@ -110,7 +110,7 @@ public class OrderAction extends BaseAction{
 			
 			CartList cl=new CartList(cpList);
 			getSession().setAttribute("cpList", cl);
-			System.out.println("单据的大小："+cpList.size()+"  ././"+cpList.get(0).getName());
+		//	System.out.println("单据的大小："+cpList.size()+"  ././"+cpList.get(0).getName());
 			return "order";
 			//this.outObjectString(new Item("添加商品至购物车成功！",120));;
 		} catch (Exception e) {

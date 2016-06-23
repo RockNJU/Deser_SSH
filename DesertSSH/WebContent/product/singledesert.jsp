@@ -87,7 +87,12 @@
 	  }
 	 
 	 function addCartBack(data,status){
-		  alert("添加商品至购物车成功！ ");
+		 swal({   
+				title: "加入购物车成功！",   
+				html: true,
+				timer: 800,   
+				showConfirmButton: false
+			});
 	  }
 	
 	</script>

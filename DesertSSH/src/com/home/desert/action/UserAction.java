@@ -75,10 +75,27 @@ public class UserAction extends BaseAction{
 		user.setBalance(user.getBalance()+money);
 		user.setSum(user.getSum()+money);
 		
+		int m=(int)money;
+		
+		user.setPoint(user.getPoint()+m/100);
+		if(user.getSum()>1000){
+			user.setRank(UserRank.ONE_RANK_USER);
+		}
+		else if(user.getSum()>2000){
+			user.setRank(UserRank.TWO_RANK_USER);
+		}else if(user.getSum()>3000){
+			user.setRank(UserRank.THREE_RANK_USER);
+		}else if(user.getSum()>5000){
+			user.setRank(UserRank.SUPER_USER);
+		}
+		
+		
 		Time time=new Time();
 		Payrecord pd=new Payrecord();
 		pd.setCard_number(card_number);
 		pd.setMoney(money);
+		
+		
 		pd.setTime(time.getYMD());
 		pd.setUserId(user.getId());
 		userBiz.addPayrecord(pd);
