@@ -61,8 +61,8 @@ public class OrderAction extends BaseAction{
 //			order.setCreate_time(time.getYMD());
 //			order.setTake_style(take_style);
 			//order.set
-			
-			orderBiz.submibOrder(1, take_style, "2016-06-05", cartList.getList());
+			//String take_style,String take_time,String block,String phone,String address,String shop,String custome
+			orderBiz.submibOrder(1, take_style, "2016-06-27",block,phone,detailAddress,shop,name, cartList.getList());
 		
 			this.outObjectString(new Item("添加商品至购物车成功！",120));;
 		} catch (Exception e) {
@@ -279,6 +279,48 @@ public class OrderAction extends BaseAction{
 
 	public void setIdlist(String idlist) {
 		this.idlist = idlist;
+	}
+
+
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+
+
+	public void setTake_style(String take_style) {
+		this.take_style = take_style;
+	}
+
+
+
+	public void setBlock(String block) {
+		this.block = block;
+	}
+
+
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+
+	public void setShop(String shop) {
+		this.shop = shop;
 	}
 	
 	

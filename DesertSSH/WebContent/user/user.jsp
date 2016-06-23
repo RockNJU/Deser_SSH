@@ -163,10 +163,12 @@
 	 function loadPayrecord(){
 		 var j={'money':1,
  				'number':1};
- 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,addPayrecord);
+ 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,t);
 	 }
 	 
-	 	function addPayrecord(data,status){
+	 function t(data,status){}
+	 
+	 	function addPayrecord1(data,status){
 	 		alert('--回调成功--');
 			/*	 for(var i=0;i<data.length;i++){
 					 var x=i+1
@@ -178,9 +180,11 @@
       						"</tr>");
 					 }*/
 	 }
+	 	
+	 	
 	 
     $(document).ready(function(){           
-    	//loadPayrecord()
+    	loadPayrecord();
     	
         $("#oldpwd").blur(function(){
                 var param=$("#oldpwd").val();

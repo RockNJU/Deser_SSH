@@ -27,7 +27,7 @@ public interface OrderService {
 	 * 
 	 * */
 	
-	public void submibOrder(int userId,String take_style,String take_time,List<CartProduct> cartList);
+	public void submibOrder(int userId,String take_style,String take_time,String block,String phone,String address,String shop,String custome,List<CartProduct> cartList);
 	
 	public List<CartProduct> getCartProductByUserId(int userid);
 	
