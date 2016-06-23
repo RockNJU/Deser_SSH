@@ -48,7 +48,7 @@
 				 <div ><center> 
 						<div style="position:relative;width:942px;height:227px;text-align:left;background:url(<%=request.getContextPath()%>/images/account.jpg )" >
 				　			　<div style="position:relative; z-index:2; left:229px; top:0px">
-　　				　　				<font size="7" color="#52372e" >244.3</font>
+　　				　　				<font size="7" color="#52372e" >0.0</font>
 　						　	 </div>
 							　<div style="position:relative; z-index:2; left:490px; top:-74px; font-size:24px; color:#52372e"; >
 								<form action="<%=request.getContextPath() %>/user_registerStep3.do" method="post">
@@ -59,7 +59,7 @@
 							 </div>
 							 
 							 　<div style="position:relative; z-index:2; left:229px; top:-65px">
-　　				　　				<font size="7" color="#52372e" >324</font>
+　　				　　				<font size="7" color="#52372e" >0</font>
 　						　	 </div>
 							　<div style="position:relative; z-index:2; left:490px; top:-140px; font-size:24px; color:#52372e"; >
 								<form>
