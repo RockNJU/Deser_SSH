@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.home.desert.pogo.Product;
+import com.home.desert.pubutil.Constants;
 import com.home.desert.pubutil.StrItem;
 import com.home.desert.service.ProductService;
 
@@ -18,6 +19,8 @@ public class ProductAction extends BaseAction{
 	private String sortType;//排序的方式
 	private String search;
 	
+	private int id;
+	
 	public ProductAction(){
 		super();
 	}
@@ -27,6 +30,21 @@ public class ProductAction extends BaseAction{
 	 * @author zucewei
 	 * @return 所有商品的可销售商品信息。
 	 * */
+	
+	public String singleProduct(){
+		System.out.println("----调用至当商品的页面---+"+id);
+		try {
+			Product p=productBiz.getProductByID(id);
+			this.getSession().setAttribute(Constants.DESERT, p);
+			return "single";
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
+	
+	
 	public String findProductByParams(){
 	//	System.out.println("--->测试获取分类。"+productBiz.getAllCategory().size());
 		try {
@@ -88,6 +106,11 @@ public class ProductAction extends BaseAction{
 
 	public void setSearch(String search) {
 		this.search = search;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

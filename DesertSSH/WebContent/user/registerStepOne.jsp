@@ -56,7 +56,7 @@
 							    t=t+"&"+'telephone='+$('#telephone').val();
 							  	
 							 
-						 window.location.href="http://localhost:8080/DesertSSH/user/registerStepTwo.jsp"; 
+						 window.location.href='<%=request.getContextPath()%>/user_registerStep1.do?'+t; 
 								  
 				}
 				

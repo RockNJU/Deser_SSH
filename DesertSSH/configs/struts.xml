@@ -42,6 +42,9 @@
 			<result name="log_in" type="redirect">/product/product_copy.jsp</result>
 			<result name="error">/user/registerStepOne.jsp</result>
 			<result name="step1" type="dispatcher">/user/registerStepTwo.jsp</result>
+			
+			<result name="single" type="dispatcher">/product/singledesert.jsp</result>
+			
 			<result name="step2" type="dispatcher">/user/registerStepThree.jsp</result>
 			<result name="step3" type="dispatcher">/user/login.jsp</result>
 			<result name="success" type="redirect">/user/login.jsp</result>

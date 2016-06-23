@@ -274,7 +274,7 @@
 				var url=$('#context').val()+"/"+item.img;
 				jQuery("#product_list").append(
 						"<div class='col-md-3 gallery-grid '>"+
-							"<a href='"+$('#contextPath').val()+"/productDetail?planItemId="+item.id+"'><img src="+url+" class='img-responsive' alt='暂无图片'/></a>"+
+							"<a href='"+$('#context').val()+"/product_singleProduct.do?id="+item.id+"'><img src="+url+" class='img-responsive' alt='暂无图片'/></a>"+
 							"<div class='gallery-info'>"+
 								"<p id='"+item.id+"' value='"+item.price+"' class='addCart' onclick=addProductToCart(this)><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>添加购物车</p>"+
 								"<a class='shop' href="+"---"+">立即购买</a>"+

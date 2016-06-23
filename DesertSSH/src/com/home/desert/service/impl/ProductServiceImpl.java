@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.home.desert.dao.BaseDao;
+import com.home.desert.pogo.Product;
 import com.home.desert.pubutil.StrItem;
 import com.home.desert.service.ProductService;
 
@@ -26,6 +27,12 @@ public class ProductServiceImpl implements ProductService{
 	public List<StrItem> getAllCategory() {
 		String hql="select distinct new com.home.desert.pubutil.StrItem(p.category,p.category) from Product p";
 		return baseDao.findByHql(hql);
+	}
+
+	@Override
+	public Product getProductByID(int id) {
+		String hql=" from Product p where p.id='"+id+"'";
+		return (Product) baseDao.findObjectByHql(hql);
 	}
 
 }

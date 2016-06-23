@@ -3,16 +3,16 @@
 <html>
 	<head>
 		<title>甜点屋</title>
-		<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel='stylesheet' type='text/css' />
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="../js/jquery.min.js"></script>
+		<script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 		 <!-- Custom Theme files -->
-		<link href="../css/style.css" rel='stylesheet' type='text/css' />
+		<link href="<%=request.getContextPath()%>/css/style.css" rel='stylesheet' type='text/css' />
    		 <!-- Custom Theme files -->
    		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</script>
-		<script src="../js/jquery.easydropdown.js"></script>
+		<script src="<%=request.getContextPath()%>/js/jquery.easydropdown.js"></script>
 		<!----webfonts--->
 		<link href='http://fonts.useso.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>
 		<!---//webfonts--->
@@ -44,7 +44,7 @@
 	   <form action="<%=request.getContextPath() %>/user_registerStep2.do" method="post">
 		  <div class="register">
 		  	  <div> 
-			 <center> <img src="../images/re2.jpg"  alt="基础信息" />
+			 <center> <img src="<%=request.getContextPath()%>/images/re2.jpg"  alt="基础信息" />
 							 </br>
 					 </br>
 				 <div class="register-top-grid">
@@ -89,7 +89,7 @@
 					 <center>	
 				     <div>
 				     </br>
-					   <input type="submit" style="background:url(../images/button1.jpg); border-style:none; 
+					   <input type="submit" style="background:url(<%=request.getContextPath()%>/images/button1.jpg); border-style:none; 
  width:154px; height:54px; background-repeat:no-repeat;margin-left:-40px;margin-top:30px"" value="" id='register'>
 					   <div class="clearfix"> </div>
 					   </center>
