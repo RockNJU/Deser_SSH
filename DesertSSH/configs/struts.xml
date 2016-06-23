@@ -43,6 +43,8 @@
 			<result name="error">/user/registerStepOne.jsp</result>
 			<result name="step1" type="dispatcher">/user/registerStepTwo.jsp</result>
 			
+			<result name="buyNow" type="dispatcher">/product/cart_copy.jsp</result>
+			
 			<result name="single" type="dispatcher">/product/singledesert.jsp</result>
 			
 			<result name="step2" type="dispatcher">/user/registerStepThree.jsp</result>

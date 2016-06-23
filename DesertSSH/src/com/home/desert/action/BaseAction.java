@@ -77,9 +77,11 @@ ServletRequestAware, ServletResponseAware{
 		try {
 			
 				JSONArray jsonArray = JSONArray.fromObject(list);
-				String jsonString = jsonArray.toString();
-				//System.out.println("订单结果："+jsonString);
-				outString(jsonString);
+				//String jsonString = jsonArray.toString();
+				//System.out.println("结果："+jsonString);
+				//outString(jsonString);
+				PrintWriter out = getResponse().getWriter();
+				out.print(jsonArray);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

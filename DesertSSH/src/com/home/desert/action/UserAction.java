@@ -1,6 +1,7 @@
 package com.home.desert.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 
@@ -53,10 +54,15 @@ public class UserAction extends BaseAction{
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			if(user!=null){
-				this.outListJsonString(userBiz.getPayrecord(user.getId()));
+				List<Payrecord> list=userBiz.getPayrecord(user.getId());
+				System.out.println("list大小："+list.size());
+				this.outListJsonString(list);
 				
+			}else{
+				List<Payrecord> list=userBiz.getPayrecord(1);
+				this.outListJsonString(list);;
 			}
-			this.outListJsonString(userBiz.getPayrecord(1));;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.outError();
@@ -117,7 +123,7 @@ public class UserAction extends BaseAction{
 				this.outObjectString(new Item("密码不能为空",120));
 			}
 		
-			if(!password.equals(pwd)){
+			else if(!password.equals(pwd)){
 				this.outObjectString(new Item("请确保密码一致",120));
 			}
 			
@@ -135,16 +141,20 @@ public class UserAction extends BaseAction{
 	
 	public String updateInfo(){
 		
-		User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-		user.setName(name);
-		user.setPhone(phone);
-		user.setAddress(address);
-		this.getSession().setAttribute(Constants.USERINFO, user);
-		userBiz.updateUser(user);
-		this.outObjectString(new Item("修改个人信息成功！",120));;
+		
 		
 		try {
-			outString("{'name':'hello'}");
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			if(user!=null){
+				user.setName(name);
+				user.setPhone(phone);
+				user.setAddress(address);
+				this.getSession().setAttribute(Constants.USERINFO, user);
+				userBiz.updateUser(user);
+				this.outObjectString(new Item("修改个人信息成功！",120));;
+			}else{
+				this.outObjectString(new Item("修改个人信息失败！",120));;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.outError();

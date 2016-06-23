@@ -87,7 +87,7 @@ public class OrderServiceImpl implements OrderService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CartProduct> getCartProductByUserId(int userid) {
-		String hql=" from CartProduct cp where cp.userid='"+userid+"' order by cp.id desc";
+		String hql=" from CartProduct cp where cp.userid='"+userid+"' order by cp.id ";
 		return baseDao.findByHql(hql);
 	}
 

@@ -7,14 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>甜点屋</title>
 
-<link href="../product/css/cartTable.css" rel="stylesheet" type="text/css" />
-<link href="../css/style.css" rel='stylesheet' type='text/css' />
-		<link href="../css/mystyle.css" rel='stylesheet' type='text/css' />
-<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="<%=request.getContextPath()%>/product/css/cartTable.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/css/style.css" rel='stylesheet' type='text/css' />
+		<link href="<%=request.getContextPath()%>/css/mystyle.css" rel='stylesheet' type='text/css' />
+<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
   
-<script type="text/javascript" src="../product/js/jquery.1.4.2-min.js"></script>
-<script type="text/javascript" src="../product/js/Calculation.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/product/js/jquery.1.4.2-min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/product/js/Calculation.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
 
@@ -144,7 +144,7 @@ function showCartProduct(data,status){
 									"<tr>"+
 										"<td class='tb2_td1'><input type='checkbox'class='item_cart' value='"+data[i].id+"' name='newslist' id='newslist-"+data[i].id+"' /></td>"+
 										"<td class='tb2_td2'><a href='#'>"+data[i].name+"</a> </td>"+
-										"<td class='tb2_td3'><a href='#'><img src='../"+data[i].img+"'/></a></td>"+
+										"<td class='tb2_td3'><a href='#'><img src='"+$('#path').val()+"/"+data[i].img+"'/></a></td>"+
 										"<td class='tb2_td4'>"+data[i].realPrice+"</td>"+
 										"<td class='tb2_td5'>"+
 											"<input id='min1' name='"+data[i].id+"' class='minus'  type='button' value='-' onclick='minusNum(this)'/>"+
@@ -253,6 +253,8 @@ function showCartProduct(data,status){
 	
 	
 	</script>
+	
+	<input value='<%=request.getContextPath()%>' id='path' hidden='true' />
 	<table cellpadding="0" cellspacing="0" class="gwc_tb3">
 		<tr>
 			<td class="tb1_td1"><input id="checkAll" class="allselect" type="checkbox" /></td>

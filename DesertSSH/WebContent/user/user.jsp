@@ -9,20 +9,20 @@
 	<head>
 		<title>甜点屋</title>
 		
-		<link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel='stylesheet' type='text/css' />
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		
-		<script src="../js/jquery.min.js"></script>
+	
+	 <script src="<%=request.getContextPath() + "/js/jquery.min.js"%>"></script>
 		 <!-- Custom Theme files -->
 		
-		<link href="../css/style.css" rel='stylesheet' type='text/css' />
+		<link href="<%=request.getContextPath()%>/css/style.css" rel='stylesheet' type='text/css' />
    		 <!-- Custom Theme files -->
    		
    		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		
-		<script src="../js/jquery.easydropdown.js"></script>
+		
 		<!----webfonts--->
 		
 		<link href='http://fonts.useso.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>
@@ -31,12 +31,12 @@
 		<!-- CSS -->
 		
 		
-		<link rel="stylesheet" href="../css/amazeui.css"/>
-		<link rel="stylesheet" href="../css/amazeui.datetimepicker.css"/>
-		<link rel="stylesheet" href="../css/admin.css"/>
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/amazeui.css"/>
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/amazeui.datetimepicker.css"/>
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css"/>
 
-		<script src="../js/amazeui.js"></script>
-		<script src="../js/amazeui.datetimepicker.js"></script>
+		<script src="<%=request.getContextPath()%>/js/amazeui.js"></script>
+		<script src="<%=request.getContextPath()%>/js/amazeui.datetimepicker.js"></script>
 
 		
 		
@@ -66,8 +66,10 @@
          	function doAjax(url1, inf1, func1){
         	    jQuery.ajax({type:"GET", url:url1,data:inf1,
         	    	dataType:"json", jsonp:"callback", success:func1
-        		  		, error:function(){
-        		    alert("Ajax Error.");
+        		  		, error:function(XMLHttpRequest, textStatus, errorThrown){
+        		  			alert(XMLHttpRequest.status);
+        	                alert(XMLHttpRequest.readyState);
+        	                alert(textStatus);
         			}
         			}
         	)}
@@ -90,7 +92,7 @@
         	 }
 
 				function successBack(data,status){
-				
+					$('#backInfo').append("<span><strong>"+data.name+"</strong></span>");
 				}
 			
                //充值记录
@@ -105,13 +107,12 @@
 
 				function successRecharge(data,status){
 					$('#recharInfo').append('<strong>充值成功！</strong>');
+					var num=Number($('#left').val())+Number($('#money').val());
+					$('#left').val(num);
+					
         		}
 
-				function successRecharge(data,status){
-					alert(data.name);
-				}
-				
-				// $(document).ready(function(){                
+				            
 				       
 				// });
 				
@@ -122,9 +123,6 @@
 					doAjax("<%=request.getContextPath() + "/user_surePassWord.do"%>",j,showResult);
 					
 					
-					 $("#pwd").val("");
-						$("#oldpwd").val("");
-						$("#pwdConfig").val("");
 				}
 				
 				function showResult(data,status){
@@ -163,14 +161,17 @@
 	 function loadPayrecord(){
 		 var j={'money':1,
  				'number':1};
- 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,t);
+ 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,addPayrecord1);
 	 }
 	 
-	 function t(data,status){}
+	 function t(data,status){
+		 
+	 }
 	 
 	 	function addPayrecord1(data,status){
-	 		alert('--回调成功--');
-			/*	 for(var i=0;i<data.length;i++){
+	 		//alert('--回调成功--');
+			 for(var i=0;i<data.length;i++){
+			//	 alert('加载数据----->');
 					 var x=i+1
 							$('#payRecord').append("<tr>"+
       							"<td>"+x+"</td>"+
@@ -178,7 +179,7 @@
       							"<td>"+data[i].money+"</td>"+
       							"<td>"+data[i].card_number+"</td>"+
       						"</tr>");
-					 }*/
+					 }
 	 }
 	 	
 	 	
@@ -336,6 +337,7 @@
 					</span>
 					<span><font color="#5a0f16">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font><input type="text" id='address13' name='address13' value='汉口路22号南京大学南园5舍' style='width: 30%;' disabled='true'> </span>
 					<br>
+						<div id='backInfo'></div>
 					<br>
 					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<input type="button" id='change' name='change' value='修改' onclick="change()">
@@ -427,11 +429,9 @@
      	 		<div class="am-g">
       				<div class="user-tab" style="margin-left:10px">
                         <br>
+                        
                     	<table class="am-table am-table-striped am-table-hover table-main" id='payRecord'>
  							<!--   表格信息 -->
- 
-     
-   
       						<tr>
      						 	<th style="background:#ffcccc">序号</th>
       							<th style="background:#ffcccc">充值时间</th>

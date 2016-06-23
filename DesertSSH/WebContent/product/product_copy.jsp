@@ -277,7 +277,7 @@
 							"<a href='"+$('#context').val()+"/product_singleProduct.do?id="+item.id+"'><img src="+url+" class='img-responsive' alt='暂无图片'/></a>"+
 							"<div class='gallery-info'>"+
 								"<p id='"+item.id+"' value='"+item.price+"' class='addCart' onclick=addProductToCart(this)><span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>添加购物车</p>"+
-								"<a class='shop' href="+"---"+">立即购买</a>"+
+								"<a class='shop' href='"+$('#path').val()+"/order_buyNow.do?spid="+item.id+"'>立即购买</a>"+
 								"<div class='clearfix'> </div>"+
 							"</div>"+
 						
@@ -344,6 +344,7 @@
 	var book_date=now.getFullYear()+"-"+((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1)+"-"+(now.getDate()<10?"0":"")+now.getDate();
 	var book_store="新街口总店",category="",price="0-1000";
 	var ca="";
+	
 	$(document).ready(function($){
 		loadCategory();
 		
@@ -398,7 +399,7 @@
 	
 	<div class="gallery" style="background-color: #fff">
 		<div class="container" style='margin-top:-25px;'>
-			
+			<input value='<%=request.getContextPath()%>' id='path' hidden='true' />
 			<div style="min-height:20px;margin-top:-20px;">
 				
 				<div class="dh">

@@ -5,23 +5,34 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Structs Testing</title>
-		<script src="<%=request.getContextPath() + "/js/jquery-1.5.1.js"%>"></script>
-		<script src="<%=request.getContextPath() + "/js/doAjax.js"%>"></script>
+		<script src="<%=request.getContextPath() + "/js/jquery.min.js"%>"></script>
+		
 		<script>
-			
+			//alert('--------feng  l ------');
 		
-		
-		 function loadPayrecord(){
-			 var j={'money':1,
-	 				'number':1};
-	 	    doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,t);
-		 }
-		 
-		 function t(data){
-			// alert("--------丛植回调成功-----");
-		 }
-		
-	   window.onload=loadPayrecord();
+		function doAjax(url1, inf1, func1){
+	        jQuery.ajax({type:"GET", url:url1,data:inf1,
+	        	dataType:"json", jsonp:"callback", success:func1
+	  	  		, error:function(XMLHttpRequest, textStatus, errorThrown){
+		  	  		alert(XMLHttpRequest.status);
+	                alert(XMLHttpRequest.readyState);
+	                alert(textStatus);
+	    		}
+				}
+	    )}
+	
+	  function loadCategory(){
+		  var j={'category':'all'};
+	        doAjax("<%=request.getContextPath() + "/user_payRecord.do"%>",j,listCategory);
+	  }
+	  
+	  function listCategory(data,status){
+		 alert('----hahahhahhahhaha----');
+	  }
+	  
+	  $(document).ready(function($){
+			loadCategory();
+	  });
 	    
 		</script>
 		

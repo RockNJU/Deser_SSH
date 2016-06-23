@@ -62,7 +62,8 @@ public class OrderAction extends BaseAction{
 //			order.setTake_style(take_style);
 			//order.set
 			//String take_style,String take_time,String block,String phone,String address,String shop,String custome
-			orderBiz.submibOrder(user.getId(), take_style, "2016-06-27",block,phone,detailAddress,shop,name, cartList.getList());
+			orderBiz.submibOrder(user.getId(), take_style, "2016-06-27",block,phone,
+					detailAddress,shop,name, cartList.getList());
 		
 			this.outObjectString(new Item("添加商品至购物车成功！",120));;
 		} catch (Exception e) {
@@ -74,6 +75,20 @@ public class OrderAction extends BaseAction{
 	}
 	
 	
+	public String buyNow(){
+		//立即购买
+		try {
+			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
+			orderBiz.addProductToCart(spid,user.getId(),1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		
+		return "buyNow";
+		
+		
+	}
 	
 	public String orderConfirm(){
 		System.out.println("订单确认啦啦啦啦。 idlist:"+idlist);
@@ -82,7 +97,9 @@ public class OrderAction extends BaseAction{
 			
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
 			orderBiz.addProductToCart(spid,user.getId(), num);
+			
 			List<CartProduct> cpList=new ArrayList<>();
+			
 			String hql;
 			
 			for(String id:list){
@@ -195,9 +212,14 @@ public class OrderAction extends BaseAction{
 		System.out.println("获取当前订单。");
 		try {
 			User user=(User) this.getSession().getAttribute(Constants.USERINFO);
-			List<MyOrder> list=myOrderList(user.getId(),"in");
-			System.out.println("   当前订单的数量--->"+list.size());
-			this.outListJsonString(list);
+			if(user!=null){
+				List<MyOrder> list=myOrderList(user.getId(),"in");
+				this.outListJsonString(list);
+			}else{
+				List<MyOrder> list=myOrderList(1,"in");
+				this.outListJsonString(list);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.outError();
