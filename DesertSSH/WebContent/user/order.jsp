@@ -98,8 +98,8 @@
 					
 					content=content+
 							"<tr>"+
-						    " <td class='sptd'><img src='../"+list[j].img+"' style='margin-left:20px;height:46px;weight:60px;' alt='暂不能显示' /></td>"+
-						     "<td class='sptd'>"+list[j].name+"</td>"+
+						    " <td class='sptd'><a href='"+$('#path').val()+"/product_singleProduct.do?id="+list[j].spid+"'><img src='../"+list[j].img+"' style='margin-left:20px;height:46px;weight:60px;' alt='暂不能显示' /><a></td>"+
+						     "<td class='sptd'><a href='"+$('#path').val()+"/product_singleProduct.do?id="+list[j].spid+"'>"+list[j].name+"</a></td>"+
 						     "<td class='sptd'>"+list[j].realPrice+"</td>"+
 						     "<td class='sptd'>"+list[j].count+"</td>"+
 						     "<td class='sptd'>"+list[j].summoney+"</td>"+
@@ -206,6 +206,7 @@
     <hr class="am-article-divider blog-hr">
      <article class="blog-main">
      
+     <input id='path' value='<%=request.getContextPath()%>' hidden=true/>
      
      <div class="am-tabs am-margin" data-am-tabs style='min-height:400px'>
     <ul class="am-tabs-nav am-nav am-nav-tabs">

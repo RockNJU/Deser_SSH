@@ -33,6 +33,7 @@ public class ProductAction extends BaseAction{
 	 * */
 	
 	public String singleProduct(){
+		System.out.println("单个商品");
 		try {
 			Product p=productBiz.getProductByID(id);
 			this.getSession().setAttribute(Constants.DESERT, p);

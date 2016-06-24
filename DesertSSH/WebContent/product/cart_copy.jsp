@@ -164,8 +164,8 @@ function showCartProduct(data,status){
 		$("#table_head").after("<table cellpadding='0' cellspacing='0' class='gwc_tb2' id='tab_"+data[i].id+"'>"+
 									"<tr>"+
 										"<td class='tb2_td1'><input type='checkbox'class='item_cart' value='"+data[i].id+"' name='newslist' id='newslist-"+data[i].id+"' onclick='GetCount()'/></td>"+
-										"<td class='tb2_td2'><a href='#'>"+data[i].name+"</a> </td>"+
-										"<td class='tb2_td3'><a href='#'><img src='"+$('#path').val()+"/"+data[i].img+"'/></a></td>"+
+										"<td class='tb2_td2'><a href='"+$('#path').val()+"/product_singleProduct.do?id="+data[i].spid+"'>"+data[i].name+"</a> </td>"+
+										"<td class='tb2_td3'><a href='"+$('#path').val()+"/product_singleProduct.do?id="+data[i].spid+"'><img src='"+$('#path').val()+"/"+data[i].img+"'/></a></td>"+
 										"<td class='tb2_td4' id='price_"+data[i].id+"'>"+data[i].realPrice+"</td>"+
 										"<td class='tb2_td5'>"+
 											"<input id='min1' name='"+data[i].id+"' class='minus'  type='button' value='-' onclick='minusNum(this)'/>"+

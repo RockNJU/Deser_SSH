@@ -28,16 +28,17 @@ public class SecurityFilter implements Filter {
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		Object userInfo =  httpRequest.getSession().getAttribute(Constants.USERINFO);
 		String str=httpRequest.getRequestURL().toString();
-		/*
-		if(userInfo==null){//此处已修改为相反的，以后记得修改回来
+		
+		if(userInfo==null&&str.indexOf("/registerStepOne.jsp")==-1
+				&& str.indexOf("/about.jsp")==-1){//此处已修改为相反的，以后记得修改回来
 			if(str.indexOf("/login.jsp")==-1){
-				httpResponse.sendRedirect(httpRequest.getContextPath()+"/login.jsp");
+				httpResponse.sendRedirect(httpRequest.getContextPath()+"/user/login.jsp");
 			}else{
 				filterChain .doFilter(request, response);
 			}
 		}else{
-			filterChain .doFilter(request, response);		
-		}*/
+			//filterChain .doFilter(request, response);		
+		}
 		filterChain .doFilter(request, response);
 	}
 

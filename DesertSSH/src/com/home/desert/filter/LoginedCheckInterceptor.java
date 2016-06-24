@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.home.desert.pogo.User;
 import com.home.desert.pubutil.*;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
@@ -20,9 +21,8 @@ public class LoginedCheckInterceptor extends AbstractInterceptor {
 		
 		//取得请求的URL
 		String url = httpRequest.getRequestURL().toString();
-		return ai.invoke();
 		//验证Session是否过期
-		/*if(!ServletActionContext.getRequest().isRequestedSessionIdValid()){
+		if(!ServletActionContext.getRequest().isRequestedSessionIdValid()){
 			//session过期,转向session过期提示页,最终跳转至登录页面
 			if("XMLHttpRequest".equals(httpRequest.getHeader("x-requested-with"))){//ajax
 		        httpResponse.addHeader("__timeout","true");
@@ -31,13 +31,13 @@ public class LoginedCheckInterceptor extends AbstractInterceptor {
 		    	return "tologin";
 		}else{
 			//对登录与注销请求直接放行,不予拦截
-			if (url.indexOf("/user_login.do")!=-1){
+			if (url.indexOf("/user_login.do")!=-1||(url.indexOf("/user_registerStepOne")!=-1)){
 				return ai.invoke();
 			}else{
-				Object userInfo = httpRequest.getSession().getAttribute(Constants.USERINFO);
-				//验证是否已经登录,此处已修改为反的，以后记得回来改掉。
-				if (userInfo!=null){
-					//session过期,转向session过期提示页,最终跳转至登录页面，直接修改为可以调用
+				User userInfo = (User) httpRequest.getSession().getAttribute(Constants.USERINFO);
+				//验证是否已经登录
+				if (userInfo==null){
+					//session过期,转向session过期提示页,最终跳转至登录页面
 					if("XMLHttpRequest".equals(httpRequest.getHeader("x-requested-with"))){//ajax
 				        httpResponse.addHeader("__timeout","true");
 				        return null;
@@ -48,6 +48,6 @@ public class LoginedCheckInterceptor extends AbstractInterceptor {
 					return ai.invoke();
 				}				
 			}			
-		}*/
+		}
 	}
 }

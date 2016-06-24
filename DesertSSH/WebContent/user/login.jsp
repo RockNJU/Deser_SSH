@@ -48,7 +48,7 @@
 			   <div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
 			  	 <h3>注册新客户</h3>
 				 <p>注册我们商店的一个新账号, 您可以在本网站轻松订购您喜欢的甜点,存储多个您可能用到的收获地址, 查看订单详情以及享有会员优惠.</p>
-				 <a style="height:30px;text-align:center;font-weight:bold;	padding: 0.3em 1.2em;" class="acount-btn" href="../user/registerStepOne.jsp">注册新账号</a>
+				 <a style="height:30px;text-align:center;font-weight:bold;	padding: 0.3em 1.2em;" class="acount-btn" href="<%=request.getContextPath() %>/user/registerStepOne.jsp">注册新账号</a>
 			   </div>
 			   <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
 			  	<h3>老客户</h3>

@@ -69,7 +69,7 @@
 				<ul>
 					<li style="font-size:18px;font-family:SimSun;margin-left:30px"><a href="<%=request.getContextPath()%>/user/index.jsp">主页</a></li>
 					<li style="font-size:18px;font-family:SimSun;"><a href="<%=request.getContextPath()%>/product/product_copy.jsp">商品</a></li>
-					<li style="font-size:18px;font-family:SimSun;"><a href="<%=request.getContextPath()%>/user/aboutus.html">关于我们</a></li>
+					<li style="font-size:18px;font-family:SimSun;"><a href="<%=request.getContextPath()%>/common/about.jsp">关于我们</a></li>
 					<div class="clearfix"> </div>
 					
 				
