@@ -36,8 +36,8 @@
 		<meta name="keywords" content="" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<!-- //Custom Theme files -->
-		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<link href="<%=request.getContextPath()%>/product/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="<%=request.getContextPath()%>/product/css/style.css" type="text/css" rel="stylesheet" media="all">
 		<!-- js -->
 		
 		<script type="text/javascript" src="<%=request.getContextPath()%>/productjs/bootstrap-3.1.1.min.js"></script>
@@ -273,6 +273,7 @@
 	
 	
 	function showProduct(data,status){
+		$('#search').val('');
 		var item;
 		//alert("123:"+$('#contextPath').val());
 		jQuery("#product_list").html("");
@@ -284,7 +285,7 @@
 				var url=$('#context').val()+"/"+item.img;
 				jQuery("#product_list").append(
 						"<div class='col-md-3 gallery-grid '>"+
-							"<a href='"+$('#context').val()+"/product_singleProduct.do?id="+item.id+"'><img src="+url+" class='img-responsive' style='max-width:187;max-height:187' alt='暂无图片'/></a>"+
+							"<a href='"+$('#context').val()+"/product_singleProduct.do?id="+item.id+"'><img src="+url+" class='img-responsive' style='width:187;height:187' alt='暂无图片'/></a>"+
 							"<div class='gallery-info'>"+
 								"<p id='"+item.id+"' value='"+item.price+"' class='addCart addcar shop' onclick=addProductToCart(this)>"+
 									"添加购物车"+
@@ -321,7 +322,7 @@
 	var sortType='';
 	
 	function search(){
-    	var j={'category':category,'price':pp,'num':num,'sortType':sortType};
+    	var j={'category':category,'price':pp,'num':num,'sortType':sortType,'prefer':$('#prefer').val(),'search':$('#search').val()};
         doAjax("<%=request.getContextPath() + "/product_findProductByParams.do"%>",j,showProduct);
     }
 	
@@ -344,6 +345,7 @@
 	
 	function num_sort(){
 		sortType='num';
+		
 		if(num=='desc'){
 			num='esc';
 		}else{
@@ -406,9 +408,11 @@
 	}
 	
 	$(document).ready(function($){
+		
+		//alert("推荐的偏爱-----："+$('#prefer').val());
+		
 		loadCategory();
-		
-		
+	
 		$(".Item").click(function(){
 			//
 			var ca=$(this).id;
@@ -533,7 +537,13 @@
 		
 		
 		<div class="container">
+		
 				<input id='context' value='<%=request.getContextPath()%>' hidden=true/>
+				<input id='prefer' value='${prefer}' hidden=true/>
+				<input id='search' value='${search}' hidden=true/>
+				
+				
+				
 			<div class="gallery-grids" id="product_list">
 			
 				<div class="col-md-3 gallery-grid ">

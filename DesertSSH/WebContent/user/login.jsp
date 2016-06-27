@@ -57,10 +57,10 @@
 				<div>
 					<p style="color:red"><strong>${info}&nbsp;</strong></p>
 				  <div>
-					<span>账号<label>*&nbsp&nbsp</label><input type="text" id='email' name='mail'></span>
+					<span>账号<label>*&nbsp&nbsp</label><input type="text" id='email' name='mail' value='${mail}' /></span>
 				  </div>
 				  <div>
-					<span>密码<label>*&nbsp&nbsp</label><input type="password" id='pwd' name='password'> </span>
+					<span>密码<label>*&nbsp&nbsp</label><input type="password" id='pwd' name='password' value='${pwd}'> </span>
 					
 				  </div>
 				  <a class="forgot" href="#" style='margin-top:10px;'>忘记密码?</a>

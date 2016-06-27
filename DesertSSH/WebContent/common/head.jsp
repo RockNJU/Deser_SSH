@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="com.home.desert.pubutil.*" %> 
+<%@ page import="com.home.desert.pogo.User" %> 
  <!-- container -->
 		<!-- top-header -->
 		<div class="top-header">
@@ -8,6 +9,19 @@
 				<div class="top-header-left">
 					<ul>
 						<li><a href="../user/index.jsp"><img id='logo' src="<%=request.getContextPath()%>/images/logo.png" title="甜点屋" style='width:80px;height:40px;margin-top:5px;'/></a></li>
+						
+						 
+						
+				<%
+						User user=(User)session.getAttribute(Constants.USERINFO);
+					 if(user!=null){
+						
+						 out.append("<li><a style='margin-top:9px;font-size: 1.1em;'>欢迎您，"+user.getName()+"</a></li>");
+
+					 }
+					  
+				 %>
+						
 						<div class="clearfix"> </div>
 					</ul>
 				</div>
@@ -31,9 +45,9 @@
 				<div class="top-header-right" style='float:right;margin-top:10px;font-size:15px;font-family:SimSun;'>
 					<ul>
 						<li>
-							<form>
-								<input type="text">
-								<input type="submit" value="" />
+							<form action='<%=request.getContextPath()%>/product_searchProduct.do'>
+								<input type="text" name='search'>
+								<input type="submit" value=""  />
 							</form>
 						</li>
 						

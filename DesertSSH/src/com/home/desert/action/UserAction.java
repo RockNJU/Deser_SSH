@@ -275,6 +275,8 @@ public class UserAction extends BaseAction{
 		try {
 			if(user==null){
 				this.getRequest().setAttribute("info", "用户名或密码错误");
+				this.getRequest().setAttribute("mail", mail);
+				this.getRequest().setAttribute("pwd", password);
 				return "input";
 			}else{
 				this.getSession().setAttribute(Constants.USERINFO, user);

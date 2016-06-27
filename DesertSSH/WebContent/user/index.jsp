@@ -65,7 +65,7 @@
 					    <div  id="top" class="callbacks_container">
 					      <ul class="rslides" id="slider4">
 					        <li>
-					         <a href='<%=request.getContextPath()%>/product/product_copy.jsp'> <img  src="../images/forindex1.png" class="img-responsive" alt=""></a>
+					         <a href='<%=request.getContextPath()%>/product_preferProduct.do?prefer=child'> <img  src="../images/forindex1.png" class="img-responsive" alt=""></a>
 					          <div class="slider-caption">
 					          	
 					          	  
@@ -74,7 +74,7 @@
 					          
 					        </li>
 					         <li>
-					           <a href='<%=request.getContextPath()%>/product/product_copy.jsp'>  <img  src="../images/forindex2.png" class="img-responsive" alt=""></a>
+					           <a href='<%=request.getContextPath()%>/product_preferProduct.do?prefer=top'>  <img  src="../images/forindex2.png" class="img-responsive" alt=""></a>
 					          <div class="slider-caption">
 					          	 
 					          	  
@@ -83,7 +83,7 @@
 					         
 					        </li>
 					        <li>
-					          <a href='<%=request.getContextPath()%>/product/product_copy.jsp'>  <img src="../images/forindex3.png" class="img-responsive" alt=""></a>
+					          <a href='<%=request.getContextPath()%>/product_preferProduct.do?prefer=love'>  <img src="../images/forindex3.png" class="img-responsive" alt=""></a>
 					           <div class="slider-caption">
 					          	 
 					          	  

@@ -23,6 +23,9 @@ public class Product implements Serializable{
 	private double price;
 	private double discount;
 	private double count;	//表示有多少是可以售卖的
+	
+	private String prefer;
+	
 	public int getId() {
 		return id;
 	}
@@ -76,5 +79,11 @@ public class Product implements Serializable{
 	}
 	public void setCount(double count) {
 		this.count = count;
+	}
+	public String getPrefer() {
+		return prefer;
+	}
+	public void setPrefer(String prefer) {
+		this.prefer = prefer;
 	}
 }

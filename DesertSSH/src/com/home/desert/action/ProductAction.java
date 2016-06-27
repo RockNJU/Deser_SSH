@@ -20,6 +20,8 @@ public class ProductAction extends BaseAction{
 	private String sortType;//排序的方式
 	private String search;
 	
+	private String prefer;
+	
 	private int id;
 	
 	public ProductAction(){
@@ -33,7 +35,7 @@ public class ProductAction extends BaseAction{
 	 * */
 	
 	public String singleProduct(){
-		System.out.println("单个商品");
+		System.out.println("单个商品   搜索："+search);
 		try {
 			Product p=productBiz.getProductByID(id);
 			this.getSession().setAttribute(Constants.DESERT, p);
@@ -45,9 +47,45 @@ public class ProductAction extends BaseAction{
 		return null;
 	}
 	
+	public String searchProduct(){
+		try {
+			Product p=productBiz.getProductByID(id);
+		//	this.getRequest().;
+			this.getRequest().setAttribute("search", search);
+			return "category";
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
+	
+	public String  preferProduct(){
+		try {
+			Product p=productBiz.getProductByID(id);
+		//	this.getRequest().;
+			this.getRequest().setAttribute("prefer", prefer);
+			return "category";
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.outError();
+		}
+		return null;
+	}
+	
 	
 	public String findProductByParams(){
 	//	System.out.println("--->测试获取分类。"+productBiz.getAllCategory().size());
+		
+		if(prefer!=null&&!prefer.equals("")){
+			if(prefer.equals("top")){
+				
+				sortType="num";
+				num="desc";
+				prefer=null;
+			}
+		}
+		
 		try {
 			StringBuffer wheres = new StringBuffer(" where 1=1");
 			
@@ -65,22 +103,25 @@ public class ProductAction extends BaseAction{
 				wheres.append("'");
 			}
 			
-			if(sortType==null||sortType.equals("")){
-				
+			if(prefer!=null&&!prefer.equals("")){
+				wheres.append(" and t.prefer='");
+				wheres.append(prefer);
+				wheres.append("'");
+			}
+			
+			if(sortType==null||sortType.equals("")||sortType.equals("num")){
+				if(num.equals("desc")){
+					System.out.println("*-*-*-投票---");
+					wheres.append("  order by t.count desc");
+				}else if (num.equals("esc")){
+					wheres.append("  order by t.count ");
+				}
 			}else if(sortType.equals("price")){
 				if(price.equals("desc")){
 					wheres.append("  order by t.price desc");
 				}else{
 					wheres.append("  order by t.price ");
 				}
-				
-			}else if(sortType.equals("num")){
-				if(num.equals("desc")){
-					wheres.append("  order by t.count desc");
-				}else{
-					wheres.append("  order by t.count ");
-				}
-				
 				
 			}
 			
@@ -137,6 +178,11 @@ public class ProductAction extends BaseAction{
 
 	public void setNum(String num) {
 		this.num = num;
+	}
+
+
+	public void setPrefer(String prefer) {
+		this.prefer = prefer;
 	}
 	
 	

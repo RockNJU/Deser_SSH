@@ -156,7 +156,7 @@
 					</div>
 					
 					<div class="btn_form">
-						<button class="button1" style="margin-left:250px"  id='<jsp:getProperty name="desert" property="id" />' onclick='addProductToCart(this)'>
+						<button class="button1" style="margin-left:60px;text-align-center"  id='<jsp:getProperty name="desert" property="id" />' onclick='addProductToCart(this)'>
 							<span style="width:50px;height:60px;font-size:20px;font-weight:bold; text-align:center;" >加入购物车</span>
 						</button>
 					</div>
@@ -182,60 +182,7 @@
 					
 					</p>
 				</div>
-				<div class="single-bottom2">
-					<h6>相关产品</h6>
-						<div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="<%=request.getContextPath()%>/images/15.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">XX蛋糕</a></h5>
-		                           <p class="product_descr"> 好吃好吃好吃. </p>									
-							   </div>
-							  <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$7.51</span>								
-								<button class="button1"><span>加入购物车</span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-					  <div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="<%=request.getContextPath()%>/images/16.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">XX蛋糕</a></h5>
-		                           <p class="product_descr"> 好吃好吃好吃. </p>									
-							   </div>
-							  <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$7.51</span>								
-								<button class="button1"><span>加入购物车</span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-				     <div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="<%=request.getContextPath()%>/images/17.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">XX蛋糕</a></h5>
-		                           <p class="product_descr"> 好吃好吃好吃. </p>									
-							   </div>
-							  <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$7.51</span>								
-								<button class="button1"><span>加入购物车</span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-		   	  </div>
+				
 	       </div>
 		   
 		   

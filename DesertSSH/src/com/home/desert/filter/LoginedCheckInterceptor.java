@@ -22,7 +22,7 @@ public class LoginedCheckInterceptor extends AbstractInterceptor {
 		//取得请求的URL
 		String url = httpRequest.getRequestURL().toString();
 		//验证Session是否过期
-		if(!ServletActionContext.getRequest().isRequestedSessionIdValid()){
+		/*if(!ServletActionContext.getRequest().isRequestedSessionIdValid()){
 			//session过期,转向session过期提示页,最终跳转至登录页面
 			if("XMLHttpRequest".equals(httpRequest.getHeader("x-requested-with"))){//ajax
 		        httpResponse.addHeader("__timeout","true");
@@ -48,6 +48,8 @@ public class LoginedCheckInterceptor extends AbstractInterceptor {
 					return ai.invoke();
 				}				
 			}			
-		}
+		}*/
+		
+		return ai.invoke();
 	}
 }
