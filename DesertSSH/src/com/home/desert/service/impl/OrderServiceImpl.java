@@ -70,6 +70,13 @@ public class OrderServiceImpl implements OrderService{
 			
 				sum_money=sum_money+cp.getSummoney();
 				baseDao.save(new OrderProduct(orderId,cp));
+				
+				Product p1=(Product) baseDao.findObjectByHql("from Product p where p.id='"+cp.getSpid()+"'");
+				if(p1!=null){
+					p1.setCount(p1.getCount()+cp.getCount());
+				}
+				
+				baseDao.save(p1);
 				baseDao.delete(cp);
 		}
 		

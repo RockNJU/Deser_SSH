@@ -253,6 +253,7 @@ public class OrderAction extends BaseAction{
 		if(list==null){
 			list=new ArrayList<>();
 		}
+		
 		List<MyOrder> result=new ArrayList<>();
 		String hql;
 		List<OrderProduct> opList;

@@ -290,18 +290,18 @@
 								"<p id='"+item.id+"' value='"+item.price+"' class='addCart addcar shop' onclick=addProductToCart(this)>"+
 									"添加购物车"+
 								"</p>"+
-								"<a class='shop' href='"+$('#path').val()+"/order_buyNow.do?spid="+item.id+"'>立即购买</a>"+
+								"<a class='shop' style='margin-top:5px;' href='"+$('#path').val()+"/order_buyNow.do?spid="+item.id+"'>立即购买</a>"+
 								"<div class='clearfix'> </div>"+
 							"</div>"+
 						
 						"<div class='galy-info'>"+
-							"<p>"+item.name+"</p>"+
+							"<p>"+item.category+"·"+item.name+"</p>"+
 							"<div class='galry'>"+
 								"<div class='prices'>"+
-									"<h5 class='item_price' id='price_"+item.id+"' name='"+item.price+"'>￥"+item.price+"/个</h5>"+
+									"<h5 class='item_price' style='padding-right:5px;margin-right:5px;color:#444' id='price_"+item.id+"' name='"+item.price+"'>￥"+item.price+"/个</h5>"+
 								"</div>"+
 								"<div class='rating'>"+
-									"<span>"+item.category+"</span>"+
+									"<span>销量： "+item.count+"个</span>"+
 								"</div>"+						
 								"<div class='clearfix'></div>"+
 							"</div>"+
