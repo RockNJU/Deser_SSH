@@ -213,7 +213,7 @@ public class UserAction extends BaseAction{
 			user.setPassword(password);
 			user.setMail(mail);
 			user.setPhone(phone);
-			this.getSession().setAttribute(Constants.USERINFO, user);
+			this.getSession().setAttribute(Constants.REGISTERINFO, user);
 			
 			return "step1";
 		} catch (Exception e) {
@@ -227,14 +227,14 @@ public class UserAction extends BaseAction{
 		System.out.println("用户在进行测试注册的步骤2，传进来的参数：  address: "+address+"   sex: "+sex+"  age:"+age);
 		try {
 			
-			User user=(User)this.getSession().getAttribute(Constants.USERINFO);
+			User user=(User)this.getSession().getAttribute(Constants.REGISTERINFO);
 			if(user==null){
 				return "error";
 			}else{
 				user.setAddress(address);
 				user.setAge(age);
 				user.setSex(sex);
-				this.getSession().setAttribute(Constants.USERINFO, user);
+				this.getSession().setAttribute(Constants.REGISTERINFO, user);
 				return "step2";
 			}
 			
@@ -246,10 +246,10 @@ public class UserAction extends BaseAction{
 	}
 	
 	public String registerStep3(){
-		System.out.println("用户注册第三步，充值、，money  "+money);
+		//System.out.println("用户注册第三步，充值、，money  "+money);
 		try {
 			
-			User user=(User)this.getSession().getAttribute(Constants.USERINFO);
+			User user=(User)this.getSession().getAttribute(Constants.REGISTERINFO);
 			if(user==null){
 				return "error";
 			}else{
@@ -257,7 +257,8 @@ public class UserAction extends BaseAction{
 				user.setBalance(money);
 				user.setState(UserState.ACTIVE);	//第三部充值以后激活用户。
 				user.setRank(UserRank.COMMON_USER);
-				this.getSession().setAttribute(Constants.USERINFO, user);
+				user.setState(UserState.ACTIVE);
+				this.getSession().setAttribute(Constants.REGISTERINFO, user);
 				userBiz.saveUser(user);
 				this.getRequest().setAttribute("info", "您已注册成功，请登录！");
 				return "step3";

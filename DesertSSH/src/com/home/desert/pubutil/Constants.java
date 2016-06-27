@@ -5,6 +5,8 @@ public final class Constants {
 	//javaBean in request
     public static final String USERINFO = "userInfo";
     
+    public static final String REGISTERINFO = "register";
+    
     public static final String DESERT = "desert";
     
     public static final Integer FILE_MAXSIZE = new Integer(1024*1024*15);

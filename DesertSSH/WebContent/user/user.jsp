@@ -116,10 +116,10 @@
 					$('#recharInfo').append('<strong>充值成功！</strong>');
 					var num=Number($('#left').val())+Number($('#money').val());
 					$('#left').val(num);
-					
+					var point=Number($('#point').val())+(parseInt($('#money').val()))/10;
+					$('#point').val(point);
         		}
 
-				            
 				       
 				// });
 				
@@ -135,8 +135,6 @@
 				function showResult(data,status){
 					if(data.name=='true'){
 						
-						
-							//alert("sdaada");
 							var p={'password':$('#pwd').val(),
 			        				'pwd':$('#pwdConfig').val(),
 			        		
@@ -227,7 +225,9 @@
               var tmp=$("#pwd").val();
              
               if($("#pwdConfig").val()!=tmp){
-                  $("#tip3").html("<font color=\"red\" size=\"2\">  两次密码不一致</font>");                 
+                  $("#tip3").html("<font color=\"red\" size=\"2\">  两次密码不一致</font>"+"<br>"+
+					
+					"	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type='button' id='save' name='save' value='确认' onclick='modifypwd()' />");                 
               }
               
           });
@@ -434,15 +434,15 @@
 					
 						
 						<br>         
-                    	<span><font color="#5a0f16">密码确认&nbsp&nbsp:&nbsp&nbsp&nbsp</font><input type="password"  id="pwdConfig"> </span><div style="display: inline" id="tip3">                                       
+                    	<span><font color="#5a0f16">密码确认&nbsp&nbsp:&nbsp&nbsp&nbsp</font><input type="password"  id="pwdConfig"> </span>
+                    	
+                    	<div style="display: inline" id="tip3">                                       
 					
-					<br>
-					
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					
-						<input type="button" id='save' name='save' value='确认' onclick="modifypwd()">
-	                    <div id="tip4"></div>
-     				</div>
+							<br>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							<input type="button" id='save' name='save' value='确认' onclick="modifypwd()">
+		                    <div id="tip4"></div>
+     					</div>
       			</div>
       		</div>
       		</div>
